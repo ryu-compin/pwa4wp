@@ -1,0 +1,356 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: pwa4wp\n"
+"POT-Creation-Date: 2018-08-27 17:07+0900\n"
+"PO-Revision-Date: 2018-08-27 17:15+0900\n"
+"Last-Translator: ryu <ryu@compin.jp>\n"
+"Language-Team: pwa4wp <ryu@compin.jp>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ./admin/partials\n"
+
+#: admin/class-pwa4wp-admin.php:344
+msgid "Manifest : Icon is not set."
+msgstr "Manifest : アイコンが設定されていません。"
+
+#: admin/class-pwa4wp-admin.php:349
+msgid "Manifest : Site Name is not set."
+msgstr "Manifest : サイト名が設定されていません。"
+
+#: admin/class-pwa4wp-admin.php:354
+msgid "Manifest : Short Name is not set."
+msgstr "Manifest : サイトの短縮名が設定されていません。"
+
+#: admin/class-pwa4wp-admin.php:359
+msgid "Manifest : Start URL is not set."
+msgstr "Manifest : start_url が設定されていません。"
+
+#: admin/class-pwa4wp-admin.php:364
+msgid "Manifest : Scope is not set."
+msgstr "Manifest : スコープが設定されていません。"
+
+#: admin/class-pwa4wp-admin.php:369
+msgid "Manifest : Display is not set."
+msgstr "Manifest : 画面の表示モードが設定されていません。"
+
+#: admin/class-pwa4wp-admin.php:374
+msgid "Manifest : Background color is not set."
+msgstr "Manifest : 背景色が設定されていません。"
+
+#: admin/class-pwa4wp-admin.php:379
+msgid "Manifest : Description is not set."
+msgstr "Manifest : description が設定されていません。"
+
+#: admin/class-pwa4wp-admin.php:384
+msgid "Manifest : Theme colr is not set."
+msgstr "Manifest : テーマカラーが設定されていません。"
+
+#: admin/class-pwa4wp-admin.php:389
+msgid "Manifest : Orientation is not set."
+msgstr "Manifest : orientation が設定されていません。"
+
+#: admin/class-pwa4wp-admin.php:398
+msgid "ServiceWorker : Cache Expire time must be numeric."
+msgstr "ServiceWorker : キャッシュの有効時間は数値で入力してください。"
+
+#: admin/partials/pwa4wp-admin-display.php:22
+msgid "Current PWA Status"
+msgstr "現在の PWA の状態"
+
+#: admin/partials/pwa4wp-admin-display.php:26
+#: admin/partials/pwa4wp-admin-manifest.php:32
+#: admin/partials/pwa4wp-admin-sw.php:27
+msgid "Errors or Messages."
+msgstr "エラーまたはメッセージがあります。"
+
+#: admin/partials/pwa4wp-admin-display.php:40
+#: admin/partials/pwa4wp-admin-display.php:53
+msgid "working"
+msgstr "稼働中"
+
+#: admin/partials/pwa4wp-admin-display.php:43
+#: admin/partials/pwa4wp-admin-display.php:56
+msgid "not working"
+msgstr "停止中"
+
+#: admin/partials/pwa4wp-admin-display.php:63
+msgid "Usage"
+msgstr "使い方"
+
+#: admin/partials/pwa4wp-admin-display.php:66
+msgid ""
+"To make your website to PWA, this plugin make two files, \"Manifest\" and "
+"\"ServiceWorker\" in your website."
+msgstr ""
+"あなたの Web サイトを PWA にするために、このプラグインは二つのファイル、"
+"「Manifest」と「ServiceWorker」をサイト内に生成します。"
+
+#: admin/partials/pwa4wp-admin-display.php:67
+msgid ""
+"Manifest file is a json file that has configurations of web applications."
+msgstr ""
+"Manifest（マニフェスト）ファイルは Web アプリケーションの構成を保持する json "
+"形式のファイルです。"
+
+#: admin/partials/pwa4wp-admin-display.php:68
+msgid "ServiceWorker is a javascript file that controls PWA's functions."
+msgstr "ServiceWorker は PWA の機能を制御する javascript ファイルです。"
+
+#: admin/partials/pwa4wp-admin-display.php:69
+msgid "To start PWA, configure two files from below setup links."
+msgstr ""
+"PWA を開始するには以下のリンクからそれぞれのファイルを構成してください。"
+
+#: admin/partials/pwa4wp-admin-display.php:75
+msgid "Configure Manifest"
+msgstr "マニフェストの構成"
+
+#: admin/partials/pwa4wp-admin-display.php:80
+msgid "Prepare icon image file, image file must be png format."
+msgstr ""
+"アイコン画像ファイルを用意してください。画像ファイルは png 形式である必要があ"
+"ります。"
+
+#: admin/partials/pwa4wp-admin-display.php:82
+msgid "Setup manifest file from Manifest Configuration page."
+msgstr "マニフェストの構成ページからマニフェストファイルをセットアップします。"
+
+#: admin/partials/pwa4wp-admin-display.php:84
+msgid "Image file will be resized to fit icon sizes automatically."
+msgstr "画像ファイルはアイコンサイズに合わせて自動的にリサイズされます。"
+
+#: admin/partials/pwa4wp-admin-display.php:92
+msgid "Configure ServiceWorker"
+msgstr "ServiceWorker の構成"
+
+#: admin/partials/pwa4wp-admin-display.php:96
+msgid "Setup ServiceWorker file from ServiceWorker Configuration page."
+msgstr ""
+"ServiceWorker 構成ページから ServiceWorker ファイルをセットアップします。"
+
+#: admin/partials/pwa4wp-admin-display.php:102
+msgid "About developer of this plugin"
+msgstr "このプラグインの開発者について"
+
+#: admin/partials/pwa4wp-admin-display.php:105
+msgid "PWA for Wordpress develop team"
+msgstr "PWA for Wordpress 開発チーム"
+
+#: admin/partials/pwa4wp-admin-display.php:123
+msgid "Contact us"
+msgstr "お問い合わせ"
+
+#: admin/partials/pwa4wp-admin-display.php:124
+msgid "If you find anyting about this plugin, contact us from mailform below."
+msgstr ""
+"このプラグインについてお気づきの点がありましたら下記のメールフォームからお問"
+"い合わせください。"
+
+#: admin/partials/pwa4wp-admin-manifest.php:28
+msgid "Manifest Configulations"
+msgstr "マニフェスト設定"
+
+#: admin/partials/pwa4wp-admin-manifest.php:60
+msgid "This will be PWA application title."
+msgstr "PWA のアプリケーションタイトルとして使用されます。"
+
+#: admin/partials/pwa4wp-admin-manifest.php:84
+msgid "Define shorten application title."
+msgstr "アプリケーションタイトルの短縮を指定します。"
+
+#: admin/partials/pwa4wp-admin-manifest.php:108
+msgid "Define PWA description."
+msgstr "アプリケーションの説明を記述します。"
+
+#: admin/partials/pwa4wp-admin-manifest.php:133
+msgid "Define start page of PWA."
+msgstr "PWA を起動して最初に表示されるスタートページを指定します。"
+
+#: admin/partials/pwa4wp-admin-manifest.php:157
+msgid "By default, PWA works in the directory that ServiceWorker installed."
+msgstr ""
+"デフォルトでは PWA は ServiceWorker が配置されたディレクトリ配下で動作しま"
+"す。"
+
+#: admin/partials/pwa4wp-admin-manifest.php:158
+msgid "This plugin set ServiceWorker to root directory of this website."
+msgstr ""
+"このプラグインは ServiceWorker をサイトのルートディレクトリに配置します。"
+
+#: admin/partials/pwa4wp-admin-manifest.php:159
+msgid ""
+"If you want PWA to work only in a apecified subdirectory, set subdirectory "
+"path in here."
+msgstr ""
+"もし PWA を特定のサブティレクトリの中だけで動作させたい場合はここにサブティレ"
+"クトリのパスを指定します。"
+
+#: admin/partials/pwa4wp-admin-manifest.php:190
+msgid "Select/Upload Image"
+msgstr "画像の選択/アップロード"
+
+#: admin/partials/pwa4wp-admin-manifest.php:192
+msgid ""
+"Icon file is \"png\" format required, more than 512px x 512px size is "
+"recommended."
+msgstr ""
+"アイコンに使用するファイルは png 形式である必要がり、512px x 512px 以上のサイ"
+"ズをお勧めします。"
+
+#: admin/partials/pwa4wp-admin-manifest.php:193
+msgid "Icon file will be resized by system automatically."
+msgstr "画像ファイルはシステムにより自動的にリサイズされます。"
+
+#: admin/partials/pwa4wp-admin-manifest.php:232
+msgid "Choose PWA theme color and background color."
+msgstr "PWA のテーマカラーと背景色を選択します。"
+
+#: admin/partials/pwa4wp-admin-manifest.php:259
+msgid "PWA display mode."
+msgstr "PWA の画面表示モードを指定します。"
+
+#: admin/partials/pwa4wp-admin-manifest.php:298
+msgid "Choose PWA screen orientation."
+msgstr "PWA の画面の方向を指定します。"
+
+#: admin/partials/pwa4wp-admin-sw.php:23
+msgid "ServiceWorker Cache Configurations"
+msgstr "ServiceWorker キャッシュ設定"
+
+#: admin/partials/pwa4wp-admin-sw.php:40
+msgid "ServiceWorker Cache version ( auto increment )"
+msgstr "ServiceWorker キャッシュバージョン（自動インクリメント）"
+
+#: admin/partials/pwa4wp-admin-sw.php:50
+msgid "Basic cache plan"
+msgstr "基本キャッシュ計画"
+
+#: admin/partials/pwa4wp-admin-sw.php:59
+msgid "Setup cache plan."
+msgstr "キャッシュの使用計画を指定します。"
+
+#: admin/partials/pwa4wp-admin-sw.php:60
+msgid "Cache first plan will show cache data before get online data."
+msgstr ""
+"Cache first ではオンラインでのデータ取得の前にキャッシュを使用して表示しま"
+"す。"
+
+#: admin/partials/pwa4wp-admin-sw.php:61
+msgid "If the page requested is already in cache, cached page will be shown."
+msgstr ""
+"要求されたページが既にキャッシュにあれば、キャッシュが優先的に表示されます。"
+
+#: admin/partials/pwa4wp-admin-sw.php:62
+msgid "Online first plan will show online data before cache data."
+msgstr ""
+"Online first ではキャッシュデータを利用するよりも先にオンラインでデータを取得"
+"します。"
+
+#: admin/partials/pwa4wp-admin-sw.php:63
+msgid ""
+"When the browser failed to get online page, for example offline or server "
+"down, cached data will be shown."
+msgstr ""
+"もしオフライン時やサーバーがダウンしている場合など、ブラウザがデータの取得に"
+"失敗したらキャッシュデータを使用します。"
+
+#: admin/partials/pwa4wp-admin-sw.php:71
+msgid "Offline Page URL"
+msgstr "オフラインページ URL"
+
+#: admin/partials/pwa4wp-admin-sw.php:100
+msgid "Select a Page to show when the PWA is offline."
+msgstr "オフライン時に表示するページのURLを指定します。"
+
+#: admin/partials/pwa4wp-admin-sw.php:101
+msgid "Make a page for offline. "
+msgstr "オフライン時に表示するための固定ページを用意してください。"
+
+#: admin/partials/pwa4wp-admin-sw.php:102
+msgid "This page will be cached when PWA is installed."
+msgstr "このページは PWA のインストールと同時にキャッシュされます。"
+
+#: admin/partials/pwa4wp-admin-sw.php:111
+msgid "Cache Expire time"
+msgstr "キャッシュ有効時間"
+
+#: admin/partials/pwa4wp-admin-sw.php:116
+msgid "Define length of cache expire time by minutes."
+msgstr "キャッシュの有効期限を分単位で指定します。"
+
+#: admin/partials/pwa4wp-admin-sw.php:117
+msgid "For example, 1 hour -> 60 min, 1 day ->1440 min, 1 week->10080 min."
+msgstr ""
+"例えば、1時間→60（分）、1日→1440（分）、1週間→10080（分）、と指定します。"
+
+#: admin/partials/pwa4wp-admin-sw.php:118
+msgid "If define 0 for this, expire time is unlimited."
+msgstr "キャッシュの有効期限を無期限にする場合は、0を指定します。"
+
+#: admin/partials/pwa4wp-admin-sw.php:128
+msgid "URLs for exclude from cache list"
+msgstr "キャッシュ除外URL"
+
+#: admin/partials/pwa4wp-admin-sw.php:131
+#: admin/partials/pwa4wp-admin-sw.php:166
+msgid "Add list"
+msgstr "リスト追加"
+
+#: admin/partials/pwa4wp-admin-sw.php:150
+msgid ""
+"Directory /wp-admin/ is added automatibally, so you don't need to define "
+"admin directory in here."
+msgstr ""
+"/wp-admin/ ディレクトリ配下の管理画面 URL は自動的に除外追加されますのでここ"
+"で指定する必要はありません。"
+
+#: admin/partials/pwa4wp-admin-sw.php:151
+msgid "Regular expressions are available."
+msgstr "正規表現での指定が可能です。"
+
+#: admin/partials/pwa4wp-admin-sw.php:152
+msgid "Example"
+msgstr "例"
+
+#: admin/partials/pwa4wp-admin-sw.php:153
+msgid "This means that all \"/api/\" directory will excluded from cache."
+msgstr "これは「 /api/ 」ディレクトリをキャッシュから除外することを示します。"
+
+#: admin/partials/pwa4wp-admin-sw.php:163
+msgid "First caches"
+msgstr "初期キャッシュ"
+
+#: admin/partials/pwa4wp-admin-sw.php:186
+msgid "Contents of these URLs are cached with installation."
+msgstr "ここで指定した URL はインストールと同時にキャッシュされます。"
+
+#: admin/partials/pwa4wp-admin-sw.php:187
+msgid ""
+"Start URL in manifest and offline page will added automatically, so you "
+"don't need to define them in here."
+msgstr ""
+"マニフェストで指定した start_url とオフラインページは自動的にキャッシュされま"
+"すのでここで指定する必要はありません。"
+
+#: admin/partials/pwa4wp-admin-sw.php:195
+msgid "Debug mode"
+msgstr "デバッグモード"
+
+#: admin/partials/pwa4wp-admin-sw.php:204
+msgid "Switch to show debug messages."
+msgstr "デバッグメッセージを表示します。"
+
+#: admin/partials/pwa4wp-admin-sw.php:205
+msgid ""
+"Set ON this switch, ServiceWorker javascript will send verbose messages to "
+"debug console of browser."
+msgstr ""
+"ONにすると ServiceWorker の javascript からブラウザのコンソールに詳細なメッ"
+"セージが出力されます。"

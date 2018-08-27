@@ -1,0 +1,56 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+ul{
+
+}
+li{
+    margin-left: 4em;
+    display: block;
+}
+.itemname{
+    float: left;
+    font-weight: bold;
+}
+.field{
+    display: block;
+    margin-left: 10em ;
+}
+.itemname-child{
+    float: left;
+}
+.field-child{
+    display: block;
+    margin-left: 6em ;
+}
+#icon-list li{
+    margin-left: 10em ;
+
+}
+.longtext{
+    width: 32em;
+}
+.midtext{
+    width: 20em;
+}
+.shorttext{
+    width: 12em;
+}
+.redalert{
+    color: red;
+    font-weight: bold;
+}
+.innerlist{
+    margin-left: 0em;
+}
+.msgArea{
+    display: block;
+    margin-left: 2em;
+    background-color: #ffe8e8;
+    padding:2em;
+
+}
+.msgArea li{
+    margin-left: 0em;
+}
