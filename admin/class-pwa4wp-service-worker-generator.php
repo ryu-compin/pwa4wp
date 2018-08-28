@@ -16,7 +16,7 @@ class pwa4wp_Service_Worker_Generator {
 		$initialCaches   = json_encode( $data['initial-caches'] );
         $data['exclusions'][] = "^.*/wp-admin/.*";
 		$exclusions = json_encode($data['exclusions']);
-        $ttl = intval($data['ttl'])*60*1000;
+        $ttl = intval($data['ttl'])*60;
 		$cachePlan = $data['cache_plan'];
         $swVersion = $data['sw_version'];
 		$cacheManagerUrl = $this->plugin_root_url . 'public/js/pwa4wp-cache-manager.js?' . $this->version;
