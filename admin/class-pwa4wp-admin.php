@@ -332,7 +332,7 @@ class pwa4wp_Admin {
 	private function generateServiceWorker( $data ) {
 		require_once plugin_dir_path( __FILE__ ) . 'class-pwa4wp-service-worker-generator.php';
 		update_option( 'pwa4wp_cache_settings', $data );
-		$generator = new PWA4WP_Service_Worker_Generator( plugin_dir_url( dirname( __FILE__ ) ) );
+		$generator = new pwa4wp_Service_Worker_Generator( plugin_dir_url( dirname( __FILE__ ) ) );
 		$script    = $generator->generate( $data );
 		file_put_contents( get_home_path() . PWA4WP_SERVICEWORKER_FILE, $script );
 	}
