@@ -6,8 +6,8 @@
  * @link       https://github.com/ryu-compin/pwa4wp
  * @since      1.0.0
  *
- * @package    PWA_for_WordPress
- * @subpackage PWA_for_WordPress/admin
+ * @package    pwa4wp
+ * @subpackage pwa4wp/admin
  */
 
 /**
@@ -16,16 +16,16 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    PWA_for_WordPress
- * @subpackage PWA_for_WordPress/admin
+ * @package    pwa4wp
+ * @subpackage pwa4wp/admin
  * @author     Ryunosuke Shindo <ryu@compin.jp>
  */
-class PWA_for_WordPress_Admin {
+class pwa4wp_Admin {
 
 	/**
 	 * @since    1.0.0
 	 * @access   private
-	 * @var      PWA_for_WordPress_Loader $loader Maintains and registers all hooks for the plugin.
+	 * @var      pwa4wp_Loader $loader Maintains and registers all hooks for the plugin.
 	 */
 	private $loader;
 
@@ -34,9 +34,9 @@ class PWA_for_WordPress_Admin {
 	 *
 	 * @since    1.0.0
 	 * @access   private
-	 * @var      string $PWA_for_WordPress The ID of this plugin.
+	 * @var      string $pwa4wp The ID of this plugin.
 	 */
-	private $PWA_for_WordPress;
+	private $pwa4wp;
 
 	/**
 	 * The version of this plugin.
@@ -59,12 +59,12 @@ class PWA_for_WordPress_Admin {
 	 *
 	 * @since    1.0.0
 	 *
-	 * @param      string $PWA_for_WordPress The name of this plugin.
+	 * @param      string $pwa4wp The name of this plugin.
 	 * @param      string $version The version of this plugin.
 	 */
-	public function __construct( $PWA_for_WordPress, $version, $loader ) {
+	public function __construct( $pwa4wp, $version, $loader ) {
 
-		$this->PWA_for_WordPress = $PWA_for_WordPress;
+		$this->pwa4wp = $pwa4wp;
 		$this->version     = $version;
 		$this->loader      = $loader;
         $this->errorMsg = array();
@@ -76,7 +76,7 @@ class PWA_for_WordPress_Admin {
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
-		wp_enqueue_style( $this->PWA_for_WordPress, plugin_dir_url( __FILE__ ) . 'css/pwa4wp-admin.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->pwa4wp, plugin_dir_url( __FILE__ ) . 'css/pwa4wp-admin.css', array(), $this->version, 'all' );
         wp_enqueue_style( 'wp-color-picker' );
 	}
 
@@ -86,22 +86,22 @@ class PWA_for_WordPress_Admin {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_script( $this->PWA_for_WordPress, plugin_dir_url( __FILE__ ) . 'js/pwa4wp-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->pwa4wp, plugin_dir_url( __FILE__ ) . 'js/pwa4wp-admin.js', array( 'jquery' ), $this->version, false );
         wp_enqueue_script( 'wp-color-picker' );
         wp_enqueue_script( 'media-uploader-main-js', plugins_url( 'js/media-uploader.js', __FILE__ ), array( 'jquery' ) );
         wp_enqueue_media();
 	}
 
 	public function setup_admin_menu() {
-        add_menu_page($this->PWA_for_WordPress, $this->PWA_for_WordPress, 'manage_options', $this->PWA_for_WordPress, array(
+        add_menu_page($this->pwa4wp, $this->pwa4wp, 'manage_options', $this->pwa4wp, array(
             $this,
             'render_view',
         ), '');
-        add_submenu_page($this->PWA_for_WordPress, 'Manifest', 'Manifest', 'manage_options', $this->PWA_for_WordPress . '?1', array(
+        add_submenu_page($this->pwa4wp, 'Manifest', 'Manifest', 'manage_options', $this->pwa4wp . '?1', array(
             $this,
             'render_view_manifest',
         ));
-        add_submenu_page($this->PWA_for_WordPress, 'ServiceWorker', 'ServiceWorker', 'manage_options', $this->PWA_for_WordPress . '?2', array(
+        add_submenu_page($this->pwa4wp, 'ServiceWorker', 'ServiceWorker', 'manage_options', $this->pwa4wp . '?2', array(
             $this,
             'render_view_sw',
         ));
@@ -111,7 +111,7 @@ class PWA_for_WordPress_Admin {
 		require_once( plugin_dir_path( __FILE__ ) . 'class-pwa4wp-admin-view.php' );
 		$manifestSettings = get_option( 'pwa4wp_manifest' );
 		$cacheSettings    = get_option( 'pwa4wp_cache_settings' );
-		$view             = new PWA_for_WordPress_Admin_View();
+		$view             = new pwa4wp_Admin_View();
 		$view->render( [ 'manifestSettings' => $manifestSettings, 'cacheSettings' => $cacheSettings ,'errorMsg' => $this->errorMsg] );
 	}
     public function render_view_manifest() {
@@ -120,7 +120,7 @@ class PWA_for_WordPress_Admin {
         $cacheSettings    = get_option( 'pwa4wp_cache_settings' );
         $savedIconURL  = get_option( 'pwa4wp_app_iconurl' );
         $savedIcons = get_option('pwa4wp_app_icons');
-        $view             = new PWA_for_WordPress_Admin_View();
+        $view             = new pwa4wp_Admin_View();
         $view->render_manifest( [ 'manifestSettings' => $manifestSettings, 'cacheSettings' => $cacheSettings , 'iconurl' => $savedIconURL ,'icons' => $savedIcons ,'errorMsg' => $this->errorMsg]);
     }
     public function render_view_sw() {
@@ -128,7 +128,7 @@ class PWA_for_WordPress_Admin {
         $manifestSettings = get_option( 'pwa4wp_manifest' );
         $cacheSettings    = get_option( 'pwa4wp_cache_settings' );
         $savedIconURL  = get_option( 'pwa4wp_app_iconurl' );
-        $view             = new PWA_for_WordPress_Admin_View();
+        $view             = new pwa4wp_Admin_View();
         $swVersion = get_option('pwa4wp_sw_version');
         $view->render_sw( [ 'manifestSettings' => $manifestSettings, 'cacheSettings' => $cacheSettings, 'swVersion' => $swVersion ,'errorMsg' => $this->errorMsg] );
     }
@@ -221,7 +221,7 @@ class PWA_for_WordPress_Admin {
 	private function saveAndGenerateManifestFile( $manifest ) {
 		update_option( 'pwa4wp_manifest', $manifest );
 		$manifestJson = json_encode( $manifest );
-		file_put_contents( get_home_path() . MANIFEST_FILE, $manifestJson );
+		file_put_contents( get_home_path() . PWA4WP_MANIFEST_FILE, $manifestJson );
 		echo "<!--manifest created --- "  .get_home_path()." --- " .home_url(). "--!>"."<!--" .$manifestJson ." -->";
 	}
 	private function resizeIcons($iconBase,$imageType){
@@ -334,7 +334,7 @@ class PWA_for_WordPress_Admin {
 		update_option( 'pwa4wp_cache_settings', $data );
 		$generator = new PWA4WP_Service_Worker_Generator( plugin_dir_url( dirname( __FILE__ ) ) );
 		$script    = $generator->generate( $data );
-		file_put_contents( get_home_path() . SERVICEWORKER_FILE, $script );
+		file_put_contents( get_home_path() . PWA4WP_SERVICEWORKER_FILE, $script );
 	}
 
 	private function check_manifest($data, $icons ){

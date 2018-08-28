@@ -22,7 +22,7 @@
  * @link       https://github.com/ryu-compin/pwa4wp
  * @since      1.0.0
  *
- * @package    PWA_for_WordPress
+ * @package    pwa4wp
  */
 
 // If uninstall not called from WordPress, then exit.

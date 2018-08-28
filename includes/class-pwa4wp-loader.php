@@ -6,8 +6,8 @@
  * @link       https://github.com/ryu-compin/pwa4wp
  * @since      1.0.0
  *
- * @package    PWA_for_WordPress
- * @subpackage PWA_for_WordPress/includes
+ * @package    pwa4wp
+ * @subpackage pwa4wp/includes
  */
 
 /**
@@ -17,11 +17,11 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    PWA_for_WordPress
- * @subpackage PWA_for_WordPress/includes
+ * @package    pwa4wp
+ * @subpackage pwa4wp/includes
  * @author     Ryunosuke Shindo <ryu@compin.jp>
  */
-class PWA_for_WordPress_Loader {
+class pwa4wp_Loader {
 
 	/**
 	 * The array of actions registered with WordPress.

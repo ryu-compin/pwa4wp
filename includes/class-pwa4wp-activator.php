@@ -6,8 +6,8 @@
  * @link       https://github.com/ryu-compin/pwa4wp
  * @since      1.0.0
  *
- * @package    PWA_for_WordPress
- * @subpackage PWA_for_WordPress/includes
+ * @package    pwa4wp
+ * @subpackage pwa4wp/includes
  */
 
 /**
@@ -16,11 +16,11 @@
  * This class defines all code necessary to run during the plugin's activation.
  *
  * @since      1.0.0
- * @package    PWA_for_WordPress
- * @subpackage PWA_for_WordPress/includes
+ * @package    pwa4wp
+ * @subpackage pwa4wp/includes
  * @author     Ryunosuke Shindo <ryu@compin.jp>
  */
-class PWA_for_WordPress_Activator {
+class pwa4wp_Activator {
 
 	/**
 	 * Short Description. (use period)
