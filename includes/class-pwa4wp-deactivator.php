@@ -6,8 +6,8 @@
  * @link       https://github.com/ryu-compin/pwa4wp
  * @since      1.0.0
  *
- * @package    PWA_for_WordPress
- * @subpackage PWA_for_WordPress/includes
+ * @package    pwa4wp
+ * @subpackage pwa4wp/includes
  */
 
 /**
@@ -16,11 +16,11 @@
  * This class defines all code necessary to run during the plugin's deactivation.
  *
  * @since      1.0.0
- * @package    PWA_for_WordPress
- * @subpackage PWA_for_WordPress/includes
+ * @package    pwa4wp
+ * @subpackage pwa4wp/includes
  * @author     Ryunosuke Shindo <ryu@compin.jp>
  */
-class PWA_for_WordPress_Deactivator {
+class pwa4wp_Deactivator {
 
 	/**
 	 * Short Description. (use period)
@@ -30,13 +30,13 @@ class PWA_for_WordPress_Deactivator {
 	 * @since    1.0.0
 	 */
 	public static function deactivate() {
-        if(file_exists(get_home_path() . MANIFEST_FILE))
+        if(file_exists(get_home_path() . PWA4WP_MANIFEST_FILE))
         {
-            unlink(get_home_path() . MANIFEST_FILE);
+            unlink(get_home_path() . PWA4WP_MANIFEST_FILE);
         }
-        if(file_exists(get_home_path() . SERVICEWORKER_FILE))
+        if(file_exists(get_home_path() . PWA4WP_SERVICEWORKER_FILE))
         {
-            unlink(get_home_path() . SERVICEWORKER_FILE);
+            unlink(get_home_path() . PWA4WP_SERVICEWORKER_FILE);
         }
 	}
 }

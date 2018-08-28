@@ -9,8 +9,8 @@
  * @link       https://github.com/ryu-compin/pwa4wp
  * @since      1.0.0
  *
- * @package    PWA_for_WordPress
- * @subpackage PWA_for_WordPress/includes
+ * @package    pwa4wp
+ * @subpackage pwa4wp/includes
  */
 
 /**
@@ -20,11 +20,11 @@
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    PWA_for_WordPress
- * @subpackage PWA_for_WordPress/includes
+ * @package    pwa4wp
+ * @subpackage pwa4wp/includes
  * @author     Ryunosuke Shindo <ryu@compin.jp>
  */
-class PWA_for_WordPress_i18n {
+class pwa4wp_i18n {
 
 
 	/**

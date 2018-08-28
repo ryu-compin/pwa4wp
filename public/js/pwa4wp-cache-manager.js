@@ -1,6 +1,6 @@
 /* global STATIC_FILES, CACHE_NAME, NEVER_CACHE_URLS, blacklist */
 
-class CacheManager {
+class pwa4wp_CacheManager {
     /**
      *
      * @param serviceWorker ServiceWorker

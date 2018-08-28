@@ -9,8 +9,8 @@
  * @link       https://github.com/ryu-compin/pwa4wp
  * @since      1.0.0
  *
- * @package    PWA_for_WordPress
- * @subpackage PWA_for_WordPress/includes
+ * @package    pwa4wp
+ * @subpackage pwa4wp/includes
  */
 
 /**
@@ -23,17 +23,17 @@
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    PWA_for_WordPress
- * @subpackage PWA_for_WordPress/includes
+ * @package    pwa4wp
+ * @subpackage pwa4wp/includes
  * @author     Ryunosuke Shindo <ryu@compin.jp>
  */
-class PWA_for_WordPress {
+class pwa4wp_init {
 	/**
-	 * @var PWA_for_WordPress_Admin $admin
+	 * @var pwa4wp_Admin $admin
 	 */
 	protected $admin;
 	/**
-	 * @var PWA_for_WordPress_Public $public
+	 * @var pwa4wp_Public $public
 	 */
 	protected $public;
 
@@ -43,7 +43,7 @@ class PWA_for_WordPress {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      PWA_for_WordPress_Loader $loader Maintains and registers all hooks for the plugin.
+	 * @var      pwa4wp_Loader $loader Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -52,9 +52,9 @@ class PWA_for_WordPress {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      string $PWA_for_WordPress The string used to uniquely identify this plugin.
+	 * @var      string $pwa4wp The string used to uniquely identify this plugin.
 	 */
-	protected $PWA_for_WordPress;
+	protected $pwa4wp;
 
 	/**
 	 * The current version of the plugin.
@@ -75,12 +75,12 @@ class PWA_for_WordPress {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-		if ( defined( 'PWA_for_WordPress_VERSION' ) ) {
-			$this->version = PWA_for_WordPress_VERSION;
+		if ( defined( 'PWA4WP_VERSION' ) ) {
+			$this->version = PWA4WP_VERSION;
 		} else {
 			$this->version = '1.0.0';
 		}
-		$this->PWA_for_WordPress = 'PWA for WordPress';
+		$this->pwa4wp = 'PWA for WordPress';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -93,10 +93,10 @@ class PWA_for_WordPress {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - PWA_for_WordPress_Loader. Orchestrates the hooks of the plugin.
-	 * - PWA_for_WordPress_i18n. Defines internationalization functionality.
-	 * - PWA_for_WordPress_Admin. Defines all hooks for the admin area.
-	 * - PWA_for_WordPress_Public. Defines all hooks for the public side of the site.
+	 * - pwa4wp_Loader. Orchestrates the hooks of the plugin.
+	 * - pwa4wp_i18n. Defines internationalization functionality.
+	 * - pwa4wp_Admin. Defines all hooks for the admin area.
+	 * - pwa4wp_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -129,16 +129,16 @@ class PWA_for_WordPress {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-pwa4wp-public.php';
 
-		$this->loader = new PWA_for_WordPress_Loader();
-		$this->admin  = $plugin_admin = new PWA_for_WordPress_Admin( $this->get_PWA_for_WordPress(), $this->get_version(), $this->loader );
-		$this->public = new PWA_for_WordPress_Public( $this->get_PWA_for_WordPress(), $this->get_version(), $this->loader );
+		$this->loader = new pwa4wp_Loader();
+		$this->admin  = $plugin_admin = new pwa4wp_Admin( $this->get_pwa4wp(), $this->get_version(), $this->loader );
+		$this->public = new pwa4wp_Public( $this->get_pwa4wp(), $this->get_version(), $this->loader );
 
 	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the PWA_for_WordPress_i18n class in order to set the domain and to register the hook
+	 * Uses the pwa4wp_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -146,7 +146,7 @@ class PWA_for_WordPress {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new PWA_for_WordPress_i18n();
+		$plugin_i18n = new pwa4wp_i18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
@@ -168,15 +168,15 @@ class PWA_for_WordPress {
 	 * @since     1.0.0
 	 * @return    string    The name of the plugin.
 	 */
-	public function get_PWA_for_WordPress() {
-		return $this->PWA_for_WordPress;
+	public function get_pwa4wp() {
+		return $this->pwa4wp;
 	}
 
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    PWA_for_WordPress_Loader    Orchestrates the hooks of the plugin.
+	 * @return    pwa4wp_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;

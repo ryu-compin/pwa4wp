@@ -1,7 +1,7 @@
 <?php
 
 
-class PWA4WP_Service_Worker_Generator {
+class pwa4wp_Service_Worker_Generator {
 
 	private $plugin_root_url;
 	private $version = '0.0.2';
@@ -37,8 +37,8 @@ const cacheSettings = {
 importScripts('${cacheManagerUrl}');
 importScripts('${dexieUrl}');
 const db = new Dexie('pwa4wp-db');
-const cacheManager = new CacheManager(this, caches, db, cacheSettings);
-cacheManager.initialize();
+const pwa4wp_cacheManager = new pwa4wp_CacheManager(this, caches, db, cacheSettings);
+pwa4wp_cacheManager.initialize();
 SCRIPT;
 
 		return $script;

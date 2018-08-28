@@ -1,7 +1,7 @@
 <?php
 
 
-class PWA4WP_Directory {
+class pwa4wp_Directory {
 
 	public function __construct($path) {
 		$this->path = $path;

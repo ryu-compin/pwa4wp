@@ -1,7 +1,7 @@
 <?php
 
 
-class PWA_for_WordPress_Admin_View {
+class pwa4wp_Admin_View {
 	public function __construct() {
 	}
 	public function render($data) {

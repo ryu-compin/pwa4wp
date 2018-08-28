@@ -8,8 +8,8 @@
  * @link       https://github.com/ryu-compin/pwa4wp
  * @since      1.0.0
  *
- * @package    PWA_for_WordPress
- * @subpackage PWA_for_WordPress/admin/partials
+ * @package    pwa4wp
+ * @subpackage pwa4wp/admin/partials
  */
 
 $manifestSettings = $data['manifestSettings'];
