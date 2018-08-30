@@ -34,9 +34,11 @@ class pwa4wp_Deactivator {
         {
             unlink(get_home_path() . PWA4WP_MANIFEST_FILE);
         }
+        update_option('pwa4wp_manifest_created',false);
         if(file_exists(get_home_path() . PWA4WP_SERVICEWORKER_FILE))
         {
             unlink(get_home_path() . PWA4WP_SERVICEWORKER_FILE);
         }
+        update_option('pwa4wp_sw_created',false);
 	}
 }
