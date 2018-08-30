@@ -6,7 +6,7 @@
  * This file is used to markup the admin-facing aspects of the plugin.
  *
  * @link       https://github.com/ryu-compin/pwa4wp
- * @since      1.0.0
+ * @since      1.0.1
  *
  * @package    pwa4wp
  * @subpackage pwa4wp/admin/partials
@@ -14,6 +14,17 @@
 
 $manifestSettings = $data['manifestSettings'];
 $cacheSettings    = $data['cacheSettings'];
+if(file_exists(get_home_path() . PWA4WP_MANIFEST_FILE))
+{
+    update_option('pwa4wp_manifest_created',true);
+}else{
+    update_option('pwa4wp_manifest_created',false);
+}
+if(file_exists(get_home_path() . PWA4WP_SERVICEWORKER_FILE)) {
+    update_option('pwa4wp_sw_created',true);
+}else{
+    update_option('pwa4wp_sw_created',false);
+}
 ?>
 
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
@@ -33,30 +44,38 @@ $cacheSettings    = $data['cacheSettings'];
     ?>
     <ul>
     <li>
+        <p class="status_display">
         Manifest :
         <?php
             if(get_option('pwa4wp_manifest_created')){
                 // icon-green
+                echo('<span class="status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/green-35.png""></span>');
                 _e("working","pwa4wp");
             }else{
-                // icon-gray
+                // icon-red
+                echo('<span class="status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/red-35.png"></span>');
                 _e("not working","pwa4wp");
             }
         ?>
         <br>
+        </p>
     </li>
     <li>
+        <p class="status_display">
         ServiceWorker :
         <?php
         if(get_option('pwa4wp_sw_created')){
             // icon-green
+            echo('<span class="status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/green-35.png""></span>');
             _e("working","pwa4wp");
         }else{
-            // icon-gray
+            // icon-red
+            echo('<span class="status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/red-35.png"></span>');
             _e("not working","pwa4wp");
         }
         ?>
         <br>
+        </p>
     </li>
     </ul>
 <hr>

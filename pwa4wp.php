@@ -9,14 +9,14 @@
  * that starts the plugin.
  *
  * @link              https://github.com/ryu-compin/pwa4wp
- * @since             1.0.0
+ * @since             1.0.1
  * @package           pwa4wp
  *
  * @wordpress-plugin
  * Plugin Name:       PWA for WordPress
  * Plugin URI:        https://github.com/ryu-compin/pwa4wp
  * Description:       Provides transformation for WordPress to PWA.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            PWA for WordPress Developers Group
  * Author URI:        https://github.com/ryu-compin/pwa4wp/
  * License:           GPL-2.0+
@@ -32,10 +32,10 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Currently plugin version.
- * Start at version 1.0.0 and use SemVer - https://semver.org
+ * Start at version 1.0.1 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'PWA4WP_VERSION', '1.0.0' );
+define( 'PWA4WP_VERSION', '1.0.1' );
 
 define( 'PWA4WP_SERVICEWORKER_FILE', 'pwa4wp-sw-'.get_current_blog_id().'.js');
 define( 'PWA4WP_MANIFEST_FILE', 'pwa4wp-manifest-'.get_current_blog_id().'.json');
@@ -74,7 +74,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-pwa4wp.php';
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  *
- * @since    1.0.0
+ * @since    1.0.1
  */
 function pwa4wp_run() {
 
