@@ -104,15 +104,19 @@ class pwa4wp_Public {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-		echo "<script>if ('serviceWorker' in navigator) {navigator.serviceWorker.register('/" . PWA4WP_SERVICEWORKER_FILE . "');}</script>";
+		if(get_option('pwa4wp_sw_installation_switch')){
+			echo "<script>if ('serviceWorker' in navigator) {navigator.serviceWorker.register('/" . PWA4WP_SERVICEWORKER_FILE . "');}</script>";
+		}
 	}
 
 	public function enqueue_head() {
-		echo '<link rel="manifest" href="/'. PWA4WP_MANIFEST_FILE .'" />';
-		echo '<meta name="theme-color" content="'.get_option( 'pwa4wp_manifest' )['theme_color'] .'"/>';
-		$manifest = get_option( 'pwa4wp_manifest' );
-		foreach ( $manifest['icons'] as $icon ) {
-			echo '<link rel="apple-touch-icon" sizes="' . $icon['sizes'] . '" href="' . $icon['src'] . '">';
+		if(get_option('pwa4wp_sw_installation_switch')) {
+			echo '<link rel="manifest" href="/' . PWA4WP_MANIFEST_FILE . '" />';
+			echo '<meta name="theme-color" content="' . get_option( 'pwa4wp_manifest' )['theme_color'] . '"/>';
+			$manifest = get_option( 'pwa4wp_manifest' );
+			foreach ( $manifest['icons'] as $icon ) {
+				echo '<link rel="apple-touch-icon" sizes="' . $icon['sizes'] . '" href="' . $icon['src'] . '">';
+			}
 		}
 	}
 

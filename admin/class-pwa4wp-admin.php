@@ -195,6 +195,14 @@ class pwa4wp_Admin {
                 // error or parameter is not set.
                 // Todo : display error message to admin console.
             }
+		} else if ( isset( $_POST['my-submenu1'] ) && $_POST['my-submenu1'] && check_admin_referer( 'my-nonce-key1', 'my-submenu1' ) ) {
+			// toggle PWA tag
+			if($_POST['pwa_active'] == "START"){
+				update_option('pwa4wp_sw_installation_switch', true);
+			}else{
+				update_option('pwa4wp_sw_installation_switch', false);
+			}
+
 		} else if ( isset( $_POST['my-submenu2'] ) && $_POST['my-submenu2'] && check_admin_referer( 'my-nonce-key2', 'my-submenu2' ) ) {
 			// キャッシュ設定
 			$data = [

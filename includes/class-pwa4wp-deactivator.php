@@ -40,5 +40,6 @@ class pwa4wp_Deactivator {
             unlink(get_home_path() . PWA4WP_SERVICEWORKER_FILE);
         }
         update_option('pwa4wp_sw_created',false);
+		update_option('pwa4wp_sw_installation_switch', false);
 	}
 }
