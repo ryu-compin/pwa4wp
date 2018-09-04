@@ -4,7 +4,7 @@
  * The public-facing functionality of the plugin.
  *
  * @link       https://github.com/ryu-compin/pwa4wp
- * @since      1.0.1
+ * @since      1.0.2
  *
  * @package    pwa4wp
  * @subpackage pwa4wp/public
@@ -23,7 +23,7 @@
 class pwa4wp_Public {
 
 	/**
-	 * @since    1.0.1
+	 * @since    1.0.2
 	 * @access   private
 	 * @var      pwa4wp_Loader $loader Maintains and registers all hooks for the plugin.
 	 */
@@ -32,7 +32,7 @@ class pwa4wp_Public {
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    1.0.1
+	 * @since    1.0.2
 	 * @access   private
 	 * @var      string $pwa4wp The ID of this plugin.
 	 */
@@ -41,7 +41,7 @@ class pwa4wp_Public {
 	/**
 	 * The version of this plugin.
 	 *
-	 * @since    1.0.1
+	 * @since    1.0.2
 	 * @access   private
 	 * @var      string $version The current version of this plugin.
 	 */
@@ -50,7 +50,7 @@ class pwa4wp_Public {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    1.0.1
+	 * @since    1.0.2
 	 *
 	 * @param      string $pwa4wp The name of the plugin.
 	 * @param      string $version The version of this plugin.
@@ -66,7 +66,7 @@ class pwa4wp_Public {
 	/**
 	 * Register the JavaScript for the public-facing side of the site.
 	 *
-	 * @since    1.0.1
+	 * @since    1.0.2
 	 */
 	public function enqueue_scripts() {
 

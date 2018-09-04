@@ -4,7 +4,7 @@
  * Fired during plugin activation
  *
  * @link       https://github.com/ryu-compin/pwa4wp
- * @since      1.0.1
+ * @since      1.0.2
  *
  * @package    pwa4wp
  * @subpackage pwa4wp/includes
@@ -15,7 +15,7 @@
  *
  * This class defines all code necessary to run during the plugin's activation.
  *
- * @since      1.0.1
+ * @since      1.0.2
  * @package    pwa4wp
  * @subpackage pwa4wp/includes
  * @author     Ryunosuke Shindo <ryu@compin.jp>
@@ -27,7 +27,7 @@ class pwa4wp_Activator {
 	 *
 	 * Long Description.
 	 *
-	 * @since    1.0.1
+	 * @since    1.0.2
 	 */
 	public static function activate() {
 	    if(get_option( 'pwa4wp_app_icons' ) == false){

@@ -4,7 +4,7 @@ Donate link: https://www.compin.jp/contact-pwa4wp/
 Tags: pwa, progressive web app, progressive web apps, pwa4wp, mobile, responsive, offline, cache
 Requires at least: 4.4
 Tested up to: 4.9.8
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 Requires PHP: 5.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -43,6 +43,7 @@ Setup ServiceWorker file from ServiceWorker Configuration page.
 1. Upload the plugin files to the `/wp-content/plugins/pwa4wp` directory, or install the plugin through the WordPress plugins screen directly.
 1. Activate the plugin through the 'Plugins' screen in WordPress
 1. Use the `PWA for WordPress` screen to configure the plugin
+1. If "Current PWA Status" in main panel is not working, press "START" button.
 1. done!
 
 
@@ -61,11 +62,17 @@ There is information about updates and issues.
 
 == Screenshots ==
 
-1. Main panel, status and usage.
+1. Main panel: status and usage, toggle switch for PWA start/stop.
 2. Configure and generate 'Manifest'
 3. Configure and generate 'ServiceWorker'
 
 == Changelog ==
+= 1.0.2 =
+Release Date - 04 September, 2018
+Fixed issue:
+Removed unused css loading.
+Update:
+Add toggle switch for PWA start/stop
 
 = 1.0.1 =
 Release Date - 30 August, 2018
