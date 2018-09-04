@@ -7,7 +7,7 @@
  * public-facing side of the site and the admin area.
  *
  * @link       https://github.com/ryu-compin/pwa4wp
- * @since      1.0.1
+ * @since      1.0.2
  *
  * @package    pwa4wp
  * @subpackage pwa4wp/includes
@@ -22,7 +22,7 @@
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
  *
- * @since      1.0.1
+ * @since      1.0.2
  * @package    pwa4wp
  * @subpackage pwa4wp/includes
  * @author     Ryunosuke Shindo <ryu@compin.jp>
@@ -41,7 +41,7 @@ class pwa4wp_init {
 	 * The loader that's responsible for maintaining and registering all hooks that power
 	 * the plugin.
 	 *
-	 * @since    1.0.1
+	 * @since    1.0.2
 	 * @access   protected
 	 * @var      pwa4wp_Loader $loader Maintains and registers all hooks for the plugin.
 	 */
@@ -50,7 +50,7 @@ class pwa4wp_init {
 	/**
 	 * The unique identifier of this plugin.
 	 *
-	 * @since    1.0.1
+	 * @since    1.0.2
 	 * @access   protected
 	 * @var      string $pwa4wp The string used to uniquely identify this plugin.
 	 */
@@ -59,7 +59,7 @@ class pwa4wp_init {
 	/**
 	 * The current version of the plugin.
 	 *
-	 * @since    1.0.1
+	 * @since    1.0.2
 	 * @access   protected
 	 * @var      string $version The current version of the plugin.
 	 */
@@ -72,13 +72,13 @@ class pwa4wp_init {
 	 * Load the dependencies, define the locale, and set the hooks for the admin area and
 	 * the public-facing side of the site.
 	 *
-	 * @since    1.0.1
+	 * @since    1.0.2
 	 */
 	public function __construct() {
 		if ( defined( 'PWA4WP_VERSION' ) ) {
 			$this->version = PWA4WP_VERSION;
 		} else {
-			$this->version = '1.0.1';
+			$this->version = '1.0.2';
 		}
 		$this->pwa4wp = 'PWA for WordPress';
 
@@ -101,7 +101,7 @@ class pwa4wp_init {
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
 	 *
-	 * @since    1.0.1
+	 * @since    1.0.2
 	 * @access   private
 	 */
 	private function load_dependencies() {
@@ -141,7 +141,7 @@ class pwa4wp_init {
 	 * Uses the pwa4wp_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
-	 * @since    1.0.1
+	 * @since    1.0.2
 	 * @access   private
 	 */
 	private function set_locale() {
@@ -155,7 +155,7 @@ class pwa4wp_init {
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
 	 *
-	 * @since    1.0.1
+	 * @since    1.0.2
 	 */
 	public function run() {
 		$this->loader->run();
@@ -165,7 +165,7 @@ class pwa4wp_init {
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
-	 * @since     1.0.1
+	 * @since     1.0.2
 	 * @return    string    The name of the plugin.
 	 */
 	public function get_pwa4wp() {
@@ -175,7 +175,7 @@ class pwa4wp_init {
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @since     1.0.1
+	 * @since     1.0.2
 	 * @return    pwa4wp_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
@@ -185,7 +185,7 @@ class pwa4wp_init {
 	/**
 	 * Retrieve the version number of the plugin.
 	 *
-	 * @since     1.0.1
+	 * @since     1.0.2
 	 * @return    string    The version number of the plugin.
 	 */
 	public function get_version() {

@@ -1,90 +1,64 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pwa4wp\n"
-"POT-Creation-Date: 2018-08-27 17:07+0900\n"
-"PO-Revision-Date: 2018-08-27 17:15+0900\n"
+"POT-Creation-Date: 2018-09-02 22:42+0900\n"
+"PO-Revision-Date: 2018-09-02 22:44+0900\n"
 "Last-Translator: ryu <ryu@compin.jp>\n"
 "Language-Team: pwa4wp <ryu@compin.jp>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 2.1.1\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ./admin/partials\n"
 
-#: admin/class-pwa4wp-admin.php:344
-msgid "Manifest : Icon is not set."
-msgstr "Manifest : アイコンが設定されていません。"
-
-#: admin/class-pwa4wp-admin.php:349
-msgid "Manifest : Site Name is not set."
-msgstr "Manifest : サイト名が設定されていません。"
-
-#: admin/class-pwa4wp-admin.php:354
-msgid "Manifest : Short Name is not set."
-msgstr "Manifest : サイトの短縮名が設定されていません。"
-
-#: admin/class-pwa4wp-admin.php:359
-msgid "Manifest : Start URL is not set."
-msgstr "Manifest : start_url が設定されていません。"
-
-#: admin/class-pwa4wp-admin.php:364
-msgid "Manifest : Scope is not set."
-msgstr "Manifest : スコープが設定されていません。"
-
-#: admin/class-pwa4wp-admin.php:369
-msgid "Manifest : Display is not set."
-msgstr "Manifest : 画面の表示モードが設定されていません。"
-
-#: admin/class-pwa4wp-admin.php:374
-msgid "Manifest : Background color is not set."
-msgstr "Manifest : 背景色が設定されていません。"
-
-#: admin/class-pwa4wp-admin.php:379
-msgid "Manifest : Description is not set."
-msgstr "Manifest : description が設定されていません。"
-
-#: admin/class-pwa4wp-admin.php:384
-msgid "Manifest : Theme colr is not set."
-msgstr "Manifest : テーマカラーが設定されていません。"
-
-#: admin/class-pwa4wp-admin.php:389
-msgid "Manifest : Orientation is not set."
-msgstr "Manifest : orientation が設定されていません。"
-
-#: admin/class-pwa4wp-admin.php:398
-msgid "ServiceWorker : Cache Expire time must be numeric."
-msgstr "ServiceWorker : キャッシュの有効時間は数値で入力してください。"
-
-#: admin/partials/pwa4wp-admin-display.php:22
+#: admin/partials/pwa4wp-admin-display.php:33
 msgid "Current PWA Status"
 msgstr "現在の PWA の状態"
 
-#: admin/partials/pwa4wp-admin-display.php:26
+#: admin/partials/pwa4wp-admin-display.php:37
 #: admin/partials/pwa4wp-admin-manifest.php:32
 #: admin/partials/pwa4wp-admin-sw.php:27
 msgid "Errors or Messages."
 msgstr "エラーまたはメッセージがあります。"
 
-#: admin/partials/pwa4wp-admin-display.php:40
 #: admin/partials/pwa4wp-admin-display.php:53
+#: admin/partials/pwa4wp-admin-display.php:70
+#: admin/partials/pwa4wp-admin-display.php:88
 msgid "working"
 msgstr "稼働中"
 
-#: admin/partials/pwa4wp-admin-display.php:43
-#: admin/partials/pwa4wp-admin-display.php:56
+#: admin/partials/pwa4wp-admin-display.php:57
+#: admin/partials/pwa4wp-admin-display.php:74
+#: admin/partials/pwa4wp-admin-display.php:96
 msgid "not working"
 msgstr "停止中"
 
-#: admin/partials/pwa4wp-admin-display.php:63
+#: admin/partials/pwa4wp-admin-display.php:90
+msgid "STOP"
+msgstr "STOP"
+
+#: admin/partials/pwa4wp-admin-display.php:98
+msgid "START"
+msgstr "START"
+
+#: admin/partials/pwa4wp-admin-display.php:106
+msgid ""
+"If PWA status is 'working', this plugin will insert Manifest link and "
+"ServiceWorker installation tag into page headers."
+msgstr ""
+"PWAのステータスが「稼働中」の場合、このプラグインはマニフェストファイルへの"
+"リンクとServiceWorkerをインストールするタグをページヘッダに挿入します。"
+
+#: admin/partials/pwa4wp-admin-display.php:116
 msgid "Usage"
 msgstr "使い方"
 
-#: admin/partials/pwa4wp-admin-display.php:66
+#: admin/partials/pwa4wp-admin-display.php:119
 msgid ""
 "To make your website to PWA, this plugin make two files, \"Manifest\" and "
 "\"ServiceWorker\" in your website."
@@ -92,62 +66,63 @@ msgstr ""
 "あなたの Web サイトを PWA にするために、このプラグインは二つのファイル、"
 "「Manifest」と「ServiceWorker」をサイト内に生成します。"
 
-#: admin/partials/pwa4wp-admin-display.php:67
+#: admin/partials/pwa4wp-admin-display.php:120
 msgid ""
 "Manifest file is a json file that has configurations of web applications."
 msgstr ""
-"Manifest（マニフェスト）ファイルは Web アプリケーションの構成を保持する json "
-"形式のファイルです。"
+"Manifest（マニフェスト）ファイルは Web アプリケーションの構成を保持する "
+"json 形式のファイルです。"
 
-#: admin/partials/pwa4wp-admin-display.php:68
+#: admin/partials/pwa4wp-admin-display.php:121
 msgid "ServiceWorker is a javascript file that controls PWA's functions."
 msgstr "ServiceWorker は PWA の機能を制御する javascript ファイルです。"
 
-#: admin/partials/pwa4wp-admin-display.php:69
+#: admin/partials/pwa4wp-admin-display.php:122
 msgid "To start PWA, configure two files from below setup links."
 msgstr ""
 "PWA を開始するには以下のリンクからそれぞれのファイルを構成してください。"
 
-#: admin/partials/pwa4wp-admin-display.php:75
+#: admin/partials/pwa4wp-admin-display.php:128
 msgid "Configure Manifest"
 msgstr "マニフェストの構成"
 
-#: admin/partials/pwa4wp-admin-display.php:80
+#: admin/partials/pwa4wp-admin-display.php:133
 msgid "Prepare icon image file, image file must be png format."
 msgstr ""
-"アイコン画像ファイルを用意してください。画像ファイルは png 形式である必要があ"
-"ります。"
+"アイコン画像ファイルを用意してください。画像ファイルは png 形式である必要が"
+"あります。"
 
-#: admin/partials/pwa4wp-admin-display.php:82
+#: admin/partials/pwa4wp-admin-display.php:135
 msgid "Setup manifest file from Manifest Configuration page."
-msgstr "マニフェストの構成ページからマニフェストファイルをセットアップします。"
+msgstr ""
+"マニフェストの構成ページからマニフェストファイルをセットアップします。"
 
-#: admin/partials/pwa4wp-admin-display.php:84
+#: admin/partials/pwa4wp-admin-display.php:137
 msgid "Image file will be resized to fit icon sizes automatically."
 msgstr "画像ファイルはアイコンサイズに合わせて自動的にリサイズされます。"
 
-#: admin/partials/pwa4wp-admin-display.php:92
+#: admin/partials/pwa4wp-admin-display.php:145
 msgid "Configure ServiceWorker"
 msgstr "ServiceWorker の構成"
 
-#: admin/partials/pwa4wp-admin-display.php:96
+#: admin/partials/pwa4wp-admin-display.php:149
 msgid "Setup ServiceWorker file from ServiceWorker Configuration page."
 msgstr ""
 "ServiceWorker 構成ページから ServiceWorker ファイルをセットアップします。"
 
-#: admin/partials/pwa4wp-admin-display.php:102
+#: admin/partials/pwa4wp-admin-display.php:155
 msgid "About developer of this plugin"
 msgstr "このプラグインの開発者について"
 
-#: admin/partials/pwa4wp-admin-display.php:105
+#: admin/partials/pwa4wp-admin-display.php:158
 msgid "PWA for Wordpress develop team"
 msgstr "PWA for Wordpress 開発チーム"
 
-#: admin/partials/pwa4wp-admin-display.php:123
+#: admin/partials/pwa4wp-admin-display.php:176
 msgid "Contact us"
 msgstr "お問い合わせ"
 
-#: admin/partials/pwa4wp-admin-display.php:124
+#: admin/partials/pwa4wp-admin-display.php:177
 msgid "If you find anyting about this plugin, contact us from mailform below."
 msgstr ""
 "このプラグインについてお気づきの点がありましたら下記のメールフォームからお問"
@@ -189,8 +164,8 @@ msgid ""
 "If you want PWA to work only in a apecified subdirectory, set subdirectory "
 "path in here."
 msgstr ""
-"もし PWA を特定のサブティレクトリの中だけで動作させたい場合はここにサブティレ"
-"クトリのパスを指定します。"
+"もし PWA を特定のサブティレクトリの中だけで動作させたい場合はここにサブティ"
+"レクトリのパスを指定します。"
 
 #: admin/partials/pwa4wp-admin-manifest.php:190
 msgid "Select/Upload Image"
@@ -201,8 +176,8 @@ msgid ""
 "Icon file is \"png\" format required, more than 512px x 512px size is "
 "recommended."
 msgstr ""
-"アイコンに使用するファイルは png 形式である必要がり、512px x 512px 以上のサイ"
-"ズをお勧めします。"
+"アイコンに使用するファイルは png 形式である必要がり、512px x 512px 以上のサ"
+"イズをお勧めします。"
 
 #: admin/partials/pwa4wp-admin-manifest.php:193
 msgid "Icon file will be resized by system automatically."
@@ -250,8 +225,8 @@ msgstr ""
 #: admin/partials/pwa4wp-admin-sw.php:62
 msgid "Online first plan will show online data before cache data."
 msgstr ""
-"Online first ではキャッシュデータを利用するよりも先にオンラインでデータを取得"
-"します。"
+"Online first ではキャッシュデータを利用するよりも先にオンラインでデータを取"
+"得します。"
 
 #: admin/partials/pwa4wp-admin-sw.php:63
 msgid ""
@@ -336,8 +311,8 @@ msgid ""
 "Start URL in manifest and offline page will added automatically, so you "
 "don't need to define them in here."
 msgstr ""
-"マニフェストで指定した start_url とオフラインページは自動的にキャッシュされま"
-"すのでここで指定する必要はありません。"
+"マニフェストで指定した start_url とオフラインページは自動的にキャッシュされ"
+"ますのでここで指定する必要はありません。"
 
 #: admin/partials/pwa4wp-admin-sw.php:195
 msgid "Debug mode"
@@ -354,3 +329,47 @@ msgid ""
 msgstr ""
 "ONにすると ServiceWorker の javascript からブラウザのコンソールに詳細なメッ"
 "セージが出力されます。"
+
+#: admin/class-pwa4wp-admin.php:352
+msgid "Manifest : Icon is not set."
+msgstr "Manifest : アイコンが設定されていません。"
+
+#: admin/class-pwa4wp-admin.php:357
+msgid "Manifest : Site Name is not set."
+msgstr "Manifest : サイト名が設定されていません。"
+
+#: admin/class-pwa4wp-admin.php:362
+msgid "Manifest : Short Name is not set."
+msgstr "Manifest : サイトの短縮名が設定されていません。"
+
+#: admin/class-pwa4wp-admin.php:367
+msgid "Manifest : Start URL is not set."
+msgstr "Manifest : start_url が設定されていません。"
+
+#: admin/class-pwa4wp-admin.php:372
+msgid "Manifest : Scope is not set."
+msgstr "Manifest : スコープが設定されていません。"
+
+#: admin/class-pwa4wp-admin.php:377
+msgid "Manifest : Display is not set."
+msgstr "Manifest : 画面の表示モードが設定されていません。"
+
+#: admin/class-pwa4wp-admin.php:382
+msgid "Manifest : Background color is not set."
+msgstr "Manifest : 背景色が設定されていません。"
+
+#: admin/class-pwa4wp-admin.php:387
+msgid "Manifest : Description is not set."
+msgstr "Manifest : description が設定されていません。"
+
+#: admin/class-pwa4wp-admin.php:392
+msgid "Manifest : Theme colr is not set."
+msgstr "Manifest : テーマカラーが設定されていません。"
+
+#: admin/class-pwa4wp-admin.php:397
+msgid "Manifest : Orientation is not set."
+msgstr "Manifest : orientation が設定されていません。"
+
+#: admin/class-pwa4wp-admin.php:406
+msgid "ServiceWorker : Cache Expire time must be numeric."
+msgstr "ServiceWorker : キャッシュの有効時間は数値で入力してください。"

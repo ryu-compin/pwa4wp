@@ -4,7 +4,7 @@
  * The admin-specific functionality of the plugin.
  *
  * @link       https://github.com/ryu-compin/pwa4wp
- * @since      1.0.1
+ * @since      1.0.2
  *
  * @package    pwa4wp
  * @subpackage pwa4wp/admin
@@ -23,7 +23,7 @@
 class pwa4wp_Admin {
 
 	/**
-	 * @since    1.0.1
+	 * @since    1.0.2
 	 * @access   private
 	 * @var      pwa4wp_Loader $loader Maintains and registers all hooks for the plugin.
 	 */
@@ -32,7 +32,7 @@ class pwa4wp_Admin {
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    1.0.1
+	 * @since    1.0.2
 	 * @access   private
 	 * @var      string $pwa4wp The ID of this plugin.
 	 */
@@ -41,7 +41,7 @@ class pwa4wp_Admin {
 	/**
 	 * The version of this plugin.
 	 *
-	 * @since    1.0.1
+	 * @since    1.0.2
 	 * @access   private
 	 * @var      string $version The current version of this plugin.
 	 */
@@ -57,7 +57,7 @@ class pwa4wp_Admin {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    1.0.1
+	 * @since    1.0.2
 	 *
 	 * @param      string $pwa4wp The name of this plugin.
 	 * @param      string $version The version of this plugin.
@@ -73,7 +73,7 @@ class pwa4wp_Admin {
 	/**
 	 * Register the stylesheets for the admin area.
 	 *
-	 * @since    1.0.1
+	 * @since    1.0.2
 	 */
 	public function enqueue_styles() {
 		wp_enqueue_style( $this->pwa4wp, plugin_dir_url( __FILE__ ) . 'css/pwa4wp-admin.css', array(), $this->version, 'all' );
@@ -83,7 +83,7 @@ class pwa4wp_Admin {
 	/**
 	 * Register the JavaScript for the admin area.
 	 *
-	 * @since    1.0.1
+	 * @since    1.0.2
 	 */
 	public function enqueue_scripts() {
 		wp_enqueue_script( $this->pwa4wp, plugin_dir_url( __FILE__ ) . 'js/pwa4wp-admin.js', array( 'jquery' ), $this->version, false );
@@ -195,6 +195,14 @@ class pwa4wp_Admin {
                 // error or parameter is not set.
                 // Todo : display error message to admin console.
             }
+		} else if ( isset( $_POST['my-submenu1'] ) && $_POST['my-submenu1'] && check_admin_referer( 'my-nonce-key1', 'my-submenu1' ) ) {
+			// toggle PWA tag
+			if($_POST['pwa_active'] == "START"){
+				update_option('pwa4wp_sw_installation_switch', true);
+			}else{
+				update_option('pwa4wp_sw_installation_switch', false);
+			}
+
 		} else if ( isset( $_POST['my-submenu2'] ) && $_POST['my-submenu2'] && check_admin_referer( 'my-nonce-key2', 'my-submenu2' ) ) {
 			// キャッシュ設定
 			$data = [

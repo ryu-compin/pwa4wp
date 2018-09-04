@@ -6,7 +6,7 @@
  * This file is used to markup the admin-facing aspects of the plugin.
  *
  * @link       https://github.com/ryu-compin/pwa4wp
- * @since      1.0.1
+ * @since      1.0.2
  *
  * @package    pwa4wp
  * @subpackage pwa4wp/admin/partials
@@ -77,6 +77,40 @@ if(file_exists(get_home_path() . PWA4WP_SERVICEWORKER_FILE)) {
         <br>
         </p>
     </li>
+        <li>
+            <form enctype="multipart/form-data" id="pwa4wp-activate-toggle-form" method="post" action="">
+            <p class="status_display">
+                PWA status  :
+			    <?php
+			    if(get_option('pwa4wp_sw_installation_switch')){
+				    // icon-green
+				    echo('<span class="status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/green-35.png""></span>');
+				    _e("working","pwa4wp");
+				    echo('&nbsp;&nbsp;<button  id="pwa4wp_stop_button" type="submit">');
+				    _e("STOP");
+				    echo('</button>');
+				    echo('<input type="hidden" name="pwa_active" value="STOP">');
+			    }else{
+				    // icon-red
+				    echo('<span class="status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/red-35.png"></span>');
+				    _e("not working","pwa4wp");
+				    echo('&nbsp;&nbsp;<button id="pwa4wp_start_button" type="submit">');
+				    _e("START");
+				    echo('</button>');
+				    echo('<input type="hidden" name="pwa_active" value="START">');
+			    }
+			    ?>
+                <br>
+            </p>
+                <span class="small-text">
+	            <?php _e("If PWA status is 'working', this plugin will insert Manifest link and ServiceWorker installation tag into page headers."); ?>
+                </span>
+                <br>
+                <br>
+                <?php wp_nonce_field( 'my-nonce-key1', 'my-submenu1' ); ?>
+            </form>
+        </li>
+
     </ul>
 <hr>
     <h2><?php _e("Usage","pwa4wp"); ?></h2>
