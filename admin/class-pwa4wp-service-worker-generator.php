@@ -25,6 +25,7 @@ class pwa4wp_Service_Worker_Generator {
 		$script          = <<<SCRIPT
 const cacheSettings = {
 	name: "pwa4wp-cache-${swVersion}",
+	cacheName: "pwa4wp-cache-${swVersion}",
 	initialCaches: ${initialCaches},
 	exclusions: ${exclusions},
 	ttl : ${ttl},
