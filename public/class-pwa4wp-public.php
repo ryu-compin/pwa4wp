@@ -64,29 +64,6 @@ class pwa4wp_Public {
 	}
 
 	/**
-	 * Register the stylesheets for the public-facing side of the site.
-	 *
-	 * @since    1.0.1
-	 */
-	public function enqueue_styles() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in pwa4wp_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The pwa4wp_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
-		wp_enqueue_style( $this->pwa4wp, plugin_dir_url( __FILE__ ) . 'css/pwa4wp-public.css', array(), $this->version, 'all' );
-
-	}
-
-	/**
 	 * Register the JavaScript for the public-facing side of the site.
 	 *
 	 * @since    1.0.1
@@ -121,7 +98,6 @@ class pwa4wp_Public {
 	}
 
 	public function define_hooks() {
-		$this->loader->add_action( 'wp_enqueue_scripts', $this, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $this, 'enqueue_scripts' );
 		$this->loader->add_action( 'wp_head', $this, 'enqueue_head' );
 	}
