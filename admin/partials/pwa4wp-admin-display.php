@@ -183,8 +183,15 @@ if(file_exists(get_home_path() . PWA4WP_SERVICEWORKER_FILE)) {
     <br>
     <hr>
     <br>
-    <?php
-    echo "<br>";
-    echo "<br>";
-    ?>
+    <span class="donate_button_area">
+        <?php
+        echo "<br>";
+        _e("Would you like to support the advancement of this plugin?");
+        echo "<br>";
+        ?>
+        <a href="https://paypal.me/pwa4wp/10USD" class="square_btn" target="_blank"><?php _e("DONATION"); ?> ( Paypal )</a>
+    </span>
+    <br>
+    <hr>
+    <br>
 </div>

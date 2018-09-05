@@ -1,10 +1,10 @@
 === PWA for WordPress ===
 Contributors: ryushindo
-Donate link: https://www.compin.jp/contact-pwa4wp/
+Donate link: https://paypal.me/pwa4wp/10USD
 Tags: pwa, progressive web app, progressive web apps, pwa4wp, mobile, responsive, offline, cache
 Requires at least: 4.4
 Tested up to: 4.9.8
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 Requires PHP: 5.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html

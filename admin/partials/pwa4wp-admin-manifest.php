@@ -304,7 +304,9 @@ if(function_exists('mb_substr')){
         </li>
 		<?php wp_nonce_field( 'my-nonce-key', 'my-submenu' ); ?>
     </ul>
-    <button type="submit">Save Manifest configurations</button>
+    <span class="submit_button_area">
+        <button type="submit" class="submit_button">Save Manifest configurations</button>
+    </span>
     <hr>
     </form>
 </div>
