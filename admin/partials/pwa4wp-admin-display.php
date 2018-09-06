@@ -155,7 +155,7 @@ if(file_exists(get_home_path() . PWA4WP_SERVICEWORKER_FILE)) {
     <h2><?php _e("About developer of this plugin","pwa4wp"); ?></h2>
     <ul>
         <li>
-            <h3><?php _e("PWA for Wordpress develop team","pwa4wp"); ?></h3>
+            <h3><?php _e("PWA for WordPress develop team","pwa4wp"); ?></h3>
             <ul>
                 <li>
                     Ryoichi Tsukada&nbsp;/&nbsp;Asial<br>
