@@ -26,7 +26,7 @@ Setup ServiceWorker file from ServiceWorker Configuration page.
 ---
 
 ### このプラグインについて
-あなたの Wordpress サイトを PWA にするために、このプラグインは二つのファイル、「Manifest」と「ServiceWorker」をサイト内に生成します。  
+あなたの WordPress サイトを PWA にするために、このプラグインは二つのファイル、「Manifest」と「ServiceWorker」をサイト内に生成します。
 Manifest（マニフェスト）ファイルは Web アプリケーションの構成を保持する json 形式のファイルです。  
 ServiceWorker は PWA の機能を制御する javascript ファイルです。  
 PWA を開始するにはそれぞれのファイルを構成してください。  
