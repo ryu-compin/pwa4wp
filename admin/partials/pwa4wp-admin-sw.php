@@ -208,7 +208,9 @@ $swVersion = $data['swVersion'];
             <hr>
         </li>
     </ul>
-    <button type="submit">Save Cache configurations</button>
+    <span class="submit_button_area">
+        <button type="submit" class="submit_button">Save Cache configurations</button>
+    </span>
 </form>
     <hr>
 </div>
