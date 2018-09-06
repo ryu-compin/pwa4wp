@@ -16,11 +16,11 @@ PWA for WordPress makes your WordPress site to PWA (Progressive Web App) and mak
 ### About this plugin
 To make your WordPress website to PWA, this plugin make two files, "Manifest" and "ServiceWorker" in your website.
 Manifest file is a json file that has configurations of web applications.
-ServiceWorker is a javascript file that controls PWA's functions.
+ServiceWorker is a JavaScript file that controls PWA's functions.
 To start PWA, configure two files from configuration screen.
 
 You can fine-tune the cache, such as expiration date, time and URL exclusion.
-By excluding the URLs, like a new arrival information,  data acquisition destination in ajax, this plugin can keep PWA data fresh.
+By excluding the URLs, like a new arrival information,  data acquisition destination in Ajax, this plugin can keep PWA data fresh.
 You can set expire time of caches, then old cache will purged after specified time.
 
 ### STEP1

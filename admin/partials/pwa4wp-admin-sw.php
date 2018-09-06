@@ -202,7 +202,7 @@ $swVersion = $data['swVersion'];
                         <input type="radio" name="debug_msg" value="OFF" <?php if(($cacheSettings['debug_msg'] == "OFF")||(empty($cacheSettings['debug_msg']))){echo "checked=\"checked\"";} ?>>OFF
                     </label><br><br>
                 <?php _e("Switch to show debug messages.","pwa4wp"); ?><br>
-                <?php _e("Set ON this switch, ServiceWorker javascript will send verbose messages to debug console of browser.","pwa4wp"); ?><br>
+                <?php _e("Set ON this switch, ServiceWorker JavaScript will send verbose messages to debug console of browser.","pwa4wp"); ?><br>
                     <br>
                 </span>
             <hr>
