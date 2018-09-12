@@ -67,10 +67,21 @@ There is information about updates and issues.
 3. Configure and generate 'ServiceWorker'
 
 == Upgrade Notice ==
-= 1.0.3 =
-Fixed issue for ServiceWorker cache.
+= 1.0.4 =
+When Manifest file generated, ServiceWorker re-generate only when ServiceWorker already exists.
+Added donation button. :)
+Edited CSS for admin page.
 
 == Changelog ==
+= 1.0.4 =
+Release Date - 12 September, 2018
+Fixed issue:
+Readme typo.
+Update:
+When Manifest file generated, ServiceWorker will be re-generated only when ServiceWorker already exists.
+Added donation button. :)
+Edited CSS.
+
 = 1.0.3 =
 Release Date - 04 September, 2018
 Fixed issue:
@@ -79,7 +90,7 @@ ServiceWorker cache name is not correct.
 = 1.0.2 =
 Release Date - 04 September, 2018
 Fixed issue:
-Removed unused css loading.
+Removed unused CSS loading.
 Update:
 Add toggle switch for PWA start/stop
 

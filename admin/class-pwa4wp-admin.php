@@ -151,7 +151,10 @@ class pwa4wp_Admin {
 			// resize icon
             if($savedIconURL != $_POST['iconurl']){
                 if($_POST['iconurl'] != ""){
+
                     $iconPath = str_replace(home_url()."/",get_home_path(),$_POST['iconurl']);
+
+
 //                echo "<!-- icon-path: [" . $icon_path . "] replaced [" . home_url() ."] - [". get_home_path() ."] -->";
                     $mimeType = mime_content_type($iconPath);
                     if($mimeType == "image/png"){
@@ -186,14 +189,17 @@ class pwa4wp_Admin {
                     'ttl'            => get_option( 'pwa4wp_cache_settings' )['ttl'],
                     'offline_url'    => get_option( 'pwa4wp_cache_settings' )['offline_url'],
                 ];
-                if($this->check_sw($data)){
-                    $this->generateServiceWorker( $data );
+                // if ServiceWorker already exists, update it.
+                if(get_option('pwa4wp_sw_created')){
+                    if($this->check_sw($data)){
+                        $this->generateServiceWorker( $data );
+                        update_option('pwa4wp_sw_version',get_option('pwa4wp_sw_version')+1);
+                    }
                 }
-                update_option('pwa4wp_sw_version',get_option('pwa4wp_sw_version')+1);
-                update_option('pwa4wp_sw_created',true);
             }else{
                 // error or parameter is not set.
-                // Todo : display error message to admin console.
+                // display error message to admin console.
+                $this->errorMsg[] = _("Some errors found in Manifest settings, please fix them.");
             }
 		} else if ( isset( $_POST['my-submenu1'] ) && $_POST['my-submenu1'] && check_admin_referer( 'my-nonce-key1', 'my-submenu1' ) ) {
 			// toggle PWA tag
@@ -220,9 +226,13 @@ class pwa4wp_Admin {
 			];
             if($this->check_sw($data)){
                 $this->generateServiceWorker( $data );
+                update_option('pwa4wp_sw_version',get_option('pwa4wp_sw_version')+1);
+                update_option('pwa4wp_sw_created',true);
+            }else{
+                // error or parameter is not set.
+                // display error message to admin console.
+                $this->errorMsg[] = _("Some errors found in ServiceWorker settings, please fix them.");
             }
-            update_option('pwa4wp_sw_version',get_option('pwa4wp_sw_version')+1);
-            update_option('pwa4wp_sw_created',true);
 		}
 	}
 
