@@ -118,7 +118,7 @@ if(file_exists(get_home_path() . PWA4WP_SERVICEWORKER_FILE)) {
         <li>
 	        <?php _e("To make your website to PWA, this plugin make two files, \"Manifest\" and \"ServiceWorker\" in your website.","pwa4wp"); ?><br>
 	        <?php _e("Manifest file is a json file that has configurations of web applications.","pwa4wp"); ?><br>
-	        <?php _e("ServiceWorker is a javascript file that controls PWA's functions.","pwa4wp"); ?><br>
+	        <?php _e("ServiceWorker is a JavaScript file that controls PWA's functions.","pwa4wp"); ?><br>
 	        <?php _e("To start PWA, configure two files from below setup links.","pwa4wp"); ?><br>
         </li>
         <li>
@@ -155,7 +155,7 @@ if(file_exists(get_home_path() . PWA4WP_SERVICEWORKER_FILE)) {
     <h2><?php _e("About developer of this plugin","pwa4wp"); ?></h2>
     <ul>
         <li>
-            <h3><?php _e("PWA for Wordpress develop team","pwa4wp"); ?></h3>
+            <h3><?php _e("PWA for WordPress develop team","pwa4wp"); ?></h3>
             <ul>
                 <li>
                     Ryoichi Tsukada&nbsp;/&nbsp;Asial<br>
