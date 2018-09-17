@@ -4,7 +4,7 @@ Donate link: https://paypal.me/pwa4wp/10USD
 Tags: pwa, progressive web app, progressive web apps, pwa4wp, mobile, responsive, offline, cache
 Requires at least: 4.4
 Tested up to: 4.9.8
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 Requires PHP: 5.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -27,7 +27,7 @@ You can set expire time of caches, then old cache will purged after specified ti
 #### Configure Manifest
 
 Prepare icon image file, image file must be png format.
-Make offline page, this page will ccached with PWA installation and shown when PWA is offline.
+Make offline page, this page will cached with PWA installation and shown when PWA is offline.
 Setup manifest file from Manifest Configuration page.
 Image file will be resized to fit icon sizes automatically.
 
@@ -67,12 +67,17 @@ There is information about updates and issues.
 3. Configure and generate 'ServiceWorker'
 
 == Upgrade Notice ==
-= 1.0.4 =
-When Manifest file generated, ServiceWorker re-generate only when ServiceWorker already exists.
-Added donation button. :)
-Edited CSS for admin page.
+= 1.0.5 =
+Fixed issue:
+Fixed JavaScript error when fetching "online first".
 
 == Changelog ==
+= 1.0.5 =
+Release Date - 12 September, 2018
+Fixed issue:
+Readme typo.
+Fixed JavaScript error when fetching "online first".
+
 = 1.0.4 =
 Release Date - 12 September, 2018
 Fixed issue:

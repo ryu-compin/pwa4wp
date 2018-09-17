@@ -16,7 +16,7 @@
  * Plugin Name:       PWA for WordPress
  * Plugin URI:        https://github.com/ryu-compin/pwa4wp
  * Description:       Provides transformation for WordPress to PWA.
- * Version:           1.0.4
+ * Version:           1.0.5
  * Author:            PWA for WordPress Developers Group
  * Author URI:        https://github.com/ryu-compin/pwa4wp/
  * License:           GPL-2.0+
