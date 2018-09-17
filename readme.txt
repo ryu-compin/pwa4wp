@@ -4,7 +4,7 @@ Donate link: https://paypal.me/pwa4wp/10USD
 Tags: pwa, progressive web app, progressive web apps, pwa4wp, mobile, responsive, offline, cache
 Requires at least: 4.4
 Tested up to: 4.9.8
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 Requires PHP: 5.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -67,12 +67,12 @@ There is information about updates and issues.
 3. Configure and generate 'ServiceWorker'
 
 == Upgrade Notice ==
-= 1.0.5 =
+= 1.0.5 / 1.0.6 =
 Fixed issue:
 Fixed JavaScript error when fetching "online first".
 
 == Changelog ==
-= 1.0.5 =
+= 1.0.5 / 1.0.6 =
 Release Date - 12 September, 2018
 Fixed issue:
 Readme typo.
