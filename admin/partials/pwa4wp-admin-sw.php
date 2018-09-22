@@ -154,6 +154,18 @@ $swVersion = $data['swVersion'];
                 <br>
                 </span>
         </div>
+        <div>
+            <div id="regextestform" class="regextestform">
+                <span class="field">
+                     <?php _e("Test for Reguler Expressions.","pwa4wp"); ?>
+                </span>
+                <br>
+                <span class="field">
+                    <input name="regextesttext" class="longtext" value="">
+                </span>
+
+            </div>
+        </div>
             <hr>
         </li>
         <li>

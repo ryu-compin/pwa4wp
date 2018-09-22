@@ -113,6 +113,12 @@ if(file_exists(get_home_path() . PWA4WP_SERVICEWORKER_FILE)) {
 
     </ul>
 <hr>
+    <h2><?php _e("Nortice","pwa4wp"); ?></h2>
+    <ul>
+        <li>
+            <?php _e("After update, please update ServiceWorker by \"Save Cache configurations\" button in <a href=\"admin.php?page=PWA+for+WordPress%3F2\">Configure ServiceWorker</a> page.","pwa4wp"); ?><br>
+        </li>
+    </ul>
     <h2><?php _e("Usage","pwa4wp"); ?></h2>
     <ul>
         <li>
