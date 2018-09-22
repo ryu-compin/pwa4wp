@@ -51,7 +51,7 @@ $swVersion = $data['swVersion'];
                 </span>
                 <span class="field">
                     <label>
-                    <input type="radio" name="cache_plan" value="cachefirst" <?php if($cacheSettings['cache_plan'] == "cachefirst"){echo "checked=\"checked\"";} ?>>Cache first
+                    <input type="radio" name="cache_plan" value="cachefirst" <?php if($cacheSettings['cache_plan'] != "onlinefirst"){echo "checked=\"checked\"";} ?>>Cache first
                     </label><br>
                     <label>
                         <input type="radio" name="cache_plan" value="onlinefirst" <?php if($cacheSettings['cache_plan'] == "onlinefirst"){echo "checked=\"checked\"";} ?>>Online first
@@ -199,7 +199,7 @@ $swVersion = $data['swVersion'];
                     <input type="radio" name="debug_msg" value="ON" <?php if($cacheSettings['debug_msg'] == "ON"){echo "checked=\"checked\"";} ?>>ON
                     </label><br>
                     <label>
-                        <input type="radio" name="debug_msg" value="OFF" <?php if(($cacheSettings['debug_msg'] == "OFF")||(empty($cacheSettings['debug_msg']))){echo "checked=\"checked\"";} ?>>OFF
+                        <input type="radio" name="debug_msg" value="OFF" <?php if((empty($cacheSettings['debug_msg'])||($cacheSettings['debug_msg'] != "ON"))){echo "checked=\"checked\"";} ?>>OFF
                     </label><br><br>
                 <?php _e("Switch to show debug messages.","pwa4wp"); ?><br>
                 <?php _e("Set ON this switch, ServiceWorker JavaScript will send verbose messages to debug console of browser.","pwa4wp"); ?><br>

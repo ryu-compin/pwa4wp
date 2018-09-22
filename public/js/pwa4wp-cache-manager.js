@@ -128,7 +128,10 @@ class pwa4wp_CacheManager {
                     if (response) {
                         return response;
                     }
-                    return fetchAndCache(request);
+                    if(this.debug){
+                        console.log('call fetch&cache', request.url);
+                    }
+                    return this.fetchAndCache(request);
                 });
             }).catch(() => {
                 if(this.debug){
@@ -143,7 +146,7 @@ class pwa4wp_CacheManager {
         if(this.debug){
             console.log('remoteFirstFetch', request.url);
         }
-        return fetchAndCache(request).catch(() => {
+        return this.fetchAndCache(request).catch(() => {
             if(this.debug){
                 console.log('fail to fetch. use cache');
             }

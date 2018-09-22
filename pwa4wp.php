@@ -16,7 +16,7 @@
  * Plugin Name:       PWA for WordPress
  * Plugin URI:        https://github.com/ryu-compin/pwa4wp
  * Description:       Provides transformation for WordPress to PWA.
- * Version:           1.0.4
+ * Version:           1.0.6
  * Author:            PWA for WordPress Developers Group
  * Author URI:        https://github.com/ryu-compin/pwa4wp/
  * License:           GPL-2.0+
@@ -35,7 +35,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.2 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'PWA4WP_VERSION', '1.0.3' );
+define( 'PWA4WP_VERSION', '1.0.6' );
 
 define( 'PWA4WP_SERVICEWORKER_FILE', 'pwa4wp-sw-'.get_current_blog_id().'.js');
 define( 'PWA4WP_MANIFEST_FILE', 'pwa4wp-manifest-'.get_current_blog_id().'.json');
