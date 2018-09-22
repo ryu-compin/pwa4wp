@@ -91,9 +91,11 @@ class pwa4wp_Public {
 			echo '<link rel="manifest" href="/' . PWA4WP_MANIFEST_FILE . '" />';
 			echo '<meta name="theme-color" content="' . get_option( 'pwa4wp_manifest' )['theme_color'] . '"/>';
 			$manifest = get_option( 'pwa4wp_manifest' );
-			foreach ( $manifest['icons'] as $icon ) {
-				echo '<link rel="apple-touch-icon" sizes="' . $icon['sizes'] . '" href="' . $icon['src'] . '">';
-			}
+			If (!empty($manifest['icons'])){
+                foreach ( $manifest['icons'] as $icon ) {
+                    echo '<link rel="apple-touch-icon" sizes="' . $icon['sizes'] . '" href="' . $icon['src'] . '">';
+                }
+            }
 		}
 	}
 

@@ -177,20 +177,20 @@ class pwa4wp_Admin {
                 $manifest = $this->makeManifest( $_POST, $icons );
                 $this->saveAndGenerateManifestFile( $manifest );
                 update_option('pwa4wp_manifest_created',true);
-                $data = [
-                    'sw_version' => get_option( 'pwa4wp_sw_version'),
-                    'cache_plan' => get_option( 'pwa4wp_cache_settings' )['cache_plan'],
-                    'exclusions' =>array_filter(get_option( 'pwa4wp_cache_settings' )['exclusions'], function($pattern) {
-                        return !empty($pattern);
-                    }),
-                    'initial-caches' => array_filter(get_option( 'pwa4wp_cache_settings' )['initial-caches'], function($url) {
-                        return !empty($url);
-                    }),
-                    'ttl'            => get_option( 'pwa4wp_cache_settings' )['ttl'],
-                    'offline_url'    => get_option( 'pwa4wp_cache_settings' )['offline_url'],
-                ];
                 // if ServiceWorker already exists, update it.
                 if(get_option('pwa4wp_sw_created')){
+                    $data = [
+                        'sw_version' => get_option( 'pwa4wp_sw_version'),
+                        'cache_plan' => get_option( 'pwa4wp_cache_settings' )['cache_plan'],
+                        'exclusions' =>array_filter(get_option( 'pwa4wp_cache_settings' )['exclusions'], function($pattern) {
+                            return !empty($pattern);
+                        }),
+                        'initial-caches' => array_filter(get_option( 'pwa4wp_cache_settings' )['initial-caches'], function($url) {
+                            return !empty($url);
+                        }),
+                        'ttl'            => get_option( 'pwa4wp_cache_settings' )['ttl'],
+                        'offline_url'    => get_option( 'pwa4wp_cache_settings' )['offline_url'],
+                    ];
                     if($this->check_sw($data)){
                         $this->generateServiceWorker( $data );
                         update_option('pwa4wp_sw_version',get_option('pwa4wp_sw_version')+1);
