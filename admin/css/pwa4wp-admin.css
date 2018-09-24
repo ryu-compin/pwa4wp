@@ -41,6 +41,9 @@ li{
     color: red;
     font-weight: bold;
 }
+.red{
+    color: red;
+}
 .innerlist{
     margin-left: 0em;
 }
@@ -119,4 +122,15 @@ li{
 .donate_button_area{
     display: block;
     margin-left: 4em ;
+}
+.hiddenMsg{
+    display: none;
+}
+.regextestform{
+    display: flow;
+    height: 0;
+    opacity: 0;
+}
+.regexttestinner{
+    height: auto;
 }

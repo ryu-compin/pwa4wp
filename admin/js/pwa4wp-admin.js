@@ -35,14 +35,85 @@
         $('#add-exclusions').on('click', function () {
             $('#exclusion-list').append('<li class="innerlist"><input name="exclusions[]" class="longtext"></li>');
         });
-        var themeColor = $("#themeColorPicker").val();
+        let themeColor = $("#themeColorPicker").val();
         console.info(themeColor);
         $('#themeColorPicker').wpColorPicker({
             defaultColor: themeColor
         });
-        var bgColor = $("#bgColorPicker").val();
+        let bgColor = $("#bgColorPicker").val();
         console.info(bgColor);
         $('#bgColorPicker').wpColorPicker();
+
+        $('#regexp_dotest').on('click', function () {
+            $('#regexp_result').empty();
+            let testText = $('#regextTestURL').val();
+            let appendText = "";
+            let regTestResult = false;
+            console.log("Test start for URL [" + testText + "]");
+            appendText = appendText + "Test for URL [" + testText + "].<br>\n";
+            if((typeof(testText) === 'undefined')||(testText =="")){
+                appendText = "Test URL not set.<br>\n";
+            }else{
+                appendText = appendText + "<ul>\n";
+                $('#exclusion-list').children('li').each(function (i, e) {
+                        let regtext;
+                        regtext = EscVal($('input',this).val());
+                        if((typeof(regtext) !== 'undefined')&&(regtext != "")){
+                            appendText = appendText + "<li>\n";
+                            appendText = appendText + "Test for [" + regtext + "]\n";
+                            if((new RegExp(regtext)).test(testText)){
+                                appendText = appendText + "&nbsp;:&nbsp;<span class=\"red\">Hit</span>"
+                                regTestResult = true;
+                            }else{
+                                appendText = appendText + "&nbsp;:&nbsp;None"
+                            }
+                            appendText = appendText + "</li>\n";
+                        }
+                    }
+                );
+                appendText = appendText + "</ul>\n";
+                if(regTestResult){
+                    appendText = appendText + $('#msg_RegExpHit').text() + "<br>\n";
+                }else{
+                    appendText = appendText + $('#msg_RegExpNone').text() + "<br>\n";
+                }
+            }
+            appendText = appendText + "Test end.<br>\n";
+            $('#regexp_result').append(appendText);
+        });
+        function EscVal(txt){
+//            return txt.replace(/[ !"#$%&'()*+,.\/:;<=>?@\[\\\]^`{|}~]/g, '\\$&');
+            return txt.replace(/[\/]/g, '\\$&');
+        }
+        $('#regexp_toggle').on('click', function () {
+            let btn_open_text = $('#btn_OpenRegexpTest').text();
+            let btn_close_text = $('#btn_CloseRegexpTest').text();
+            if($('#regexp_toggle').text() == btn_close_text){
+                // Open now, Close test alea.
+                $('#regextestform').animate(
+                    {
+                        height:"0",
+                        opacity:0
+                    },
+                    400
+                );
+                $('#regexp_toggle').text(btn_open_text);
+            }else{
+                // Close now, Open test alea.
+                $('#regextestform').animate(
+                    {
+                        height:"4em",
+                        opacity:1
+                    },
+                    400,
+                    function () {
+                        $('#regextestform').css("height","auto");
+                    }
+                );
+                $('#regexp_toggle').text(btn_close_text);
+            }
+
+        });
     });
 
 })(jQuery);

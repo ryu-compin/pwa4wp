@@ -19,8 +19,8 @@ class pwa4wp_Service_Worker_Generator {
         $ttl = intval($data['ttl'])*60;
 		$cachePlan = $data['cache_plan'];
         $swVersion = $data['sw_version'];
-		$cacheManagerUrl = $this->plugin_root_url . 'public/js/pwa4wp-cache-manager.js?' . $this->version;
-		$dexieUrl        = $this->plugin_root_url . 'public/js/lib/dexie.min.js?' . $this->version;
+		$cacheManagerUrl = $this->plugin_root_url . 'public/js/pwa4wp-cache-manager.js?' . $this->version .".". get_option('pwa4wp_sw_version');
+		$dexieUrl        = $this->plugin_root_url . 'public/js/lib/dexie.min.js?' . $this->version .".". get_option('pwa4wp_sw_version');
 		$debug_msg = $data['debug_msg'];
 		$script          = <<<SCRIPT
 const cacheSettings = {

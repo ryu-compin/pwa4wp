@@ -85,11 +85,17 @@ class pwa4wp_CacheManager {
         }
         if(this.settings.cachePlan === "onlinefirst"){
             // online-first
+            if(this.debug){
+                console.log("online-first mode : " + event.request.url);
+            }
             return event.respondWith(this.remoteFirstFetch(event.request).catch(() => {
                 return this.caches.match(this.settings.offlinePage);
             }));
         }else{
             // cache-first
+            if(this.debug){
+                console.log("cache-first mode : " + event.request.url);
+            }
             // キャッシュ対象の場合はキャッシュ優先方式でレスポンスを返す。
             return event.respondWith(this.cacheFirstFetch(event.request).catch(() => {
                 return this.caches.match(this.settings.offlinePage);
@@ -103,7 +109,7 @@ class pwa4wp_CacheManager {
      */
     cacheFirstFetch(request) {
         if(this.debug){
-            console.log("get chche : " + request.url)
+            console.log("get cache : " + request.url);
         }
         return this.db.caches.get(request.url)
             .then((data) => {
@@ -113,13 +119,14 @@ class pwa4wp_CacheManager {
                         console.log("no data -> fetch");
                     }
                     return this.remoteFirstFetch(request);
-                }else if((data.ttl > 0)&&( Date.now() - data.cached_at > data.ttl)) {
+                }else if((data.ttl > 0)&&( Date.now() - data.cached_at > data.ttl * 1000)) {
                     if(this.debug){
-                        console.log("expire -> fetch");
+                        console.log("elapsed time from cached : " + (Date.now() - data.cached_at).toString() + " -> expire ( > " + data.ttl + " x1000 )" + " -> fetch");
                     }
                     this.db.caches.delete(request.url);
                     return this.remoteFirstFetch(request);
                 }
+                console.log("elapsed time from cached : " + (Date.now() - data.cached_at).toString() + " -> still can be use ( < " + data.ttl + " x1000 )");
 
                 return this.caches.match(request).then((response) => {
                     if(this.debug){
@@ -164,11 +171,11 @@ class pwa4wp_CacheManager {
             this.caches.open(this.settings.cacheName).then((cache) => {
                 cache.add(request.url, res).then((result) => {
                     if(this.debug){
-                        console.log(request.url + " : " + result);
+                        console.log("added cache :" + request.url + " : " + result);
                     }
                 }, (err) => {
                     if(this.debug){
-                        console.log(request.url + " : " + err);
+                        console.log("add cache error : " + request.url + " : " + err);
                     }
                 });
             });
