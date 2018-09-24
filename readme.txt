@@ -67,18 +67,18 @@ There is information about updates and issues.
 3. Configure and generate 'ServiceWorker'
 
 == Upgrade Notice ==
-= 1.0.5 / 1.0.6 =
-Fixed issue:
-Fixed JavaScript error when fetching "online first".
+= 1.0.7 =
+Update:
+Added test form for reguler expression in ServiceWorker settings.
 
 == Changelog ==
 = 1.0.7 =
 Release Date - 22 September, 2018
+Update:
+Added test form for reguler expression in ServiceWorker settings.
 Fixed issue:
 Fixed PHP worning when PWA is active before Manifest created.
 Fixed PHP worning when Manifest create before ServiceWorker created.
-Update:
-Added test form for reguler expression in ServiceWorker settings.
 
 = 1.0.5 / 1.0.6 =
 Release Date - 12 September, 2018
