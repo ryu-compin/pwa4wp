@@ -111,7 +111,7 @@ $swVersion = $data['swVersion'];
                     <?php _e("Cache Expire time","pwa4wp"); ?>
                 </span>
                 <span class="field">
-                    <input name="ttl" class="shorttext" value="<?php if( $cacheSettings['ttl'] != ""){esc_html_e( $cacheSettings['ttl'] );}else{echo "0";} ?>">
+                    <input name="ttl" class="shorttext" value="<?php if( $cacheSettings['ttl'] != ""){esc_html_e( $cacheSettings['ttl'] );}else{echo "2880";} ?>">
                     <br><br>
 	                <?php _e("Define length of cache expire time by minutes.","pwa4wp"); ?><br>
 	                <?php _e("For example, 1 hour -> 60 min, 1 day ->1440 min, 1 week->10080 min.","pwa4wp"); ?><br>
@@ -153,6 +153,27 @@ $swVersion = $data['swVersion'];
 	            <?php _e("This means that all \"/api/\" directory will excluded from cache.","pwa4wp"); ?><br>
                 <br>
                 </span>
+        </div>
+        <div>
+            <span class="field">
+                <?php _e("Test for Reguler Expressions.","pwa4wp"); ?>
+                <button type="button" id="regexp_toggle"><?php _e("Open Regexp Test","pwa4wp"); ?></button><br>
+            </span>
+            <br>
+            <div id="regextestform" class="regextestform">
+                <div class="regexttestinner">
+                <span class="field">
+                    <?php _e("Input URL for test and press Test button.","pwa4wp"); ?><br>
+                    <input id="regextTestURL" name="regextTestURL" class="longtext" value="">
+                    <button type="button" id="regexp_dotest"><?php _e("Test","pwa4wp"); ?></button><br>
+                </span>
+                <br>
+                <span class="field" id="regexp_result">
+
+                </span>
+                </div>
+                <br>
+            </div>
         </div>
             <hr>
         </li>
@@ -213,4 +234,10 @@ $swVersion = $data['swVersion'];
     </span>
 </form>
     <hr>
+    <div class="hiddenMsg">
+        <span id="msg_RegExpHit"><?php _e("This URL will be excluded from cache.","pwa4wp"); ?></span>
+        <span id="msg_RegExpNone"><?php _e("This URL will not be excluded from cache.","pwa4wp"); ?></span>
+        <span id="btn_OpenRegexpTest"><?php _e("Open Regexp Test","pwa4wp"); ?></span>
+        <span id="btn_CloseRegexpTest"><?php _e("Close Regexp Test","pwa4wp"); ?></span>
+    </div>
 </div>
