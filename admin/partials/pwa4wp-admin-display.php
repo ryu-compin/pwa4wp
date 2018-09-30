@@ -43,6 +43,23 @@ if(file_exists(get_home_path() . PWA4WP_SERVICEWORKER_FILE)) {
     }
     ?>
     <ul>
+        <li>
+            <p class="status_display">
+                HTTPS :
+                <?php
+                if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+                    // icon-green
+                    echo('<span class="status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/green-35.png""></span>');
+                    _e("working","pwa4wp");
+                }else{
+                    // icon-red
+                    echo('<span class="status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/red-35.png"></span>');
+                    _e("not working","pwa4wp");
+                }
+                ?>
+                <br>
+            </p>
+        </li>
     <li>
         <p class="status_display">
         Manifest :
@@ -104,6 +121,8 @@ if(file_exists(get_home_path() . PWA4WP_SERVICEWORKER_FILE)) {
             </p>
                 <span class="small-text">
 	            <?php _e("If PWA status is 'working', this plugin will insert Manifest link and ServiceWorker installation tag into page headers."); ?>
+                <br>
+                <?php _e("HTTPS status check is only protocol check. Please make sure that your all contents and embeded contents in pages are connected by https."); ?>
                 </span>
                 <br>
                 <br>
