@@ -82,7 +82,12 @@ class pwa4wp_Public {
 		 * class.
 		 */
 		if(get_option('pwa4wp_sw_installation_switch')){
-			echo "<script>if ('serviceWorker' in navigator) {navigator.serviceWorker.register('/" . PWA4WP_SERVICEWORKER_FILE . "');}</script>";
+		    if(!empty(get_option('pwa4wp_manifest')['scope'])){
+		        echo "<!--" . get_option('pwa4wp_manifest')['scope'] . "-->";
+                echo "<script>if ('serviceWorker' in navigator) {navigator.serviceWorker.register('/" . PWA4WP_SERVICEWORKER_FILE . "', {scope:'" . get_option('pwa4wp_manifest')['scope'] . "'});}</script>";
+            }else{
+                echo "<script>if ('serviceWorker' in navigator) {navigator.serviceWorker.register('/" . PWA4WP_SERVICEWORKER_FILE . "');}</script>";
+            }
 		}
 	}
 

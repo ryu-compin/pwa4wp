@@ -105,6 +105,10 @@ class pwa4wp_Admin {
             $this,
             'render_view_sw',
         ));
+        add_submenu_page($this->pwa4wp, 'Advanced', 'Advanced', 'manage_options', $this->pwa4wp . '?3', array(
+            $this,
+            'render_view_advanced',
+        ));
 	}
 
 	public function render_view() {
@@ -132,7 +136,18 @@ class pwa4wp_Admin {
         $swVersion = get_option('pwa4wp_sw_version');
         $view->render_sw( [ 'manifestSettings' => $manifestSettings, 'cacheSettings' => $cacheSettings, 'swVersion' => $swVersion ,'errorMsg' => $this->errorMsg] );
     }
-	public function pwa4wp_admin_init() {
+    public function render_view_advanced() {
+        require_once( plugin_dir_path( __FILE__ ) . 'class-pwa4wp-admin-view.php' );
+        $manifestSettings = get_option( 'pwa4wp_manifest' );
+        $cacheSettings    = get_option( 'pwa4wp_cache_settings' );
+        $advancedSettings    = get_option( 'pwa4wp_advanced' );
+        $savedIconURL  = get_option( 'pwa4wp_app_iconurl' );
+        $view             = new pwa4wp_Admin_View();
+        $swVersion = get_option('pwa4wp_sw_version');
+        $view->render_advanced( [ 'advancedSettings' => $advancedSettings, 'manifestSettings' => $manifestSettings, 'cacheSettings' => $cacheSettings, 'swVersion' => $swVersion ,'errorMsg' => $this->errorMsg] );
+    }
+
+    public function pwa4wp_admin_init() {
 
         $manifestSettings = get_option( 'pwa4wp_manifest' );
         $cacheSettings    = get_option( 'pwa4wp_cache_settings' );
@@ -193,7 +208,7 @@ class pwa4wp_Admin {
                     ];
                     if($this->check_sw($data)){
                         $this->generateServiceWorker( $data );
-                        update_option('pwa4wp_sw_version',get_option('pwa4wp_sw_version')+1);
+                        update_option('pwa4wp_sw_version',$swVersion);
                     }
                 }
             }else{
@@ -226,7 +241,7 @@ class pwa4wp_Admin {
 			];
             if($this->check_sw($data)){
                 $this->generateServiceWorker( $data );
-                update_option('pwa4wp_sw_version',get_option('pwa4wp_sw_version')+1);
+                update_option('pwa4wp_sw_version',$swVersion);
                 update_option('pwa4wp_sw_created',true);
             }else{
                 // error or parameter is not set.
