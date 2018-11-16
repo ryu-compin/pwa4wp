@@ -97,14 +97,16 @@ class pwa4wp_Admin {
             $this,
             'render_view',
         ), '');
-        add_submenu_page($this->pwa4wp, 'Manifest', 'Manifest', 'manage_options', $this->pwa4wp . '?1', array(
-            $this,
-            'render_view_manifest',
-        ));
-        add_submenu_page($this->pwa4wp, 'ServiceWorker', 'ServiceWorker', 'manage_options', $this->pwa4wp . '?2', array(
-            $this,
-            'render_view_sw',
-        ));
+        if((!is_multisite())||((is_multisite())&&(get_blog_option( 1, 'pwa4wp_multisite_unify', $default = false ) == 1))||(is_main_site())) {
+            add_submenu_page($this->pwa4wp, 'Manifest', 'Manifest', 'manage_options', $this->pwa4wp . '?1', array(
+                $this,
+                'render_view_manifest',
+            ));
+            add_submenu_page($this->pwa4wp, 'ServiceWorker', 'ServiceWorker', 'manage_options', $this->pwa4wp . '?2', array(
+                $this,
+                'render_view_sw',
+            ));
+        }
 	}
 
 	public function render_view() {
@@ -244,7 +246,15 @@ class pwa4wp_Admin {
                 // display error message to admin console.
                 $this->errorMsg[] = _("Some errors found in ServiceWorker settings, please fix them.");
             }
-		}
+		} else if ( isset( $_POST['my-submenu3'] ) && $_POST['my-submenu3'] && check_admin_referer( 'my-nonce-key3', 'my-submenu3' ) ) {
+            // toggle PWA tag
+            if($_POST['multisite_unify'] == "0"){
+                update_option('pwa4wp_multisite_unify', 0);
+            }else{
+                update_option('pwa4wp_multisite_unify', 1);
+            }
+
+        }
 	}
 
 	private function saveAndGenerateManifestFile( $manifest ) {
@@ -252,7 +262,7 @@ class pwa4wp_Admin {
 		$manifestJson = json_encode( $manifest );
 		// changed file path to document root directory
 		//file_put_contents( get_home_path() . PWA4WP_MANIFEST_FILE, $manifestJson );
-        file_put_contents( $_SERVER['DOCUMENT_ROOT'] . PWA4WP_MANIFEST_FILE, $manifestJson );
+        file_put_contents( $_SERVER['DOCUMENT_ROOT'] ."/". PWA4WP_MANIFEST_FILE, $manifestJson );
 
 		echo "<!--manifest created --- "  .get_home_path()." --- " .home_url(). "--!>"."<!--" .$manifestJson ." -->";
 	}
@@ -368,7 +378,7 @@ class pwa4wp_Admin {
 		$script    = $generator->generate( $data );
         // changed file path to document root directory
 		//file_put_contents( get_home_path() . PWA4WP_SERVICEWORKER_FILE, $script );
-        file_put_contents( $_SERVER['DOCUMENT_ROOT'] . PWA4WP_SERVICEWORKER_FILE, $script );
+        file_put_contents( $_SERVER['DOCUMENT_ROOT'] ."/". PWA4WP_SERVICEWORKER_FILE, $script );
 	}
 
 	private function check_manifest($data, $icons ){

@@ -37,6 +37,6 @@ class pwa4wp_Activator {
         update_option('pwa4wp_sw_created',false);
         update_option('pwa4wp_push_enable',false);
 		update_option('pwa4wp_sw_installation_switch', true);
+        update_option('pwa4wp_multisite_unify', 1);
 	}
-
 }
