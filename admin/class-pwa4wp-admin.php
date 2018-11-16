@@ -105,10 +105,6 @@ class pwa4wp_Admin {
             $this,
             'render_view_sw',
         ));
-        add_submenu_page($this->pwa4wp, 'Advanced', 'Advanced', 'manage_options', $this->pwa4wp . '?3', array(
-            $this,
-            'render_view_advanced',
-        ));
 	}
 
 	public function render_view() {
@@ -254,7 +250,10 @@ class pwa4wp_Admin {
 	private function saveAndGenerateManifestFile( $manifest ) {
 		update_option( 'pwa4wp_manifest', $manifest );
 		$manifestJson = json_encode( $manifest );
-		file_put_contents( get_home_path() . PWA4WP_MANIFEST_FILE, $manifestJson );
+		// changed file path to document root directory
+		//file_put_contents( get_home_path() . PWA4WP_MANIFEST_FILE, $manifestJson );
+        file_put_contents( $_SERVER['DOCUMENT_ROOT'] . PWA4WP_MANIFEST_FILE, $manifestJson );
+
 		echo "<!--manifest created --- "  .get_home_path()." --- " .home_url(). "--!>"."<!--" .$manifestJson ." -->";
 	}
 	private function resizeIcons($iconBase,$imageType){
@@ -367,7 +366,9 @@ class pwa4wp_Admin {
 		update_option( 'pwa4wp_cache_settings', $data );
 		$generator = new pwa4wp_Service_Worker_Generator( plugin_dir_url( dirname( __FILE__ ) ) );
 		$script    = $generator->generate( $data );
-		file_put_contents( get_home_path() . PWA4WP_SERVICEWORKER_FILE, $script );
+        // changed file path to document root directory
+		//file_put_contents( get_home_path() . PWA4WP_SERVICEWORKER_FILE, $script );
+        file_put_contents( $_SERVER['DOCUMENT_ROOT'] . PWA4WP_SERVICEWORKER_FILE, $script );
 	}
 
 	private function check_manifest($data, $icons ){
