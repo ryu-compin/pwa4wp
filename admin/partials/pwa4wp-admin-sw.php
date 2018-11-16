@@ -136,7 +136,7 @@ $swVersion = $data['swVersion'];
                 if(!empty($cacheSettings['exclusions'])):
                     foreach ( $cacheSettings['exclusions'] as $item ):
                 ?>
-                    <li class="innerlist"><input name="exclusions[]" class="longtext" value="<?php esc_html_e( $item ); ?>"></li>
+                    <li class="innerlist"><input name="exclusions[]" class="longtext" value="<?php esc_html_e( stripslashes($item) ); ?>"></li>
 				<?php
                     endforeach;
                     else:
