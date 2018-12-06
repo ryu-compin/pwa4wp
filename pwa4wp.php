@@ -36,9 +36,13 @@ if ( ! defined( 'WPINC' ) ) {
  * Rename this for your plugin and update it as you release new versions.
  */
 define( 'PWA4WP_VERSION', '1.0.7' );
-
-define( 'PWA4WP_SERVICEWORKER_FILE', 'pwa4wp-sw-'.get_current_blog_id().'.js');
-define( 'PWA4WP_MANIFEST_FILE', 'pwa4wp-manifest-'.get_current_blog_id().'.json');
+if((!is_multisite())||((is_multisite())&&(get_blog_option( 1, 'pwa4wp_multisite_unify', $default = 1 ) == 1))||(is_main_site())) {
+    define( 'PWA4WP_SERVICEWORKER_FILE', 'pwa4wp-sw-'.get_current_blog_id().'.js');
+    define( 'PWA4WP_MANIFEST_FILE', 'pwa4wp-manifest-'.get_current_blog_id().'.json');
+}else{
+    define( 'PWA4WP_SERVICEWORKER_FILE', 'pwa4wp-sw-1.js');
+    define( 'PWA4WP_MANIFEST_FILE', 'pwa4wp-manifest-1.json');
+}
 
 /**
  * The code that runs during plugin activation.

@@ -97,7 +97,7 @@ class pwa4wp_Admin {
             $this,
             'render_view',
         ), '');
-        if((!is_multisite())||((is_multisite())&&(get_blog_option( 1, 'pwa4wp_multisite_unify', $default = false ) == 1))||(is_main_site())) {
+        if((!is_multisite())||((is_multisite())&&(get_blog_option( 1, 'pwa4wp_multisite_unify', $default = 1 ) == 1))||(is_main_site())) {
             add_submenu_page($this->pwa4wp, 'Manifest', 'Manifest', 'manage_options', $this->pwa4wp . '?1', array(
                 $this,
                 'render_view_manifest',

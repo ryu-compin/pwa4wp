@@ -81,18 +81,28 @@ class pwa4wp_Public {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-		if(get_option('pwa4wp_sw_installation_switch')){
+        if((!is_multisite())||(is_main_site())||((is_multisite())&&(get_blog_option( 1, 'pwa4wp_multisite_unify', $default = 1 ) == 1))) {
+            $sw_switch = get_option('pwa4wp_sw_installation_switch');
+        }else{
+            $sw_switch = get_blog_option( 1, 'pwa4wp_sw_installation_switch');
+        }
+        if($sw_switch){
 		    if(!empty(get_option('pwa4wp_manifest')['scope'])){
 		        echo "<!--" . get_option('pwa4wp_manifest')['scope'] . "-->";
                 echo "<script>if ('serviceWorker' in navigator) {navigator.serviceWorker.register('/" . PWA4WP_SERVICEWORKER_FILE . "', {scope:'" . get_option('pwa4wp_manifest')['scope'] . "'});}</script>";
             }else{
-                echo "<script>if ('serviceWorker' in navigator) {navigator.serviceWorker.register('/" . PWA4WP_SERVICEWORKER_FILE . "');}</script>";
+                echo "<script>if ('serviceWorker' in navigator) {navigator.serviceWorker.register('/" . PWA4WP_SERVICEWORKER_FILE . "', {scope:'/');}</script>";
             }
 		}
 	}
 
 	public function enqueue_head() {
-		if(get_option('pwa4wp_sw_installation_switch')) {
+        if((!is_multisite())||(is_main_site())||((is_multisite())&&(get_blog_option( 1, 'pwa4wp_multisite_unify', $default = 1 ) == 1))) {
+            $sw_switch = get_option('pwa4wp_sw_installation_switch');
+        }else{
+            $sw_switch = get_blog_option( 1, 'pwa4wp_sw_installation_switch');
+        }
+        if($sw_switch) {
 			echo '<link rel="manifest" href="/' . PWA4WP_MANIFEST_FILE . '" />';
 			echo '<meta name="theme-color" content="' . get_option( 'pwa4wp_manifest' )['theme_color'] . '"/>';
 			$manifest = get_option( 'pwa4wp_manifest' );
