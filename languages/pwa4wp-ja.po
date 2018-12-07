@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pwa4wp\n"
-"POT-Creation-Date: 2018-12-07 03:27+0900\n"
-"PO-Revision-Date: 2018-12-07 03:31+0900\n"
+"POT-Creation-Date: 2018-12-07 14:50+0900\n"
+"PO-Revision-Date: 2018-12-07 14:52+0900\n"
 "Last-Translator: Ryunosuke Shindo <ryu@compin.jp>\n"
 "Language-Team: pwa4wp <ryu@compin.jp>\n"
 "Language: ja\n"
@@ -94,17 +94,17 @@ msgid "Show PWA install popup by browser default."
 msgstr "ブラウザのデフォルトでポップアップを表示"
 
 #: admin/partials/pwa4wp-admin-display.php:183
-#: admin/partials/pwa4wp-admin-display.php:274
+#: admin/partials/pwa4wp-admin-display.php:273
 msgid "This site is not main site."
 msgstr "このサイトはメインサイトではありません。"
 
 #: admin/partials/pwa4wp-admin-display.php:184
-#: admin/partials/pwa4wp-admin-display.php:275
+#: admin/partials/pwa4wp-admin-display.php:274
 msgid "You can change this setting in main site config panel."
 msgstr "この設定はメインサイトの設定画面で編集することができます。"
 
 #: admin/partials/pwa4wp-admin-display.php:208
-#: admin/partials/pwa4wp-admin-display.php:254
+#: admin/partials/pwa4wp-admin-display.php:253
 msgid "Update"
 msgstr "更新"
 
@@ -122,55 +122,49 @@ msgstr "デフォルトではインストールポップアップ表示はブラ
 
 #: admin/partials/pwa4wp-admin-display.php:214
 msgid ""
-"When you change this setting, serviceworker file will be re-created "
-"automatically."
-msgstr "この設定を変更すると、ServiceWorkerファイルが自動的に再作成されます。"
-
-#: admin/partials/pwa4wp-admin-display.php:215
-msgid ""
 "To get more information about this setting, please read this page below."
 msgstr "詳しい情報は以下のリンク先ページをご覧ください。"
 
-#: admin/partials/pwa4wp-admin-display.php:234
-#: admin/partials/pwa4wp-admin-display.php:242
+#: admin/partials/pwa4wp-admin-display.php:233
+#: admin/partials/pwa4wp-admin-display.php:241
 msgid "Multi site mode"
 msgstr "マルチサイト設定"
 
-#: admin/partials/pwa4wp-admin-display.php:246
+#: admin/partials/pwa4wp-admin-display.php:245
 msgid "Unify all multi site into one PWA."
 msgstr "すべてのマルチサイトのPWAをひとつのPWAとして統合する"
 
-#: admin/partials/pwa4wp-admin-display.php:249
+#: admin/partials/pwa4wp-admin-display.php:248
 msgid "Make PWAs for each multi sites individually."
 msgstr "マルチサイトごとのPWAを分離して構成する"
 
-#: admin/partials/pwa4wp-admin-display.php:257
-#: admin/partials/pwa4wp-admin-display.php:263
+#: admin/partials/pwa4wp-admin-display.php:256
+#: admin/partials/pwa4wp-admin-display.php:262
 msgid "Configulation for multi sites."
 msgstr "マルチサイト設定"
 
-#: admin/partials/pwa4wp-admin-display.php:258
+#: admin/partials/pwa4wp-admin-display.php:257
 msgid "Select PWA mode whether to unify PWA for all multi sites."
 msgstr ""
 "PWAの動作モードをすべてのマルチサイトで統合するかどうか選択してください。"
 
-#: admin/partials/pwa4wp-admin-display.php:264
+#: admin/partials/pwa4wp-admin-display.php:263
 msgid "Current config"
 msgstr "現在の設定"
 
-#: admin/partials/pwa4wp-admin-display.php:267
+#: admin/partials/pwa4wp-admin-display.php:266
 msgid "Unified"
 msgstr "統合"
 
-#: admin/partials/pwa4wp-admin-display.php:270
+#: admin/partials/pwa4wp-admin-display.php:269
 msgid "Individual"
 msgstr "分離"
 
-#: admin/partials/pwa4wp-admin-display.php:291
+#: admin/partials/pwa4wp-admin-display.php:290
 msgid "Notice"
 msgstr "お知らせ"
 
-#: admin/partials/pwa4wp-admin-display.php:294
+#: admin/partials/pwa4wp-admin-display.php:293
 msgid ""
 "After update this plugin, please update ServiceWorker by \"Save Cache "
 "configurations\" button in <a href=\"admin.php?page=PWA+for+WordPress"
@@ -180,11 +174,11 @@ msgstr ""
 "%3F2”>ServiceWorker キャッシュ設定</a> 画面より、“Save Cache configurations” "
 "ボタンを押して ServiceWorker を再発行してください。"
 
-#: admin/partials/pwa4wp-admin-display.php:297
+#: admin/partials/pwa4wp-admin-display.php:296
 msgid "Usage"
 msgstr "使い方"
 
-#: admin/partials/pwa4wp-admin-display.php:300
+#: admin/partials/pwa4wp-admin-display.php:299
 msgid ""
 "To make your website to PWA, this plugin make two files, \"Manifest\" and "
 "\"ServiceWorker\" in your website."
@@ -192,72 +186,72 @@ msgstr ""
 "あなたの Web サイトを PWA にするために、このプラグインは二つのファイル、"
 "「Manifest」と「ServiceWorker」をサイト内に生成します。"
 
-#: admin/partials/pwa4wp-admin-display.php:301
+#: admin/partials/pwa4wp-admin-display.php:300
 msgid ""
 "Manifest file is a json file that has configurations of web applications."
 msgstr ""
 "Manifest（マニフェスト）ファイルは Web アプリケーションの構成を保持する json "
 "形式のファイルです。"
 
-#: admin/partials/pwa4wp-admin-display.php:302
+#: admin/partials/pwa4wp-admin-display.php:301
 msgid "ServiceWorker is a JavaScript file that controls PWA's functions."
 msgstr "ServiceWorker は PWA の機能を制御する JavaScript ファイルです。"
 
-#: admin/partials/pwa4wp-admin-display.php:303
+#: admin/partials/pwa4wp-admin-display.php:302
 msgid "To start PWA, configure two files from below setup links."
 msgstr ""
 "PWA を開始するには以下のリンクからそれぞれのファイルを構成してください。"
 
-#: admin/partials/pwa4wp-admin-display.php:309
+#: admin/partials/pwa4wp-admin-display.php:308
 msgid "Configure Manifest"
 msgstr "マニフェストの構成"
 
-#: admin/partials/pwa4wp-admin-display.php:314
+#: admin/partials/pwa4wp-admin-display.php:313
 msgid "Prepare icon image file, image file must be png format."
 msgstr ""
 "アイコン画像ファイルを用意してください。画像ファイルは png 形式である必要があ"
 "ります。"
 
-#: admin/partials/pwa4wp-admin-display.php:316
+#: admin/partials/pwa4wp-admin-display.php:315
 msgid "Setup manifest file from Manifest Configuration page."
 msgstr "マニフェストの構成ページからマニフェストファイルをセットアップします。"
 
-#: admin/partials/pwa4wp-admin-display.php:318
+#: admin/partials/pwa4wp-admin-display.php:317
 msgid "Image file will be resized to fit icon sizes automatically."
 msgstr "画像ファイルはアイコンサイズに合わせて自動的にリサイズされます。"
 
-#: admin/partials/pwa4wp-admin-display.php:326
+#: admin/partials/pwa4wp-admin-display.php:325
 msgid "Configure ServiceWorker"
 msgstr "ServiceWorker の構成"
 
-#: admin/partials/pwa4wp-admin-display.php:330
+#: admin/partials/pwa4wp-admin-display.php:329
 msgid "Setup ServiceWorker file from ServiceWorker Configuration page."
 msgstr ""
 "ServiceWorker 構成ページから ServiceWorker ファイルをセットアップします。"
 
-#: admin/partials/pwa4wp-admin-display.php:336
+#: admin/partials/pwa4wp-admin-display.php:335
 msgid "About developer of this plugin"
 msgstr "このプラグインの開発者について"
 
-#: admin/partials/pwa4wp-admin-display.php:339
+#: admin/partials/pwa4wp-admin-display.php:338
 msgid "PWA for WordPress develop team"
 msgstr "PWA for WordPress 開発チーム"
 
-#: admin/partials/pwa4wp-admin-display.php:357
+#: admin/partials/pwa4wp-admin-display.php:356
 msgid "Contact us"
 msgstr "お問い合わせ"
 
-#: admin/partials/pwa4wp-admin-display.php:358
+#: admin/partials/pwa4wp-admin-display.php:357
 msgid "If you find anyting about this plugin, contact us from mailform below."
 msgstr ""
 "このプラグインについてお気づきの点がありましたら下記のメールフォームからお問"
 "い合わせください。"
 
-#: admin/partials/pwa4wp-admin-display.php:370
+#: admin/partials/pwa4wp-admin-display.php:369
 msgid "Would you like to support the advancement of this plugin?"
 msgstr "このプラグインの開発に支援をお願いします。"
 
-#: admin/partials/pwa4wp-admin-display.php:373
+#: admin/partials/pwa4wp-admin-display.php:372
 msgid "DONATION"
 msgstr "寄付する"
 
@@ -543,3 +537,9 @@ msgstr "Manifest : orientation が設定されていません。"
 #: admin/class-pwa4wp-admin.php:456
 msgid "ServiceWorker : Cache Expire time must be numeric."
 msgstr "ServiceWorker : キャッシュの有効時間は数値で入力してください。"
+
+#~ msgid ""
+#~ "When you change this setting, serviceworker file will be re-created "
+#~ "automatically."
+#~ msgstr ""
+#~ "この設定を変更すると、ServiceWorkerファイルが自動的に再作成されます。"
