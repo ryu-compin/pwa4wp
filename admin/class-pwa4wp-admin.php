@@ -97,14 +97,16 @@ class pwa4wp_Admin {
             $this,
             'render_view',
         ), '');
-        add_submenu_page($this->pwa4wp, 'Manifest', 'Manifest', 'manage_options', $this->pwa4wp . '?1', array(
-            $this,
-            'render_view_manifest',
-        ));
-        add_submenu_page($this->pwa4wp, 'ServiceWorker', 'ServiceWorker', 'manage_options', $this->pwa4wp . '?2', array(
-            $this,
-            'render_view_sw',
-        ));
+        if((!is_multisite())||((is_multisite())&&(get_blog_option( 1, 'pwa4wp_multisite_unify', $default = 1 ) == 1))||(is_main_site())) {
+            add_submenu_page($this->pwa4wp, 'Manifest', 'Manifest', 'manage_options', $this->pwa4wp . '?1', array(
+                $this,
+                'render_view_manifest',
+            ));
+            add_submenu_page($this->pwa4wp, 'ServiceWorker', 'ServiceWorker', 'manage_options', $this->pwa4wp . '?2', array(
+                $this,
+                'render_view_sw',
+            ));
+        }
 	}
 
 	public function render_view() {
@@ -132,7 +134,18 @@ class pwa4wp_Admin {
         $swVersion = get_option('pwa4wp_sw_version');
         $view->render_sw( [ 'manifestSettings' => $manifestSettings, 'cacheSettings' => $cacheSettings, 'swVersion' => $swVersion ,'errorMsg' => $this->errorMsg] );
     }
-	public function pwa4wp_admin_init() {
+    public function render_view_advanced() {
+        require_once( plugin_dir_path( __FILE__ ) . 'class-pwa4wp-admin-view.php' );
+        $manifestSettings = get_option( 'pwa4wp_manifest' );
+        $cacheSettings    = get_option( 'pwa4wp_cache_settings' );
+        $advancedSettings    = get_option( 'pwa4wp_advanced' );
+        $savedIconURL  = get_option( 'pwa4wp_app_iconurl' );
+        $view             = new pwa4wp_Admin_View();
+        $swVersion = get_option('pwa4wp_sw_version');
+        $view->render_advanced( [ 'advancedSettings' => $advancedSettings, 'manifestSettings' => $manifestSettings, 'cacheSettings' => $cacheSettings, 'swVersion' => $swVersion ,'errorMsg' => $this->errorMsg] );
+    }
+
+    public function pwa4wp_admin_init() {
 
         $manifestSettings = get_option( 'pwa4wp_manifest' );
         $cacheSettings    = get_option( 'pwa4wp_cache_settings' );
@@ -193,7 +206,7 @@ class pwa4wp_Admin {
                     ];
                     if($this->check_sw($data)){
                         $this->generateServiceWorker( $data );
-                        update_option('pwa4wp_sw_version',get_option('pwa4wp_sw_version')+1);
+                        update_option('pwa4wp_sw_version',$swVersion);
                     }
                 }
             }else{
@@ -226,20 +239,41 @@ class pwa4wp_Admin {
 			];
             if($this->check_sw($data)){
                 $this->generateServiceWorker( $data );
-                update_option('pwa4wp_sw_version',get_option('pwa4wp_sw_version')+1);
+                update_option('pwa4wp_sw_version',$swVersion);
                 update_option('pwa4wp_sw_created',true);
             }else{
                 // error or parameter is not set.
                 // display error message to admin console.
                 $this->errorMsg[] = _("Some errors found in ServiceWorker settings, please fix them.");
             }
-		}
+		} else if ( isset( $_POST['my-submenu3'] ) && $_POST['my-submenu3'] && check_admin_referer( 'my-nonce-key3', 'my-submenu3' ) ) {
+            // toggle PWA tag
+            if($_POST['multisite_unify'] == "0"){
+                update_option('pwa4wp_multisite_unify', 0);
+            }else{
+                update_option('pwa4wp_multisite_unify', 1);
+            }
+		} else if ( isset( $_POST['my-submenu4'] ) && $_POST['my-submenu4'] && check_admin_referer( 'my-nonce-key4', 'my-submenu4' ) ) {
+			// toggle PWA tag
+			if($_POST['defer_install'] == "0"){
+				update_option('pwa4wp_defer_install', 0);
+			}else{
+				update_option('pwa4wp_defer_install', 1);
+			}
+			//if(get_option('pwa4wp_sw_created')){
+			//	$this->generateServiceWorker(false);
+			//}
+
+        }
 	}
 
 	private function saveAndGenerateManifestFile( $manifest ) {
 		update_option( 'pwa4wp_manifest', $manifest );
 		$manifestJson = json_encode( $manifest );
-		file_put_contents( get_home_path() . PWA4WP_MANIFEST_FILE, $manifestJson );
+		// changed file path to document root directory
+		//file_put_contents( get_home_path() . PWA4WP_MANIFEST_FILE, $manifestJson );
+        file_put_contents( $_SERVER['DOCUMENT_ROOT'] ."/". PWA4WP_MANIFEST_FILE, $manifestJson );
+
 		echo "<!--manifest created --- "  .get_home_path()." --- " .home_url(). "--!>"."<!--" .$manifestJson ." -->";
 	}
 	private function resizeIcons($iconBase,$imageType){
@@ -348,11 +382,17 @@ class pwa4wp_Admin {
 	}
 
 	private function generateServiceWorker( $data ) {
+		if($data == false){
+			$data = get_option( 'pwa4wp_cache_settings' );
+		}else{
+			update_option( 'pwa4wp_cache_settings', $data );
+		}
 		require_once plugin_dir_path( __FILE__ ) . 'class-pwa4wp-service-worker-generator.php';
-		update_option( 'pwa4wp_cache_settings', $data );
 		$generator = new pwa4wp_Service_Worker_Generator( plugin_dir_url( dirname( __FILE__ ) ) );
 		$script    = $generator->generate( $data );
-		file_put_contents( get_home_path() . PWA4WP_SERVICEWORKER_FILE, $script );
+        // changed file path to document root directory
+		//file_put_contents( get_home_path() . PWA4WP_SERVICEWORKER_FILE, $script );
+        file_put_contents( $_SERVER['DOCUMENT_ROOT'] ."/". PWA4WP_SERVICEWORKER_FILE, $script );
 	}
 
 	private function check_manifest($data, $icons ){

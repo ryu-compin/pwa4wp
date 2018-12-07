@@ -3,8 +3,8 @@ Contributors: ryushindo
 Donate link: https://paypal.me/pwa4wp/10USD
 Tags: pwa, progressive web app, progressive web apps, pwa4wp, mobile, responsive, offline, cache
 Requires at least: 4.4
-Tested up to: 4.9.8
-Stable tag: 1.0.7
+Tested up to: 5.0.0
+Stable tag: 1.1.0
 Requires PHP: 5.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -67,11 +67,18 @@ There is information about updates and issues.
 3. Configure and generate 'ServiceWorker'
 
 == Upgrade Notice ==
-= 1.0.7 =
+= 1.1.0 =
 Update:
-Added test form for reguler expression in ServiceWorker settings.
+Multi-site supported.
 
 == Changelog ==
+= 1.1.0 =
+Release Date - 06 December, 2018
+Update:
+Multi-site supported.
+Fixed issue:
+Regular expression form for "URLs for exclude from cache list" increases escape character in every time saving settings.
+
 = 1.0.7 =
 Release Date - 22 September, 2018
 Update:

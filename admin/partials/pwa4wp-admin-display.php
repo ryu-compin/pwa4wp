@@ -14,13 +14,13 @@
 
 $manifestSettings = $data['manifestSettings'];
 $cacheSettings    = $data['cacheSettings'];
-if(file_exists(get_home_path() . PWA4WP_MANIFEST_FILE))
+if(file_exists($_SERVER['DOCUMENT_ROOT'] ."/" . PWA4WP_MANIFEST_FILE))
 {
     update_option('pwa4wp_manifest_created',true);
 }else{
     update_option('pwa4wp_manifest_created',false);
 }
-if(file_exists(get_home_path() . PWA4WP_SERVICEWORKER_FILE)) {
+if(file_exists($_SERVER['DOCUMENT_ROOT'] ."/" . PWA4WP_SERVICEWORKER_FILE)) {
     update_option('pwa4wp_sw_created',true);
 }else{
     update_option('pwa4wp_sw_created',false);
@@ -43,11 +43,40 @@ if(file_exists(get_home_path() . PWA4WP_SERVICEWORKER_FILE)) {
     }
     ?>
     <ul>
+        <li>
+            <p class="status_display">
+                HTTPS :
+                <?php
+                if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+                    // icon-green
+                    echo('<span class="status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/green-35.png""></span>');
+                    _e("working","pwa4wp");
+                }else{
+                    // icon-red
+                    echo('<span class="status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/red-35.png"></span>');
+                    _e("not working","pwa4wp");
+                }
+                ?>
+                <br>
+            </p>
+        </li>
+        <?php
+        // if multi site and unified mode, get parent sites property.
+        if((is_multisite())&&(get_blog_option( 1, 'pwa4wp_multisite_unify', $default = 1 ) == 0)) {
+            $manifest_created = get_blog_option( 1, 'pwa4wp_manifest_created', $default = false );
+            $sw_created = get_blog_option( 1, 'pwa4wp_sw_created', $default = false );
+            $sw_installation = get_blog_option( 1, 'pwa4wp_sw_installation_switch', $default = false );
+        }else{
+            $manifest_created = get_option('pwa4wp_manifest_created');
+            $sw_created = get_option('pwa4wp_sw_created');
+            $sw_installation = get_option('pwa4wp_sw_installation_switch');
+        }
+        ?>
     <li>
         <p class="status_display">
         Manifest :
         <?php
-            if(get_option('pwa4wp_manifest_created')){
+            if($manifest_created){
                 // icon-green
                 echo('<span class="status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/green-35.png""></span>');
                 _e("working","pwa4wp");
@@ -64,7 +93,7 @@ if(file_exists(get_home_path() . PWA4WP_SERVICEWORKER_FILE)) {
         <p class="status_display">
         ServiceWorker :
         <?php
-        if(get_option('pwa4wp_sw_created')){
+        if($sw_created){
             // icon-green
             echo('<span class="status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/green-35.png""></span>');
             _e("working","pwa4wp");
@@ -82,36 +111,181 @@ if(file_exists(get_home_path() . PWA4WP_SERVICEWORKER_FILE)) {
             <p class="status_display">
                 PWA status  :
 			    <?php
-			    if(get_option('pwa4wp_sw_installation_switch')){
-				    // icon-green
-				    echo('<span class="status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/green-35.png""></span>');
-				    _e("working","pwa4wp");
-				    echo('&nbsp;&nbsp;<button  id="pwa4wp_stop_button" type="submit">');
-				    _e("STOP");
-				    echo('</button>');
-				    echo('<input type="hidden" name="pwa_active" value="STOP">');
-			    }else{
-				    // icon-red
-				    echo('<span class="status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/red-35.png"></span>');
-				    _e("not working","pwa4wp");
-				    echo('&nbsp;&nbsp;<button id="pwa4wp_start_button" type="submit">');
-				    _e("START");
-				    echo('</button>');
-				    echo('<input type="hidden" name="pwa_active" value="START">');
-			    }
+                if(((!is_main_site())&&(is_multisite())&&(get_blog_option( 1, 'pwa4wp_multisite_unify', $default = 1 ) == 0))) {
+                    if ($sw_installation) {
+                        // icon-green
+                        echo('<span class="status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/green-35.png""></span>');
+                        _e("working", "pwa4wp");
+                        echo "&nbsp;(&nbsp;";
+                        _e("PWA is multi site unified mode.", "pwa4wp");
+                        echo "&nbsp;)&nbsp;";
+                    } else {
+                        // icon-red
+                        echo('<span class="status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/red-35.png"></span>');
+                        _e("not working", "pwa4wp");
+                        echo "&nbsp;(&nbsp;";
+                        _e("PWA is multi site unified mode.", "pwa4wp");
+                        echo "&nbsp;)&nbsp;";
+                    }
+
+                }else {
+                    if ($sw_installation) {
+                        // icon-green
+                        echo('<span class="status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/green-35.png""></span>');
+                        _e("working", "pwa4wp");
+                        echo('&nbsp;&nbsp;<button  id="pwa4wp_stop_button" type="submit">');
+                        _e("STOP");
+                        echo('</button>');
+                        echo('<input type="hidden" name="pwa_active" value="STOP">');
+                    } else {
+                        // icon-red
+                        echo('<span class="status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/red-35.png"></span>');
+                        _e("not working", "pwa4wp");
+                        echo('&nbsp;&nbsp;<button id="pwa4wp_start_button" type="submit">');
+                        _e("START");
+                        echo('</button>');
+                        echo('<input type="hidden" name="pwa_active" value="START">');
+                    }
+                }
 			    ?>
                 <br>
             </p>
                 <span class="small-text">
 	            <?php _e("If PWA status is 'working', this plugin will insert Manifest link and ServiceWorker installation tag into page headers."); ?>
+                <br>
+                <?php _e("HTTPS status check is only protocol check. Please make sure that your all contents and embeded contents in pages are connected by https."); ?>
                 </span>
                 <br>
                 <br>
                 <?php wp_nonce_field( 'my-nonce-key1', 'my-submenu1' ); ?>
             </form>
         </li>
-
     </ul>
+
+
+    <h2><?php _e("Defer PWA installation","pwa4wp");?></h2>
+    <ul>
+        <li>
+            <span class="itemname">
+                <?php _e( "Installation mode", "pwa4wp" ); ?>
+            </span>
+            <?php
+                if(((!is_main_site())&&(is_multisite())&&(get_blog_option( 1, 'pwa4wp_multisite_unify', $default = 1 ) == 0))) {
+            ?>
+            <span class="field">
+                <?php if ( get_blog_option( 1,  'pwa4wp_defer_install', $default = 1 ) == 0 ) {
+	                _e( "Defer PWA install.( Make install popup by your own, or never show popup )" );
+                }else{
+	                _e( "Show PWA install popup by browser default." );
+                }
+                ?>
+                <br>
+	            <?php _e("This site is not main site.","pwa4wp"); ?><br>
+	            <?php _e("You can change this setting in main site config panel.","pwa4wp"); ?><br>
+
+            </span>
+
+            <?php
+                }else{
+            ?>
+
+            <form enctype="multipart/form-data" id="pwa4wp-installmode-setting-form" method="post" action="">
+                <span class="field">
+                    <label>
+                    <input type="radio" name="defer_install"
+                           value="0" <?php if ( get_option( 'pwa4wp_defer_install', $default = 1 ) == 0 ) {
+	                    echo "checked=\"checked\"";
+                    } ?>>&nbsp;<?php _e( "Defer PWA install.( Make install popup by your own, or never show popup )" ); ?>
+                    </label><br>
+                    <label>
+                        <input type="radio" name="defer_install"
+                               value="1" <?php if ( get_option( 'pwa4wp_defer_install', $default = 1 ) == 1 ) {
+	                        echo "checked=\"checked\"";
+                        } ?>>&nbsp;<?php _e( "Show PWA install popup by browser default." ); ?>
+                    </label><br><br>
+		        <?php wp_nonce_field( 'my-nonce-key4', 'my-submenu4' ); ?>
+                <button id="pwa4wp_defer_install_button" type="submit">
+			        <?php _e( "Update", "pwa4wp" ); ?>
+                </button>
+                </span>
+                <br>
+	            <?php _e("You can set PWA installation button / popup by your own, or make PWA installation disabled.","pwa4wp"); ?><br>
+	            <?php _e("In default setting, PWA installation popup is entrusted to the browser.","pwa4wp"); ?><br>
+	            <?php _e("To get more information about this setting, please read this page below.","pwa4wp"); ?><br>
+                <a href="https://github.com/ryu-compin/pwa4wp/wiki/How-to-make-your-own-PWA-installation-button" target="_blank">https://github.com/ryu-compin/pwa4wp/wiki/How-to-make-your-own-PWA-installation-button</a>
+
+            <?php
+                }
+            ?>
+
+
+            </form>
+
+        </li>
+    </ul>
+
+
+
+<?php
+        // multiple site
+        if(is_multisite()) :
+?>
+        <h2><?php _e("Multi site mode","pwa4wp");?></h2>
+        <ul>
+            <li>
+                <?php
+                    if(is_main_site()):
+                ?>
+                <form enctype="multipart/form-data" id="pwa4wp-multisite-setting-form" method="post" action="">
+                <span class="itemname">
+                    <?php _e("Multi site mode","pwa4wp"); ?>
+                </span>
+                <span class="field">
+                    <label>
+                    <input type="radio" name="multisite_unify" value="0" <?php if(get_option('pwa4wp_multisite_unify', $default = 1) == 0){echo "checked=\"checked\"";} ?>>&nbsp;<?php _e("Unify all multi site into one PWA.");?>
+                    </label><br>
+                    <label>
+                        <input type="radio" name="multisite_unify" value="1" <?php if(get_option('pwa4wp_multisite_unify', $default = 1) == 1){echo "checked=\"checked\"";} ?>>&nbsp;<?php _e("Make PWAs for each multi sites individually.");?>
+                    </label><br><br>
+                </span>
+                    <?php wp_nonce_field( 'my-nonce-key3', 'my-submenu3' ); ?>
+                    <button  id="pwa4wp_multisitemode_button" type="submit">
+                        <?php _e("Update","pwa4wp");?>
+                    </button><br>
+                </form>
+                <?php _e("Configulation for multi sites.","pwa4wp"); ?><br>
+                <?php _e("Select PWA mode whether to unify PWA for all multi sites.","pwa4wp"); ?><br>
+
+                <?php
+                else:
+                ?>
+                    <?php _e("Configulation for multi sites.","pwa4wp"); ?><br>
+                    <?php _e("Current config","pwa4wp") ?>&nbsp;:&nbsp;[&nbsp;
+                    <?php
+                        if( get_blog_option( 1, 'pwa4wp_multisite_unify', $default = 1 ) == 0){
+                            _e("Unified","pwa4wp");
+                            //echo " -" . get_blog_option( 1, 'pwa4wp_multisite_unify', $default = 1 ) . "-";
+                        }else{
+                            _e("Individual","pwa4wp");
+                            //echo " -" . get_blog_option( 1, 'pwa4wp_multisite_unify', $default = 1 ) . "-";
+                        }
+                    ?>&nbsp;]<br>
+                    <?php _e("This site is not main site.","pwa4wp"); ?><br>
+                    <?php _e("You can change this setting in main site config panel.","pwa4wp"); ?><br>
+                <?php
+                endif;
+                ?>
+            </li>
+        </ul>
+
+<?php
+        // end multiple site
+        endif;
+?>
+
+
+
+
 <hr>
     <h2><?php _e("Notice","pwa4wp"); ?></h2>
     <ul>

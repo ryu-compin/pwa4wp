@@ -30,14 +30,14 @@ class pwa4wp_Deactivator {
 	 * @since    1.0.2
 	 */
 	public static function deactivate() {
-        if(file_exists(get_home_path() . PWA4WP_MANIFEST_FILE))
+        if(file_exists($_SERVER['DOCUMENT_ROOT'] ."/" . PWA4WP_MANIFEST_FILE))
         {
-            unlink(get_home_path() . PWA4WP_MANIFEST_FILE);
+            unlink($_SERVER['DOCUMENT_ROOT'] ."/" . PWA4WP_MANIFEST_FILE);
         }
         update_option('pwa4wp_manifest_created',false);
-        if(file_exists(get_home_path() . PWA4WP_SERVICEWORKER_FILE))
+        if(file_exists($_SERVER['DOCUMENT_ROOT'] ."/" . PWA4WP_SERVICEWORKER_FILE))
         {
-            unlink(get_home_path() . PWA4WP_SERVICEWORKER_FILE);
+            unlink($_SERVER['DOCUMENT_ROOT'] ."/" . PWA4WP_SERVICEWORKER_FILE);
         }
         update_option('pwa4wp_sw_created',false);
 		update_option('pwa4wp_sw_installation_switch', false);

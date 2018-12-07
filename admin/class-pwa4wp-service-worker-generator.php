@@ -4,7 +4,7 @@
 class pwa4wp_Service_Worker_Generator {
 
 	private $plugin_root_url;
-	private $version = '1.0.7';
+	private $version = '1.1.0';
 
 	public function __construct( $plugin_root ) {
 		$this->plugin_root_url = $plugin_root;
@@ -15,6 +15,7 @@ class pwa4wp_Service_Worker_Generator {
         $data['initial-caches'][] = $offlinePage;
 		$initialCaches   = json_encode( $data['initial-caches'] );
         $data['exclusions'][] = "^.*/wp-admin/.*";
+		$data['exclusions'][] = "^.*/wp-login.php$";
 		$exclusions = json_encode($data['exclusions']);
         $ttl = intval($data['ttl'])*60;
 		$cachePlan = $data['cache_plan'];
@@ -22,6 +23,7 @@ class pwa4wp_Service_Worker_Generator {
 		$cacheManagerUrl = $this->plugin_root_url . 'public/js/pwa4wp-cache-manager.js?' . $this->version .".". get_option('pwa4wp_sw_version');
 		$dexieUrl        = $this->plugin_root_url . 'public/js/lib/dexie.min.js?' . $this->version .".". get_option('pwa4wp_sw_version');
 		$debug_msg = $data['debug_msg'];
+
 		$script          = <<<SCRIPT
 const cacheSettings = {
 	name: "pwa4wp-cache-${swVersion}",
@@ -32,9 +34,9 @@ const cacheSettings = {
 	offlinePage : "${offlinePage}",
 	cachePlan : "${cachePlan}",
 	dbVersion : "${swVersion}",
-	debug_msg : "${debug_msg}"
+	debug_msg : "${debug_msg}",
 };
-
+var pwa4wp_installevent;
 importScripts('${cacheManagerUrl}');
 importScripts('${dexieUrl}');
 const db = new Dexie('pwa4wp-db');
