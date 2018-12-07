@@ -127,7 +127,9 @@ class pwa4wp_CacheManager {
                     this.db.caches.delete(request.url);
                     return this.remoteFirstFetch(request);
                 }
-                console.log("elapsed time from cached : " + (Date.now() - data.cached_at).toString() + " -> still can be use ( < " + data.ttl + " x1000 )");
+                if(this.debug) {
+                    console.log("elapsed time from cached : " + (Date.now() - data.cached_at).toString() + " -> still can be use ( < " + data.ttl + " x1000 )");
+                }
 
                 return this.caches.match(request).then((response) => {
                     if(this.debug){
