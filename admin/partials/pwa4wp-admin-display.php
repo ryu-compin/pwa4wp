@@ -161,6 +161,71 @@ if(file_exists($_SERVER['DOCUMENT_ROOT'] ."/" . PWA4WP_SERVICEWORKER_FILE)) {
             </form>
         </li>
     </ul>
+
+
+    <h2><?php _e("Defer PWA installation","pwa4wp");?></h2>
+    <ul>
+        <li>
+            <span class="itemname">
+                <?php _e( "Installation mode", "pwa4wp" ); ?>
+            </span>
+            <?php
+                if(((!is_main_site())&&(is_multisite())&&(get_blog_option( 1, 'pwa4wp_multisite_unify', $default = 1 ) == 0))) {
+            ?>
+            <span class="field">
+                <?php if ( get_blog_option( 1,  'pwa4wp_defer_install', $default = 1 ) == 0 ) {
+	                _e( "Defer PWA install.( Make install popup by your own, or never show popup )" );
+                }else{
+	                _e( "Show PWA install popup by browser default." );
+                }
+                ?>
+                <br>
+	            <?php _e("This site is not main site.","pwa4wp"); ?><br>
+	            <?php _e("You can change this setting in main site config panel.","pwa4wp"); ?><br>
+
+            </span>
+
+            <?php
+                }else{
+            ?>
+
+            <form enctype="multipart/form-data" id="pwa4wp-installmode-setting-form" method="post" action="">
+                <span class="field">
+                    <label>
+                    <input type="radio" name="defer_install"
+                           value="0" <?php if ( get_option( 'pwa4wp_defer_install', $default = 1 ) == 0 ) {
+	                    echo "checked=\"checked\"";
+                    } ?>>&nbsp;<?php _e( "Defer PWA install.( Make install popup by your own, or never show popup )" ); ?>
+                    </label><br>
+                    <label>
+                        <input type="radio" name="defer_install"
+                               value="1" <?php if ( get_option( 'pwa4wp_defer_install', $default = 1 ) == 1 ) {
+	                        echo "checked=\"checked\"";
+                        } ?>>&nbsp;<?php _e( "Show PWA install popup by browser default." ); ?>
+                    </label><br><br>
+		        <?php wp_nonce_field( 'my-nonce-key4', 'my-submenu4' ); ?>
+                <button id="pwa4wp_defer_install_button" type="submit">
+			        <?php _e( "Update", "pwa4wp" ); ?>
+                </button>
+                </span>
+                <br>
+	            <?php _e("You can set PWA installation button / popup by your own, or make PWA installation disabled.","pwa4wp"); ?><br>
+	            <?php _e("In default setting, PWA installation popup is entrusted to the browser.","pwa4wp"); ?><br>
+	            <?php _e("To get more information about this setting, please read this page below.","pwa4wp"); ?><br>
+                <a href="https://github.com/ryu-compin/pwa4wp/wiki/How-to-make-your-own-PWA-installation-button" target="_blank">https://github.com/ryu-compin/pwa4wp/wiki/How-to-make-your-own-PWA-installation-button</a>
+
+            <?php
+                }
+            ?>
+
+
+            </form>
+
+        </li>
+    </ul>
+
+
+
 <?php
         // multiple site
         if(is_multisite()) :

@@ -30,13 +30,26 @@ class pwa4wp_Activator {
 	 * @since    1.0.2
 	 */
 	public static function activate() {
-	    if(get_option( 'pwa4wp_app_icons' ) == false){
+	    if(get_option( 'pwa4wp_sw_version' ) == false){
             update_option('pwa4wp_sw_version',0);
         }
-        update_option('pwa4wp_manifest_created',false);
-        update_option('pwa4wp_sw_created',false);
-        update_option('pwa4wp_push_enable',false);
-		update_option('pwa4wp_sw_installation_switch', true);
-        update_option('pwa4wp_multisite_unify', 1);
+		if(get_option('pwa4wp_manifest_created') == false) {
+			update_option( 'pwa4wp_manifest_created', false );
+		}
+		if(get_option('pwa4wp_sw_created') == false) {
+			update_option( 'pwa4wp_sw_created', false );
+		}
+		if(get_option('pwa4wp_push_enable') == false) {
+			update_option( 'pwa4wp_push_enable', false );
+		}
+		if(get_option('pwa4wp_sw_installation_switch', true) == true) {
+			update_option( 'pwa4wp_sw_installation_switch', true );
+		}
+		if(get_option('pwa4wp_multisite_unify') == false) {
+			update_option( 'pwa4wp_multisite_unify', 0 );
+		}
+        if(get_option('pwa4wp_defer_install') == false){
+	        update_option('pwa4wp_defer_install', 1);
+        }
 	}
 }

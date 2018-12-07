@@ -69,27 +69,23 @@ class pwa4wp_Public {
 	 * @since    1.0.2
 	 */
 	public function enqueue_scripts() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in pwa4wp_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The pwa4wp_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-        if((!is_multisite())||(is_main_site())||((is_multisite())&&(get_blog_option( 1, 'pwa4wp_multisite_unify', $default = 1 ) == 1))) {
+		if((!is_multisite())||(is_main_site())||((is_multisite())&&(get_blog_option( 1, 'pwa4wp_multisite_unify', $default = 1 ) == 1))) {
             $sw_switch = get_option('pwa4wp_sw_installation_switch');
+            $sw_version = get_option('pwa4wp_sw_version') ;
+	        $sw_scope = get_option('pwa4wp_manifest')['scope'];
+            $a2hs_switch = get_option( 'pwa4wp_defer_install', $default = 1 );
         }else{
             $sw_switch = get_blog_option( 1, 'pwa4wp_sw_installation_switch');
+	        $sw_version = get_blog_option( 1,'pwa4wp_sw_version') ;
+	        $sw_scope = get_blog_option( 1,'pwa4wp_manifest')['scope'];
+	        $a2hs_switch = get_blog_option( 1,  'pwa4wp_defer_install', $default = 1 );
         }
         if($sw_switch){
-		    if(!empty(get_option('pwa4wp_manifest')['scope'])){
-		        echo "<!--" . get_option('pwa4wp_manifest')['scope'] . "-->";
-                echo "<script>if ('serviceWorker' in navigator) {navigator.serviceWorker.register('/" . PWA4WP_SERVICEWORKER_FILE . "', {scope:'" . get_option('pwa4wp_manifest')['scope'] . "'});}</script>";
+        	if($a2hs_switch == 0){
+		        echo "<script>if ('serviceWorker' in navigator) {import('" . plugin_dir_url( __FILE__ ) . 'js/pwa4wp-a2hs-controler.js?' . $this->version .".". $sw_version . "');}</script>";
+	        }
+		    if($sw_scope != ""){
+                echo "<script>if ('serviceWorker' in navigator) {navigator.serviceWorker.register('/" . PWA4WP_SERVICEWORKER_FILE . "', {scope:'" . $sw_scope . "'});}</script>";
             }else{
                 echo "<script>if ('serviceWorker' in navigator) {navigator.serviceWorker.register('/" . PWA4WP_SERVICEWORKER_FILE . "', {scope:'/');}</script>";
             }
@@ -104,8 +100,12 @@ class pwa4wp_Public {
         }
         if($sw_switch) {
 			echo '<link rel="manifest" href="/' . PWA4WP_MANIFEST_FILE . '" />';
-			echo '<meta name="theme-color" content="' . get_option( 'pwa4wp_manifest' )['theme_color'] . '"/>';
-			$manifest = get_option( 'pwa4wp_manifest' );
+	        if((!is_multisite())||(is_main_site())||((is_multisite())&&(get_blog_option( 1, 'pwa4wp_multisite_unify', $default = 1 ) == 1))) {
+		        $manifest = get_option( 'pwa4wp_manifest' );
+	        }else{
+		        $manifest = get_blog_option( 1, 'pwa4wp_manifest' );
+	        }
+	        echo '<meta name="theme-color" content="' . $manifest['theme_color'] . '"/>';
 			If (!empty($manifest['icons'])){
                 foreach ( $manifest['icons'] as $icon ) {
                     echo '<link rel="apple-touch-icon" sizes="' . $icon['sizes'] . '" href="' . $icon['src'] . '">';

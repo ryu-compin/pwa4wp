@@ -253,6 +253,16 @@ class pwa4wp_Admin {
             }else{
                 update_option('pwa4wp_multisite_unify', 1);
             }
+		} else if ( isset( $_POST['my-submenu4'] ) && $_POST['my-submenu4'] && check_admin_referer( 'my-nonce-key4', 'my-submenu4' ) ) {
+			// toggle PWA tag
+			if($_POST['defer_install'] == "0"){
+				update_option('pwa4wp_defer_install', 0);
+			}else{
+				update_option('pwa4wp_defer_install', 1);
+			}
+			//if(get_option('pwa4wp_sw_created')){
+			//	$this->generateServiceWorker(false);
+			//}
 
         }
 	}
@@ -372,8 +382,12 @@ class pwa4wp_Admin {
 	}
 
 	private function generateServiceWorker( $data ) {
+		if($data == false){
+			$data = get_option( 'pwa4wp_cache_settings' );
+		}else{
+			update_option( 'pwa4wp_cache_settings', $data );
+		}
 		require_once plugin_dir_path( __FILE__ ) . 'class-pwa4wp-service-worker-generator.php';
-		update_option( 'pwa4wp_cache_settings', $data );
 		$generator = new pwa4wp_Service_Worker_Generator( plugin_dir_url( dirname( __FILE__ ) ) );
 		$script    = $generator->generate( $data );
         // changed file path to document root directory

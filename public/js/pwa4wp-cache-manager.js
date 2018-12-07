@@ -63,6 +63,7 @@ class pwa4wp_CacheManager {
             }
             return this.onFetch(event);
         });
+
     }
 
     onFetch(event) {
