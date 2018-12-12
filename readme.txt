@@ -4,7 +4,7 @@ Donate link: https://paypal.me/pwa4wp/10USD
 Tags: pwa, progressive web app, progressive web apps, pwa4wp, mobile, responsive, offline, cache
 Requires at least: 4.4
 Tested up to: 5.0
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 Requires PHP: 5.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -67,7 +67,7 @@ There is information about updates and issues.
 3. Configure and generate 'ServiceWorker'
 
 == Upgrade Notice ==
-= 1.1.2 =
+= 1.1.2 / 1.1.3 =
 Update:
 Multi-site supported.
 Defer PWA installation option added.
@@ -75,6 +75,10 @@ Fixed issue:
 Fixed a2hs control js error.
 
 == Changelog ==
+= 1.1.3 =
+Fixed issue:
+in pwa4wp-a2hs-controller.js, event didn't pushed into global variable.
+
 = 1.1.2 =
 Fixed issue:
 Fixed a2hs control js error.
