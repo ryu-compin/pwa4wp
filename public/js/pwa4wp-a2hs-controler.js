@@ -4,7 +4,7 @@ console.log("a2hs controller loaded");
     window.addEventListener('beforeinstallprompt', function (event) {
         console.log("install event occured");
         event.preventDefault();
-        pwa4wp_installevent = event;
+        window.pwa4wp_installevent = event;
         if(typeof pwa4wp_open_install == 'function'){
             pwa4wp_open_install();
             console.log("call function - pwa4wp_open_install");
