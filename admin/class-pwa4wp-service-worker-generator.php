@@ -4,7 +4,7 @@
 class pwa4wp_Service_Worker_Generator {
 
 	private $plugin_root_url;
-	private $version = '1.1.2';
+	private $version = '1.1.4';
 
 	public function __construct( $plugin_root ) {
 		$this->plugin_root_url = $plugin_root;
@@ -16,6 +16,7 @@ class pwa4wp_Service_Worker_Generator {
 		$initialCaches   = json_encode( $data['initial-caches'] );
         $data['exclusions'][] = "^.*/wp-admin/.*";
 		$data['exclusions'][] = "^.*/wp-login.php$";
+        $data['exclusions'][] = "^.*[\?&]preview=true.*$";
 		$exclusions = json_encode($data['exclusions']);
         $ttl = intval($data['ttl'])*60;
 		$cachePlan = $data['cache_plan'];
