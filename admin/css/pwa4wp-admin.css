@@ -2,83 +2,69 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
-ul{
-
-}
-li{
+.pwa4wp_list{
     margin-left: 4em;
     display: block;
 }
-.itemname{
+.pwa4wp_itemname{
     float: left;
     font-weight: bold;
 }
-.field{
+.pwa4wp_field{
     display: block;
     margin-left: 10em ;
 }
-.itemname-child{
-    float: left;
-}
-.field-child{
-    display: block;
-    margin-left: 6em ;
-}
-#icon-list li{
-    margin-left: 10em ;
-
-}
-.longtext{
+.pwa4wp_longtext{
     width: 32em;
 }
-.midtext{
+.pwa4wp_midtext{
     width: 20em;
 }
-.shorttext{
+.pwa4wp_shorttext{
     width: 12em;
 }
-.redalert{
+.pwa4wp_redalert{
     color: red;
     font-weight: bold;
 }
-.red{
+.pwa4wp_red{
     color: red;
 }
-.innerlist{
+.pwa4wp_innerlist{
     margin-left: 0em;
 }
-.msgArea{
+.pwa4wp_msgArea{
     display: block;
     margin-left: 2em;
     background-color: #ffe8e8;
     padding:2em;
 
 }
-.msgArea li{
+.pwa4wp_msgArea li{
     margin-left: 0em;
 }
-.status_display{
+.pwa4wp_status_display{
     font-size: large;
     position: relative;
     margin: 1em;
     padding: 0em;
 }
-.status_icon {
+.pwa4wp_status_icon {
     margin-left: 0.5em;
     margin-right: 0.5em;
     display: inline-block;
     position: relative;
     top: 0.2em;
 }
-.status_icon img{
+.pwa4wp_status_icon img{
     width: 1.2em;
     height: 1.2em;
 }
-.submit_button_area{
+.pwa4wp_submit_button_area{
     display: block;
     margin-left: 4em ;
 }
-.submit_button {
+.pwa4wp_submit_button {
     font-size: large;
     position: relative;
     display: inline-block;
@@ -96,11 +82,11 @@ li{
     cursor: hand;
 }
 
-.submit_button:active {
+.pwa4wp_submit_button:active {
     border-bottom: solid 2px #666666;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
-.square_btn {
+.pwa4wp_square_btn {
     font-size: large;
     position: relative;
     display: inline-block;
@@ -115,22 +101,22 @@ li{
     font-weight: bold;
 }
 
-.square_btn:active {
+.pwa4wp_square_btn:active {
     border-bottom: solid 2px #fd9535;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
-.donate_button_area{
+.pwa4wp_donate_button_area{
     display: block;
     margin-left: 4em ;
 }
-.hiddenMsg{
+.pwa4wp_hiddenMsg{
     display: none;
 }
-.regextestform{
+.pwa4wp_regextestform{
     display: flow;
     height: 0;
     opacity: 0;
 }
-.regexttestinner{
+.pwa4wp_regexttestinner{
     height: auto;
 }

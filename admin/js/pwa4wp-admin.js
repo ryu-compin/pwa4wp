@@ -30,10 +30,10 @@
      */
     $(function() {
         $('#add-initial-caches').on('click', function () {
-            $('#initial-cache-list').append('<li class="innerlist"><input name="initial-caches[]" class="longtext"></li>');
+            $('#initial-cache-list').append('<li class="pwa4wp_list pwa4wp_innerlist"><input name="initial-caches[]" class="pwa4wp_longtext"></li>');
         });
         $('#add-exclusions').on('click', function () {
-            $('#exclusion-list').append('<li class="innerlist"><input name="exclusions[]" class="longtext"></li>');
+            $('#exclusion-list').append('<li class="pwa4wp_list pwa4wp_innerlist"><input name="exclusions[]" class="pwa4wp_longtext"></li>');
         });
         let themeColor = $("#themeColorPicker").val();
         console.info(themeColor);
@@ -59,10 +59,10 @@
                         let regtext;
                         regtext = EscVal($('input',this).val());
                         if((typeof(regtext) !== 'undefined')&&(regtext != "")){
-                            appendText = appendText + "<li>\n";
+                            appendText = appendText + "<li class=\"pwa4wp_list\">\n";
                             appendText = appendText + "Test for [" + regtext + "]\n";
                             if((new RegExp(regtext)).test(testText)){
-                                appendText = appendText + "&nbsp;:&nbsp;<span class=\"red\">Hit</span>"
+                                appendText = appendText + "&nbsp;:&nbsp;<span class=\"pwa4wp_red\">Hit</span>"
                                 regTestResult = true;
                             }else{
                                 appendText = appendText + "&nbsp;:&nbsp;None"

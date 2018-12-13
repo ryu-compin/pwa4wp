@@ -27,32 +27,32 @@ if(function_exists('mb_substr')){
 <h1>PWA for WordPress Configulations</h1>
 <h2><?php _e("Manifest Configulations","pwa4wp"); ?></h2>
     <?php if($data['errorMsg']){
-        echo('<ul class="msgArea">');
-        echo("<li><h3>");
+        echo('<ul class="pwa4wp_msgArea">');
+        echo("<li class=\"pwa4wp_list\"><h3>");
         _e("Errors or Messages.");
         echo("</h3></li>");
         foreach ($data['errorMsg'] as $msg){
-            echo("<li>&gt;&gt;&nbsp;" . $msg ."</li>");
+            echo("<li class=\"pwa4wp_list\">&gt;&gt;&nbsp;" . $msg ."</li>");
         }
         echo ('</ul>');
     }
     ?>
 <form enctype="multipart/form-data" id="pwa4wp-manifest-setting-form" method="post" action="">
     <ul>
-        <li>
+        <li class="pwa4wp_list">
             <label>
-                <span class="itemname">
+                <span class="pwa4wp_itemname">
                     Site Name
                 </span>
-                <span class="field">
+                <span class="pwa4wp_field">
                     <?php
                         if((empty($manifestSettings['name']))||($manifestSettings['name'] == "")):
                     ?>
-                            <input type="text" id="test" name="name" class="midtext" value="<?php esc_html_e( bloginfo("name") ); ?>">
+                            <input type="text" id="test" name="name" class="pwa4wp_midtext" value="<?php esc_html_e( bloginfo("name") ); ?>">
                     <?php
                         else:
                     ?>
-                            <input type="text" id="test" name="name" class="midtext" value="<?php esc_html_e( $manifestSettings['name'] ); ?>">
+                            <input type="text" id="test" name="name" class="pwa4wp_midtext" value="<?php esc_html_e( $manifestSettings['name'] ); ?>">
                     <?php
                         endif;
                     ?>
@@ -62,21 +62,21 @@ if(function_exists('mb_substr')){
                 </span>
             </label>
         </li>
-        <li>
+        <li class="pwa4wp_list">
             <hr>
             <label>
-                <span class="itemname">
+                <span class="pwa4wp_itemname">
                     Short Name
                 </span>
-                <span class="field">
+                <span class="pwa4wp_field">
                 <?php
                 if((empty($manifestSettings['short_name']))||($manifestSettings['short_name'] == "")):
                     ?>
-                    <input type="text" id="test" name="short_name" class="midtext" value="<?php esc_html_e( bloginfo("name") ); ?>">
+                    <input type="text" id="test" name="short_name" class="pwa4wp_midtext" value="<?php esc_html_e( bloginfo("name") ); ?>">
                 <?php
                 else:
                     ?>
-                    <input type="text" id=" test" name="short_name" class="midtext" value="<?php esc_html_e( $manifestSettings['short_name'] ); ?>">
+                    <input type="text" id=" test" name="short_name" class="pwa4wp_midtext" value="<?php esc_html_e( $manifestSettings['short_name'] ); ?>">
                 <?php
                 endif;
                 ?>
@@ -86,21 +86,21 @@ if(function_exists('mb_substr')){
                 </span>
             </label>
         </li>
-        <li>
+        <li class="pwa4wp_list">
             <hr>
             <label>
-                <span class="itemname">
+                <span class="pwa4wp_itemname">
                     description
                 </span>
-                <span class="field">
+                <span class="pwa4wp_field">
                 <?php
                 if((empty($manifestSettings['description']))||($manifestSettings['description'] == "")):
                     ?>
-                    <input type="text" id="test" name="description" class="longtext" value="<?php esc_html_e( bloginfo("description") ); ?>">
+                    <input type="text" id="test" name="description" class="pwa4wp_longtext" value="<?php esc_html_e( bloginfo("description") ); ?>">
                 <?php
                 else:
                     ?>
-                    <input type="text" name="description" class="longtext" value="<?php esc_html_e( $manifestSettings['description'] ); ?>">
+                    <input type="text" name="description" class="pwa4wp_longtext" value="<?php esc_html_e( $manifestSettings['description'] ); ?>">
                 <?php
                 endif;
                 ?>
@@ -111,21 +111,21 @@ if(function_exists('mb_substr')){
                 </span>
             </label>
         </li>
-        <li>
+        <li class="pwa4wp_list">
             <hr>
             <label>
-                <span class="itemname">
+                <span class="pwa4wp_itemname">
                     start_url
                 </span>
-                <span class="field">
+                <span class="pwa4wp_field">
                 <?php
                 if((empty($manifestSettings['start_url']))||($manifestSettings['start_url'] == "")):
                     ?>
-                    <input type="text" id="test" name="start_url" class="midtext" value="/">
+                    <input type="text" id="test" name="start_url" class="pwa4wp_midtext" value="/">
                 <?php
                 else:
                     ?>
-                    <input type="text" name="start_url" class="midtext" value="<?php esc_html_e( $manifestSettings['start_url'] ); ?>">
+                    <input type="text" name="start_url" class="pwa4wp_midtext" value="<?php esc_html_e( $manifestSettings['start_url'] ); ?>">
                 <?php
                 endif;
                 ?>
@@ -135,21 +135,21 @@ if(function_exists('mb_substr')){
                 </span>
             </label>
         </li>
-        <li>
+        <li class="pwa4wp_list">
             <hr>
             <label>
-                <span class="itemname">
+                <span class="pwa4wp_itemname">
                     scope
                 </span>
-                <span class="field">
+                <span class="pwa4wp_field">
                 <?php
                 if((empty($manifestSettings['scope']))||($manifestSettings['scope'] == "")):
                     ?>
-                    <input type="text" id="test" name="scope" class="midtext" value="/">
+                    <input type="text" id="test" name="scope" class="pwa4wp_midtext" value="/">
                 <?php
                 else:
                     ?>
-                    <input type="text" name="scope" class="midtext" value="<?php esc_html_e( $manifestSettings['scope'] ); ?>">
+                    <input type="text" name="scope" class="pwa4wp_midtext" value="<?php esc_html_e( $manifestSettings['scope'] ); ?>">
                 <?php
                 endif;
                 ?>
@@ -163,12 +163,12 @@ if(function_exists('mb_substr')){
             <br>
 
         </li>
-        <li>
+        <li class="pwa4wp_list">
             <hr>
-                <span class="itemname">
+                <span class="pwa4wp_itemname">
                     Icons
                 </span>
-            <span class="field">
+            <span class="pwa4wp_field">
                 <p>
                     <br>
 
@@ -177,12 +177,12 @@ if(function_exists('mb_substr')){
                     if(empty($iconurl) || ($iconurl == "")):
                 ?>
                     <img id="image-view" src="<?php echo  $thisPluginsPath.'/'. "public/img/no_img.png"; ?>" width="260"><br>
-                    <input name="iconurl" id="image-url" type="text" class="longtext">
+                    <input name="iconurl" id="image-url" type="text" class="pwa4wp_longtext">
                 <?php
                     else:
                 ?>
                         <img id="image-view" src="<?php echo $iconurl; ?>" width="260"><br>
-                        <input name="iconurl" id="image-url" type="text" class="longtext" value="<?php echo $iconurl; ?>">
+                        <input name="iconurl" id="image-url" type="text" class="pwa4wp_longtext" value="<?php echo $iconurl; ?>">
                 <?php
                     endif;
                 ?>
@@ -196,13 +196,13 @@ if(function_exists('mb_substr')){
             <br>
         </li>
 
-        <li>
+        <li class="pwa4wp_list">
             <hr>
             <label>
-                <span class="itemname">
+                <span class="pwa4wp_itemname">
                     theme_color
                 </span>
-                <span class="field">
+                <span class="pwa4wp_field">
                     <?php
                         if((empty($manifestSettings['theme_color']))||($manifestSettings['theme_color'] == "")){
                             $themeColor = background_color();
@@ -210,16 +210,16 @@ if(function_exists('mb_substr')){
                             $themeColor = $manifestSettings['theme_color'];
                         }
                     ?>
-                    <input name="theme_color" id="themeColorPicker" class="shorttext" value="<?php esc_html_e( $themeColor ); ?>">
+                    <input name="theme_color" id="themeColorPicker" class="pwa4wp_shorttext" value="<?php esc_html_e( $themeColor ); ?>">
                 </span>
             </label>
         </li>
-        <li>
+        <li class="pwa4wp_list">
             <label>
-                <span class="itemname">
+                <span class="pwa4wp_itemname">
                     background_color
                 </span>
-                <span class="field">
+                <span class="pwa4wp_field">
                     <?php
                     if((empty($manifestSettings['theme_color']))||($manifestSettings['theme_color'] == "")){
                         $bgColor =  background_color();
@@ -227,20 +227,20 @@ if(function_exists('mb_substr')){
                         $bgColor = $manifestSettings['background_color'];
                     }
                     ?>
-                    <input name="background_color" id="bgColorPicker" class="shorttext" value="<?php esc_html_e( $bgColor ); ?>">
+                    <input name="background_color" id="bgColorPicker" class="pwa4wp_shorttext" value="<?php esc_html_e( $bgColor ); ?>">
                     <br>
 	                <?php _e("Choose PWA theme color and background color.","pwa4wp"); ?><br>
                     <br>
                 </span>
             </label>
         </li>
-        <li>
+        <li class="pwa4wp_list">
             <hr>
             <label>
-                <span class="itemname">
+                <span class="pwa4wp_itemname">
                     display
                 </span>
-                <span class="field">
+                <span class="pwa4wp_field">
                     <select name="display">
                         <option value="fullscreen" <?php if((empty($manifestSettings['display']))||($manifestSettings['display'] == "fullscreen")) echo "selected"?> >
                             fullscreen
@@ -262,12 +262,12 @@ if(function_exists('mb_substr')){
             </label>
         </li>
 
-        <li>
+        <li class="pwa4wp_list">
             <label>
-                <span class="itemname">
+                <span class="pwa4wp_itemname">
                     orientation
                 </span>
-                <span class="field">
+                <span class="pwa4wp_field">
                     <select name="orientation">
                         <option value="any" <?php if((empty($manifestSettings['orientation']))||($manifestSettings['orientation'] == "any")) echo "selected"?> >
                             any
@@ -304,7 +304,7 @@ if(function_exists('mb_substr')){
         </li>
 		<?php wp_nonce_field( 'my-nonce-key', 'my-submenu' ); ?>
     </ul>
-    <span class="submit_button_area">
+    <span class="pwa4wp_submit_button_area">
         <button type="submit" class="submit_button">Save Manifest configurations</button>
     </span>
     <hr>

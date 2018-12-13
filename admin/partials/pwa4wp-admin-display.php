@@ -32,28 +32,28 @@ if(file_exists($_SERVER['DOCUMENT_ROOT'] ."/" . PWA4WP_SERVICEWORKER_FILE)) {
     <h1>PWA for WordPress Configulations</h1>
     <h2><?php _e("Current PWA Status","pwa4wp");?></h2>
     <?php if($data['errorMsg']){
-        echo('<ul class="msgArea">');
-        echo("<li><h3>");
+        echo('<ul class="pwa4wp_msgArea">');
+        echo('<li class="pwa4wp_list"><h3>');
         _e("Errors or Messages.");
         echo("</h3></li>");
         foreach ($data['errorMsg'] as $msg){
-            echo("<li>&gt;&gt;&nbsp;" . $msg ."</li>");
+            echo("<li class=\"pwa4wp_list\">&gt;&gt;&nbsp;" . $msg ."</li>");
         }
         echo ('</ul>');
     }
     ?>
     <ul>
-        <li>
-            <p class="status_display">
+        <li class="pwa4wp_list">
+            <p class="pwa4wp_status_display">
                 HTTPS :
                 <?php
                 if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
                     // icon-green
-                    echo('<span class="status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/green-35.png""></span>');
+                    echo('<span class="pwa4wp_status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/green-35.png""></span>');
                     _e("working","pwa4wp");
                 }else{
                     // icon-red
-                    echo('<span class="status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/red-35.png"></span>');
+                    echo('<span class="pwa4wp_status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/red-35.png"></span>');
                     _e("not working","pwa4wp");
                 }
                 ?>
@@ -72,56 +72,56 @@ if(file_exists($_SERVER['DOCUMENT_ROOT'] ."/" . PWA4WP_SERVICEWORKER_FILE)) {
             $sw_installation = get_option('pwa4wp_sw_installation_switch');
         }
         ?>
-    <li>
-        <p class="status_display">
+    <li class="pwa4wp_list">
+        <p class="pwa4wp_status_display">
         Manifest :
         <?php
             if($manifest_created){
                 // icon-green
-                echo('<span class="status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/green-35.png""></span>');
+                echo('<span class="pwa4wp_status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/green-35.png""></span>');
                 _e("working","pwa4wp");
             }else{
                 // icon-red
-                echo('<span class="status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/red-35.png"></span>');
+                echo('<span class="pwa4wp_status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/red-35.png"></span>');
                 _e("not working","pwa4wp");
             }
         ?>
         <br>
         </p>
     </li>
-    <li>
-        <p class="status_display">
+    <li class="pwa4wp_list">
+        <p class="pwa4wp_status_display">
         ServiceWorker :
         <?php
         if($sw_created){
             // icon-green
-            echo('<span class="status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/green-35.png""></span>');
+            echo('<span class="pwa4wp_status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/green-35.png""></span>');
             _e("working","pwa4wp");
         }else{
             // icon-red
-            echo('<span class="status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/red-35.png"></span>');
+            echo('<span class="pwa4wp_status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/red-35.png"></span>');
             _e("not working","pwa4wp");
         }
         ?>
         <br>
         </p>
     </li>
-        <li>
+        <li class="pwa4wp_list">
             <form enctype="multipart/form-data" id="pwa4wp-activate-toggle-form" method="post" action="">
-            <p class="status_display">
+            <p class="pwa4wp_status_display">
                 PWA status  :
 			    <?php
                 if(((!is_main_site())&&(is_multisite())&&(get_blog_option( 1, 'pwa4wp_multisite_unify', $default = 1 ) == 0))) {
                     if ($sw_installation) {
                         // icon-green
-                        echo('<span class="status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/green-35.png""></span>');
+                        echo('<span class="pwa4wp_status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/green-35.png""></span>');
                         _e("working", "pwa4wp");
                         echo "&nbsp;(&nbsp;";
                         _e("PWA is multi site unified mode.", "pwa4wp");
                         echo "&nbsp;)&nbsp;";
                     } else {
                         // icon-red
-                        echo('<span class="status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/red-35.png"></span>');
+                        echo('<span class="pwa4wp_status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/red-35.png"></span>');
                         _e("not working", "pwa4wp");
                         echo "&nbsp;(&nbsp;";
                         _e("PWA is multi site unified mode.", "pwa4wp");
@@ -131,7 +131,7 @@ if(file_exists($_SERVER['DOCUMENT_ROOT'] ."/" . PWA4WP_SERVICEWORKER_FILE)) {
                 }else {
                     if ($sw_installation) {
                         // icon-green
-                        echo('<span class="status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/green-35.png""></span>');
+                        echo('<span class="pwa4wp_status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/green-35.png""></span>');
                         _e("working", "pwa4wp");
                         echo('&nbsp;&nbsp;<button  id="pwa4wp_stop_button" type="submit">');
                         _e("STOP");
@@ -139,7 +139,7 @@ if(file_exists($_SERVER['DOCUMENT_ROOT'] ."/" . PWA4WP_SERVICEWORKER_FILE)) {
                         echo('<input type="hidden" name="pwa_active" value="STOP">');
                     } else {
                         // icon-red
-                        echo('<span class="status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/red-35.png"></span>');
+                        echo('<span class="pwa4wp_status_icon"><img src="' . plugin_dir_url(dirname(__FILE__)) . 'assets/images/red-35.png"></span>');
                         _e("not working", "pwa4wp");
                         echo('&nbsp;&nbsp;<button id="pwa4wp_start_button" type="submit">');
                         _e("START");
@@ -165,14 +165,14 @@ if(file_exists($_SERVER['DOCUMENT_ROOT'] ."/" . PWA4WP_SERVICEWORKER_FILE)) {
 
     <h2><?php _e("Defer PWA installation","pwa4wp");?></h2>
     <ul>
-        <li>
-            <span class="itemname">
+        <li class="pwa4wp_list">
+            <span class="pwa4wp_itemname">
                 <?php _e( "Installation mode", "pwa4wp" ); ?>
             </span>
             <?php
                 if(((!is_main_site())&&(is_multisite())&&(get_blog_option( 1, 'pwa4wp_multisite_unify', $default = 1 ) == 0))) {
             ?>
-            <span class="field">
+            <span class="pwa4wp_field">
                 <?php if ( get_blog_option( 1,  'pwa4wp_defer_install', $default = 1 ) == 0 ) {
 	                _e( "Defer PWA install.( Make install popup by your own, or never show popup )" );
                 }else{
@@ -190,7 +190,7 @@ if(file_exists($_SERVER['DOCUMENT_ROOT'] ."/" . PWA4WP_SERVICEWORKER_FILE)) {
             ?>
 
             <form enctype="multipart/form-data" id="pwa4wp-installmode-setting-form" method="post" action="">
-                <span class="field">
+                <span class="pwa4wp_field">
                     <label>
                     <input type="radio" name="defer_install"
                            value="0" <?php if ( get_option( 'pwa4wp_defer_install', $default = 1 ) == 0 ) {
@@ -232,15 +232,15 @@ if(file_exists($_SERVER['DOCUMENT_ROOT'] ."/" . PWA4WP_SERVICEWORKER_FILE)) {
 ?>
         <h2><?php _e("Multi site mode","pwa4wp");?></h2>
         <ul>
-            <li>
+            <li class="pwa4wp_list">
                 <?php
                     if(is_main_site()):
                 ?>
                 <form enctype="multipart/form-data" id="pwa4wp-multisite-setting-form" method="post" action="">
-                <span class="itemname">
+                <span class="pwa4wp_itemname">
                     <?php _e("Multi site mode","pwa4wp"); ?>
                 </span>
-                <span class="field">
+                <span class="pwa4wp_field">
                     <label>
                     <input type="radio" name="multisite_unify" value="0" <?php if(get_option('pwa4wp_multisite_unify', $default = 1) == 0){echo "checked=\"checked\"";} ?>>&nbsp;<?php _e("Unify all multi site into one PWA.");?>
                     </label><br>
@@ -289,19 +289,19 @@ if(file_exists($_SERVER['DOCUMENT_ROOT'] ."/" . PWA4WP_SERVICEWORKER_FILE)) {
 <hr>
     <h2><?php _e("Notice","pwa4wp"); ?></h2>
     <ul>
-        <li>
+        <li class="pwa4wp_list">
             <?php _e("After update this plugin, please update ServiceWorker by \"Save Cache configurations\" button in <a href=\"admin.php?page=PWA+for+WordPress%3F2\">Configure ServiceWorker</a> page.","pwa4wp"); ?><br>
         </li>
     </ul>
     <h2><?php _e("Usage","pwa4wp"); ?></h2>
     <ul>
-        <li>
+        <li class="pwa4wp_list">
 	        <?php _e("To make your website to PWA, this plugin make two files, \"Manifest\" and \"ServiceWorker\" in your website.","pwa4wp"); ?><br>
 	        <?php _e("Manifest file is a json file that has configurations of web applications.","pwa4wp"); ?><br>
 	        <?php _e("ServiceWorker is a JavaScript file that controls PWA's functions.","pwa4wp"); ?><br>
 	        <?php _e("To start PWA, configure two files from below setup links.","pwa4wp"); ?><br>
         </li>
-        <li>
+        <li class="pwa4wp_list">
             <h3>STEP1</h3>
             <a href="admin.php?page=PWA+for+WordPress%3F1">
             <?php
@@ -319,7 +319,7 @@ if(file_exists($_SERVER['DOCUMENT_ROOT'] ."/" . PWA4WP_SERVICEWORKER_FILE)) {
             ?><br>
 
         </li>
-        <li>
+        <li class="pwa4wp_list">
             <h3>STEP2</h3>
             <a href="admin.php?page=PWA+for+WordPress%3F2">
             <?php _e("Configure ServiceWorker","pwa4wp");?>
@@ -334,25 +334,25 @@ if(file_exists($_SERVER['DOCUMENT_ROOT'] ."/" . PWA4WP_SERVICEWORKER_FILE)) {
     <br>
     <h2><?php _e("About developer of this plugin","pwa4wp"); ?></h2>
     <ul>
-        <li>
+        <li class="pwa4wp_list">
             <h3><?php _e("PWA for WordPress develop team","pwa4wp"); ?></h3>
             <ul>
-                <li>
+                <li class="pwa4wp_list">
                     Ryoichi Tsukada&nbsp;/&nbsp;Asial<br>
                 </li>
-                <li>
+                <li class="pwa4wp_list">
                     Yuki Okamoto&nbsp;/&nbsp;Asial<br>
                 </li>
-                <li>
+                <li class="pwa4wp_list">
                     Satoshi Tsuda&nbsp;/&nbsp;Asial<br>
                 </li>
-                <li>
+                <li class="pwa4wp_list">
                     Ryunosuke Shindo&nbsp;/&nbsp;Computing Initiative<br>
                 </li>
             </ul>
             <br>
         </li>
-        <li>
+        <li class="pwa4wp_list">
             <h3><?php _e("Contact us","pwa4wp"); ?></h3>
 	        <?php _e("If you find anyting about this plugin, contact us from mailform below.","pwa4wp"); ?><br>
             <br>
@@ -363,13 +363,13 @@ if(file_exists($_SERVER['DOCUMENT_ROOT'] ."/" . PWA4WP_SERVICEWORKER_FILE)) {
     <br>
     <hr>
     <br>
-    <span class="donate_button_area">
+    <span class="pwa4wp_donate_button_area">
         <?php
         echo "<br>";
         _e("Would you like to support the advancement of this plugin?");
         echo "<br>";
         ?>
-        <a href="https://paypal.me/pwa4wp/10USD" class="square_btn" target="_blank"><?php _e("DONATION"); ?> ( Paypal )</a>
+        <a href="https://paypal.me/pwa4wp/10USD" class="pwa4wp_square_btn" target="_blank"><?php _e("DONATION"); ?> ( Paypal )</a>
     </span>
     <br>
     <hr>
