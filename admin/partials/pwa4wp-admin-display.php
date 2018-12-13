@@ -151,9 +151,9 @@ if(file_exists($_SERVER['DOCUMENT_ROOT'] ."/" . PWA4WP_SERVICEWORKER_FILE)) {
                 <br>
             </p>
                 <span class="small-text">
-	            <?php _e("If PWA status is 'working', this plugin will insert Manifest link and ServiceWorker installation tag into page headers."); ?>
+	            <?php _e("If PWA status is 'working', this plugin will insert Manifest link and ServiceWorker installation tag into page headers.","pwa4wp"); ?>
                 <br>
-                <?php _e("HTTPS status check is only protocol check. Please make sure that your all contents and embeded contents in pages are connected by https."); ?>
+                <?php _e("HTTPS status check is only protocol check. Please make sure that your all contents and embeded contents in pages are connected by https.","pwa4wp"); ?>
                 </span>
                 <br>
                 <br>
@@ -174,9 +174,9 @@ if(file_exists($_SERVER['DOCUMENT_ROOT'] ."/" . PWA4WP_SERVICEWORKER_FILE)) {
             ?>
             <span class="pwa4wp_field">
                 <?php if ( get_blog_option( 1,  'pwa4wp_defer_install', $default = 1 ) == 0 ) {
-	                _e( "Defer PWA install.( Make install popup by your own, or never show popup )" );
+	                _e( "Defer PWA install.( Make install popup by your own, or never show popup )","pwa4wp" );
                 }else{
-	                _e( "Show PWA install popup by browser default." );
+	                _e( "Show PWA install popup by browser default.","pwa4wp" );
                 }
                 ?>
                 <br>
@@ -195,13 +195,13 @@ if(file_exists($_SERVER['DOCUMENT_ROOT'] ."/" . PWA4WP_SERVICEWORKER_FILE)) {
                     <input type="radio" name="defer_install"
                            value="0" <?php if ( get_option( 'pwa4wp_defer_install', $default = 1 ) == 0 ) {
 	                    echo "checked=\"checked\"";
-                    } ?>>&nbsp;<?php _e( "Defer PWA install.( Make install popup by your own, or never show popup )" ); ?>
+                    } ?>>&nbsp;<?php _e( "Defer PWA install.( Make install popup by your own, or never show popup )","pwa4wp" ); ?>
                     </label><br>
                     <label>
                         <input type="radio" name="defer_install"
                                value="1" <?php if ( get_option( 'pwa4wp_defer_install', $default = 1 ) == 1 ) {
 	                        echo "checked=\"checked\"";
-                        } ?>>&nbsp;<?php _e( "Show PWA install popup by browser default." ); ?>
+                        } ?>>&nbsp;<?php _e( "Show PWA install popup by browser default.","pwa4wp" ); ?>
                     </label><br><br>
 		        <?php wp_nonce_field( 'my-nonce-key4', 'my-submenu4' ); ?>
                 <button id="pwa4wp_defer_install_button" type="submit">
@@ -242,10 +242,10 @@ if(file_exists($_SERVER['DOCUMENT_ROOT'] ."/" . PWA4WP_SERVICEWORKER_FILE)) {
                 </span>
                 <span class="pwa4wp_field">
                     <label>
-                    <input type="radio" name="multisite_unify" value="0" <?php if(get_option('pwa4wp_multisite_unify', $default = 1) == 0){echo "checked=\"checked\"";} ?>>&nbsp;<?php _e("Unify all multi site into one PWA.");?>
+                    <input type="radio" name="multisite_unify" value="0" <?php if(get_option('pwa4wp_multisite_unify', $default = 1) == 0){echo "checked=\"checked\"";} ?>>&nbsp;<?php _e("Unify all multi site into one PWA.","pwa4wp");?>
                     </label><br>
                     <label>
-                        <input type="radio" name="multisite_unify" value="1" <?php if(get_option('pwa4wp_multisite_unify', $default = 1) == 1){echo "checked=\"checked\"";} ?>>&nbsp;<?php _e("Make PWAs for each multi sites individually.");?>
+                        <input type="radio" name="multisite_unify" value="1" <?php if(get_option('pwa4wp_multisite_unify', $default = 1) == 1){echo "checked=\"checked\"";} ?>>&nbsp;<?php _e("Make PWAs for each multi sites individually.","pwa4wp");?>
                     </label><br><br>
                 </span>
                     <?php wp_nonce_field( 'my-nonce-key3', 'my-submenu3' ); ?>

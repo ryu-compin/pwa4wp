@@ -23,6 +23,10 @@ You can fine-tune the cache, such as expiration date, time and URL exclusion.
 By excluding the URLs, like a new arrival information,  data acquisition destination in Ajax, this plugin can keep PWA data fresh.
 You can set expire time of caches, then old cache will purged after specified time.
 
+After version 1.1.2,
+Multi sites are supported.
+You can difer the PWA installation popup shown in browser default and add your own installation button on your sites.
+
 ### STEP1
 #### Configure Manifest
 
@@ -70,11 +74,19 @@ There is information about updates and issues.
 = 1.1.4 =
 Update:
 Added preview page to default exclude URL.
+Fixed issue:
+Preview pages were not excluded from cache.
+Left margin of pwa4wp-admin.css in several admin pages.
+In admin console, some words were not translated.
 
 == Changelog ==
 = 1.1.4 =
 Update:
 Added preview page to default exclude URL.
+Fixed issue:
+Preview pages were not excluded from cache.
+Left margin of pwa4wp-admin.css in several admin pages.
+In admin console, some words were not translated.
 
 = 1.1.3 =
 Fixed issue:
