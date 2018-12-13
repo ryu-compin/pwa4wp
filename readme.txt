@@ -25,7 +25,7 @@ You can set expire time of caches, then old cache will purged after specified ti
 
 After version 1.1.2,
 Multi sites are supported.
-You can difer the PWA installation popup shown in browser default and add your own installation button on your sites.
+You can defer the PWA installation popup shown in browser default and add your own installation button on your sites.
 
 ### STEP1
 #### Configure Manifest
