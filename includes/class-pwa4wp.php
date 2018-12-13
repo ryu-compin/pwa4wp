@@ -78,7 +78,7 @@ class pwa4wp_init {
 		if ( defined( 'PWA4WP_VERSION' ) ) {
 			$this->version = PWA4WP_VERSION;
 		} else {
-			$this->version = '1.1.2';
+			$this->version = '1.1.4';
 		}
 		$this->pwa4wp = 'PWA for WordPress';
 

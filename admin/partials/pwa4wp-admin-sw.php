@@ -22,12 +22,12 @@ $swVersion = $data['swVersion'];
 <h1>PWA for WordPress Configulations</h1>
 <h2><?php _e("ServiceWorker Cache Configurations","pwa4wp"); ?></h2>
     <?php if($data['errorMsg']){
-        echo('<ul class="msgArea">');
-        echo("<li><h3>");
+        echo('<ul class="pwa4wp_msgArea">');
+        echo("<li class=\"pwa4wp_list\"><h3>");
         _e("Errors or Messages.");
         echo("</h3></li>");
         foreach ($data['errorMsg'] as $msg){
-            echo("<li>&gt;&gt;&nbsp;" . $msg ."</li>");
+            echo("<li class=\"pwa4wp_list\">&gt;&gt;&nbsp;" . $msg ."</li>");
         }
         echo ('</ul>');
     }
@@ -35,21 +35,21 @@ $swVersion = $data['swVersion'];
 <form id="pwa4wp-cache-setting-form" method="post" action="" class="">
 	<?php wp_nonce_field( 'my-nonce-key2', 'my-submenu2' ); ?>
     <ul>
-        <li>
-            <span class="itemname">
+        <li class="pwa4wp_list">
+            <span class="pwa4wp_itemname">
                 <?php _e("ServiceWorker Cache version ( auto increment )","pwa4wp"); ?> :&nbsp;&nbsp;
             </span>
-            <span class="field">
+            <span class="pwa4wp_field">
                 <?php echo $swVersion;?>
             </span>
             <br>
             <hr>
         </li>
-        <li>
-                <span class="itemname">
+        <li class="pwa4wp_list">
+                <span class="pwa4wp_itemname">
                     <?php _e("Basic cache plan","pwa4wp"); ?>
                 </span>
-                <span class="field">
+                <span class="pwa4wp_field">
                     <label>
                     <input type="radio" name="cache_plan" value="cachefirst" <?php if($cacheSettings['cache_plan'] != "onlinefirst"){echo "checked=\"checked\"";} ?>>Cache first
                     </label><br>
@@ -65,12 +65,12 @@ $swVersion = $data['swVersion'];
                 </span>
             <hr>
         </li>
-        <li>
+        <li class="pwa4wp_list">
             <label>
-                <span class="itemname">
+                <span class="pwa4wp_itemname">
                     <?php _e("Offline Page URL","pwa4wp"); ?>
                 </span>
-                <span class="field">
+                <span class="pwa4wp_field">
                     <?php
                     $args = array(
                         'depth'                 => 0,
@@ -87,7 +87,7 @@ $swVersion = $data['swVersion'];
                     wp_dropdown_pages( $args );
                     ?>
                     <!--
-                    <input name="offline_url" class="midtext" value="<?php esc_html_e( $cacheSettings['offline_url'] ); ?>">
+                    <input name="offline_url" class="pwa4wp_midtext" value="<?php esc_html_e( $cacheSettings['offline_url'] ); ?>">
                     -->
                     <?php
                     if($cacheSettings['offline_url'] != ""){
@@ -105,13 +105,13 @@ $swVersion = $data['swVersion'];
             </label>
             <hr>
         </li>
-        <li>
+        <li class="pwa4wp_list">
             <label>
-                <span class="itemname">
+                <span class="pwa4wp_itemname">
                     <?php _e("Cache Expire time","pwa4wp"); ?>
                 </span>
-                <span class="field">
-                    <input name="ttl" class="shorttext" value="<?php if( $cacheSettings['ttl'] != ""){esc_html_e( $cacheSettings['ttl'] );}else{echo "2880";} ?>">
+                <span class="pwa4wp_field">
+                    <input name="ttl" class="pwa4wp_shorttext" value="<?php if( $cacheSettings['ttl'] != ""){esc_html_e( $cacheSettings['ttl'] );}else{echo "2880";} ?>">
                     <br><br>
 	                <?php _e("Define length of cache expire time by minutes.","pwa4wp"); ?><br>
 	                <?php _e("For example, 1 hour -> 60 min, 1 day ->1440 min, 1 week->10080 min.","pwa4wp"); ?><br>
@@ -121,27 +121,27 @@ $swVersion = $data['swVersion'];
             </label>
             <hr>
         </li>
-        <li>
+        <li class="pwa4wp_list">
         <div>
             <label>
-                <span class="itemname">
+                <span class="pwa4wp_itemname">
                     <?php _e("URLs for exclude from cache list","pwa4wp"); ?>&nbsp;&nbsp;
                 </span>
             </label>
             <button type="button" id="add-exclusions"><?php _e("Add list","pwa4wp"); ?></button><br>
-            <span class="field">
+            <span class="pwa4wp_field">
                 <br>
             <ul id="exclusion-list">
                 <?php
                 if(!empty($cacheSettings['exclusions'])):
                     foreach ( $cacheSettings['exclusions'] as $item ):
                 ?>
-                    <li class="innerlist"><input name="exclusions[]" class="longtext" value="<?php esc_html_e( stripslashes($item) ); ?>"></li>
+                    <li class="pwa4wp_innerlist"><input name="exclusions[]" class="pwa4wp_longtext" value="<?php esc_html_e( stripslashes($item) ); ?>"></li>
 				<?php
                     endforeach;
                     else:
                 ?>
-                    <li class="innerlist"><input name="exclusions[]" class="longtext" value=""></li>
+                    <li class="pwa4wp_innerlist"><input name="exclusions[]" class="pwa4wp_longtext" value=""></li>
                 <?php
                 endif;
                 ?>
@@ -155,20 +155,20 @@ $swVersion = $data['swVersion'];
                 </span>
         </div>
         <div>
-            <span class="field">
+            <span class="pwa4wp_field">
                 <?php _e("Test for Reguler Expressions.","pwa4wp"); ?>
                 <button type="button" id="regexp_toggle"><?php _e("Open Regexp Test","pwa4wp"); ?></button><br>
             </span>
             <br>
-            <div id="regextestform" class="regextestform">
-                <div class="regexttestinner">
-                <span class="field">
+            <div id="regextestform" class="pwa4wp_regextestform">
+                <div class="pwa4wp_regexttestinner">
+                <span class="pwa4wp_field">
                     <?php _e("Input URL for test and press Test button.","pwa4wp"); ?><br>
-                    <input id="regextTestURL" name="regextTestURL" class="longtext" value="">
+                    <input id="regextTestURL" name="regextTestURL" class="pwa4wp_longtext" value="">
                     <button type="button" id="regexp_dotest"><?php _e("Test","pwa4wp"); ?></button><br>
                 </span>
                 <br>
-                <span class="field" id="regexp_result">
+                <span class="pwa4wp_field" id="regexp_result">
 
                 </span>
                 </div>
@@ -177,15 +177,15 @@ $swVersion = $data['swVersion'];
         </div>
             <hr>
         </li>
-        <li>
+        <li class="pwa4wp_list">
         <div>
             <label>
-                <span class="itemname">
+                <span class="pwa4wp_itemname">
                     <?php _e("First caches","pwa4wp"); ?>&nbsp;&nbsp;
                 </span>
             </label>
             <button type="button" id="add-initial-caches"><?php _e("Add list","pwa4wp"); ?></button><br>
-            <span class="field">
+            <span class="pwa4wp_field">
                 <br>
             <ul id="initial-cache-list">
 
@@ -193,12 +193,12 @@ $swVersion = $data['swVersion'];
                 if(!empty( $cacheSettings['initial-caches'])):
                     foreach ( $cacheSettings['initial-caches'] as $item ):
                 ?>
-                    <li class="innerlist"><input name="initial-caches[]" class="longtext" value="<?php esc_html_e( $item ); ?>"></li>
+                    <li class="pwa4wp_list pwa4wp_innerlist"><input name="initial-caches[]" class="pwa4wp_longtext" value="<?php esc_html_e( $item ); ?>"></li>
                 <?php
                     endforeach;
                 else:
                 ?>
-                    <li class="innerlist"><input name="initial-caches[]" class="longtext" value=""></li>
+                    <li class="pwa4wp_list pwa4wp_innerlist"><input name="initial-caches[]" class="pwa4wp_longtext" value=""></li>
                 <?php
                 endif;
                 ?>
@@ -211,11 +211,11 @@ $swVersion = $data['swVersion'];
         </div>
             <hr>
         </li>
-        <li>
-                <span class="itemname">
+        <li class="pwa4wp_list">
+                <span class="pwa4wp_itemname">
                     <?php _e("Debug mode","pwa4wp"); ?>
                 </span>
-            <span class="field">
+            <span class="pwa4wp_field">
                     <label>
                     <input type="radio" name="debug_msg" value="ON" <?php if($cacheSettings['debug_msg'] == "ON"){echo "checked=\"checked\"";} ?>>ON
                     </label><br>
@@ -229,12 +229,12 @@ $swVersion = $data['swVersion'];
             <hr>
         </li>
     </ul>
-    <span class="submit_button_area">
+    <span class="pwa4wp_submit_button_area">
         <button type="submit" class="submit_button">Save Cache configurations</button>
     </span>
 </form>
     <hr>
-    <div class="hiddenMsg">
+    <div class="pwa4wp_hiddenMsg">
         <span id="msg_RegExpHit"><?php _e("This URL will be excluded from cache.","pwa4wp"); ?></span>
         <span id="msg_RegExpNone"><?php _e("This URL will not be excluded from cache.","pwa4wp"); ?></span>
         <span id="btn_OpenRegexpTest"><?php _e("Open Regexp Test","pwa4wp"); ?></span>

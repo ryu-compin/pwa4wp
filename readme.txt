@@ -4,7 +4,7 @@ Donate link: https://paypal.me/pwa4wp/10USD
 Tags: pwa, progressive web app, progressive web apps, pwa4wp, mobile, responsive, offline, cache
 Requires at least: 4.4
 Tested up to: 5.0
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 Requires PHP: 5.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -22,6 +22,10 @@ To start PWA, configure two files from configuration screen.
 You can fine-tune the cache, such as expiration date, time and URL exclusion.
 By excluding the URLs, like a new arrival information,  data acquisition destination in Ajax, this plugin can keep PWA data fresh.
 You can set expire time of caches, then old cache will purged after specified time.
+
+After version 1.1.2,
+Multi sites are supported.
+You can defer the PWA installation popup shown in browser default and add your own installation button on your sites.
 
 ### STEP1
 #### Configure Manifest
@@ -67,14 +71,23 @@ There is information about updates and issues.
 3. Configure and generate 'ServiceWorker'
 
 == Upgrade Notice ==
-= 1.1.2 / 1.1.3 =
+= 1.1.4 =
 Update:
-Multi-site supported.
-Defer PWA installation option added.
+Added preview page to default exclude URL.
 Fixed issue:
-Fixed a2hs control js error.
+Preview pages were not excluded from cache.
+Left margin of pwa4wp-admin.css in several admin pages.
+In admin console, some words were not translated.
 
 == Changelog ==
+= 1.1.4 =
+Update:
+Added preview page to default exclude URL.
+Fixed issue:
+Preview pages were not excluded from cache.
+Left margin of pwa4wp-admin.css in several admin pages.
+In admin console, some words were not translated.
+
 = 1.1.3 =
 Fixed issue:
 in pwa4wp-a2hs-controller.js, event didn't pushed into global variable.

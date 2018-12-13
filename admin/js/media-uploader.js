@@ -25,7 +25,7 @@
                     $("#image-url").val(file.toJSON().url);
                     $("#image-view").attr("src", file.toJSON().url);
                 }else{
-                    $("#image-error").html('<br><span class="redalert">*ERROR*&nbsp;This file is not "png" format image.</span><br>');
+                    $("#image-error").html('<br><span class="pwa4wp_redalert">*ERROR*&nbsp;This file is not "png" format image.</span><br>');
                 }
             });
         });
