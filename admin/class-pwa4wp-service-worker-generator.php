@@ -4,7 +4,7 @@
 class pwa4wp_Service_Worker_Generator {
 
 	private $plugin_root_url;
-	private $version = '1.1.4';
+	private $version = '1.1.5';
 
 	public function __construct( $plugin_root ) {
 		$this->plugin_root_url = $plugin_root;

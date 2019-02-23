@@ -3,8 +3,8 @@ Contributors: ryushindo
 Donate link: https://paypal.me/pwa4wp/10USD
 Tags: pwa, progressive web app, progressive web apps, pwa4wp, mobile, responsive, offline, cache
 Requires at least: 4.4
-Tested up to: 5.0
-Stable tag: 1.1.4
+Tested up to: 5.1
+Stable tag: 1.1.5
 Requires PHP: 5.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -71,6 +71,10 @@ There is information about updates and issues.
 3. Configure and generate 'ServiceWorker'
 
 == Upgrade Notice ==
+= 1.1.5 =
+Fixed issue:
+Install popup displayed even though "Defer PWA install" mode.
+
 = 1.1.4 =
 Update:
 Added preview page to default exclude URL.
@@ -80,6 +84,10 @@ Left margin of pwa4wp-admin.css in several admin pages.
 In admin console, some words were not translated.
 
 == Changelog ==
+= 1.1.5 =
+Fixed issue:
+Install popup displayed even though "Defer PWA install" mode.
+
 = 1.1.4 =
 Update:
 Added preview page to default exclude URL.
