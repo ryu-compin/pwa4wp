@@ -35,6 +35,13 @@
         $('#add-exclusions').on('click', function () {
             $('#exclusion-list').append('<li class="pwa4wp_list pwa4wp_innerlist"><input name="exclusions[]" class="pwa4wp_longtext"></li>');
         });
+        $('#add-forcecache').on('click', function () {
+            $('#forcecache-list').append('<li class="pwa4wp_list pwa4wp_innerlist"><input name="forcecache[]" class="pwa4wp_longtext"></li>');
+        });
+        $('#add-forceonline').on('click', function () {
+            $('#forceonline-list').append('<li class="pwa4wp_list pwa4wp_innerlist"><input name="forceonline[]" class="pwa4wp_longtext"></li>');
+        });
+
         let themeColor = $("#themeColorPicker").val();
         console.info(themeColor);
         $('#themeColorPicker').wpColorPicker({
@@ -44,9 +51,31 @@
         console.info(bgColor);
         $('#bgColorPicker').wpColorPicker();
 
-        $('#regexp_dotest').on('click', function () {
-            $('#regexp_result').empty();
-            let testText = $('#regextTestURL').val();
+        $('#regexp_dotest').on('click', function(){
+            pwa4wp_regexp_dotest(
+            '#regexp_result',
+            '#regextTestURL',
+            '#exclusion-list',
+            '#msg_RegExpHit');
+        });
+        $('#regexp_dotest_forcecache').on('click',  function(){
+            pwa4wp_regexp_dotest(
+                '#regexp_result_forcecache',
+                '#regextTestURL_forcecache',
+                '#forcecache-list',
+                '#msg_RegExpHit_forcecache');
+        });
+        $('#regexp_dotest_forceonline').on('click',  function(){
+            pwa4wp_regexp_dotest(
+                '#regexp_result_forceonline',
+                '#regextTestURL_forceonline',
+                '#forceonline-list',
+                '#msg_RegExpHit_forceonline');
+        });
+
+        function pwa4wp_regexp_dotest(resultField, TestURL, exclusionList,msgRegExpHit) {
+            $(resultField).empty();
+            let testText = $(TestURL).val();
             let appendText = "";
             let regTestResult = false;
             console.log("Test start for URL [" + testText + "]");
@@ -55,7 +84,7 @@
                 appendText = "Test URL not set.<br>\n";
             }else{
                 appendText = appendText + "<ul>\n";
-                $('#exclusion-list').children('li').each(function (i, e) {
+                $(exclusionList).children('li').each(function (i, e) {
                         let regtext;
                         regtext = EscVal($('input',this).val());
                         if((typeof(regtext) !== 'undefined')&&(regtext != "")){
@@ -73,51 +102,71 @@
                 );
                 appendText = appendText + "</ul>\n";
                 if(regTestResult){
-                    appendText = appendText + $('#msg_RegExpHit').text() + "<br>\n";
+                    appendText = appendText + $(msgRegExpHit).text() + "<br>\n";
                 }else{
-                    appendText = appendText + $('#msg_RegExpNone').text() + "<br>\n";
+                    appendText = appendText + $(msgRegExpHit).text() + "<br>\n";
                 }
             }
             appendText = appendText + "Test end.<br>\n";
-            $('#regexp_result').append(appendText);
-        });
+            $(resultField).append(appendText);
+        }
         function EscVal(txt){
 //            return txt.replace(/[ !"#$%&'()*+,.\/:;<=>?@\[\\\]^`{|}~]/g, '\\$&');
             return txt.replace(/[\/]/g, '\\$&');
         }
-        $('#regexp_toggle').on('click', function () {
+
+        $('#regexp_toggle').on('click', function(){
+            openTestField(
+                '#regexp_toggle',
+                '#regextestform',
+                '#pwa4wp_regexttestinner');
+        });
+        $('#regexp_toggle_forcecache').on('click', function(){
+            openTestField(
+                '#regexp_toggle_forcecache',
+                '#regextestform_forcecache',
+                '#pwa4wp_regexttestinner_forcecache');
+        });
+        $('#regexp_toggle_forceonline').on('click', function(){
+            openTestField(
+                '#regexp_toggle_forceonline',
+                '#regextestform_forceonline',
+                '#pwa4wp_regexttestinner_forceonline');
+        });
+
+        function openTestField(buttonID,targetTestField,formAreaID) {
             let btn_open_text = $('#btn_OpenRegexpTest').text();
             let btn_close_text = $('#btn_CloseRegexpTest').text();
-            if($('#regexp_toggle').text() == btn_close_text){
+            if($(buttonID).text() == btn_close_text){
                 // Open now, Close test alea.
-                $('#regextestform').animate(
+                $(targetTestField).animate(
                     {
                         height:"0",
                         opacity:0
                     },
                     400,
                     function(){
-                        $('#pwa4wp_regexttestinner').css('display','none');
+                        $(formAreaID).css('display','none');
                     }
                 );
-                $('#regexp_toggle').text(btn_open_text);
+                $(buttonID).text(btn_open_text);
             }else{
                 // Close now, Open test alea.
-                $('#pwa4wp_regexttestinner').css('display','block');
-                $('#regextestform').animate(
+                $(formAreaID).css('display','block');
+                $(targetTestField).animate(
                     {
                         height:"4em",
                         opacity:1
                     },
                     400,
                     function () {
-                        $('#regextestform').css("height","auto");
+                        $(targetTestField).css("height","auto");
                     }
                 );
-                $('#regexp_toggle').text(btn_close_text);
+                $(buttonID).text(btn_close_text);
             }
 
-        });
+        }
     });
 
 })(jQuery);

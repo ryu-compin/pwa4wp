@@ -198,6 +198,12 @@ class pwa4wp_Admin {
                         'exclusions' =>array_filter(get_option( 'pwa4wp_cache_settings' )['exclusions'], function($pattern) {
                             return !empty($pattern);
                         }),
+                        'forcecache' =>array_filter(get_option( 'pwa4wp_cache_settings' )['forcecache'], function($pattern) {
+                            return !empty($pattern);
+                        }),
+                        'forceonline' =>array_filter(get_option( 'pwa4wp_cache_settings' )['forceonline'], function($pattern) {
+                            return !empty($pattern);
+                        }),
                         'initial-caches' => array_filter(get_option( 'pwa4wp_cache_settings' )['initial-caches'], function($url) {
                             return !empty($url);
                         }),
@@ -228,9 +234,15 @@ class pwa4wp_Admin {
 			    'sw_version' => $swVersion ,
                 'cache_plan' => $_POST['cache_plan'],
 				'exclusions'     => array_filter($_POST['exclusions'], function($pattern) {
-					return !empty($pattern);
+					return !empty(stripslashes($pattern));
 				}),
-				'initial-caches' => array_filter($_POST['initial-caches'], function($url) {
+                'forcecache'     => array_filter($_POST['forcecache'], function($pattern) {
+                    return !empty(stripslashes($pattern));
+                }),
+                'forceonline'     => array_filter($_POST['forceonline'], function($pattern) {
+                    return !empty(stripslashes($pattern));
+                }),
+                'initial-caches' => array_filter($_POST['initial-caches'], function($url) {
 					return !empty($url);
 				}),
 				'ttl'            => $_POST['ttl'],

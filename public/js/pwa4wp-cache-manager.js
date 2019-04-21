@@ -72,9 +72,15 @@ class pwa4wp_CacheManager {
         let isExcluded = this.settings.exclusions.some((pattern) => {
             return (new RegExp(pattern)).test(event.request.url);
         });
-        let cacheable = event.request.method === 'GET' && !this.settings.exclusions.some((pattern) => {
+        let isForceCache = this.settings.forcecache.some((pattern) => {
             return (new RegExp(pattern)).test(event.request.url);
         });
+        let isForceOnline = this.settings.forceonline.some((pattern) => {
+            return (new RegExp(pattern)).test(event.request.url);
+        });
+
+        let cacheable = isGetRequest && !isExcluded;
+
         if (!cacheable) {
             // キャッシュ対象外の場合はサーバーにリクエスト。
             if(this.debug){
@@ -89,18 +95,38 @@ class pwa4wp_CacheManager {
             if(this.debug){
                 console.log("online-first mode : " + event.request.url);
             }
-            return event.respondWith(this.remoteFirstFetch(event.request).catch(() => {
-                return this.caches.match(this.settings.offlinePage);
-            }));
+            if(isForceCache){
+                // force-cache
+                if(this.debug){
+                    console.log("force-cache mode : " + event.request.url);
+                }
+                // キャッシュ優先方式でレスポンスを返す。
+                return event.respondWith(this.cacheFirstFetch(event.request).catch(() => {
+                    return this.caches.match(this.settings.offlinePage);
+                }));
+            }else{
+                return event.respondWith(this.remoteFirstFetch(event.request).catch(() => {
+                    return this.caches.match(this.settings.offlinePage);
+                }));
+            }
         }else{
             // cache-first
             if(this.debug){
                 console.log("cache-first mode : " + event.request.url);
             }
-            // キャッシュ対象の場合はキャッシュ優先方式でレスポンスを返す。
-            return event.respondWith(this.cacheFirstFetch(event.request).catch(() => {
-                return this.caches.match(this.settings.offlinePage);
-            }));
+            if(isForceOnline){
+                if(this.debug){
+                    console.log("force-online mode : " + event.request.url);
+                }
+                return event.respondWith(this.remoteFirstFetch(event.request).catch(() => {
+                    return this.caches.match(this.settings.offlinePage);
+                }));
+            }else{
+                // キャッシュ対象の場合はキャッシュ優先方式でレスポンスを返す。
+                return event.respondWith(this.cacheFirstFetch(event.request).catch(() => {
+                    return this.caches.match(this.settings.offlinePage);
+                }));
+            }
         }
     }
 
