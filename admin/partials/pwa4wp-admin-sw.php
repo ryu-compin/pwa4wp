@@ -177,42 +177,6 @@ $swVersion = $data['swVersion'];
         </div>
             <hr>
         </li>
-        <li class="pwa4wp_list">
-        <div>
-            <label>
-                <span class="pwa4wp_itemname">
-                    <?php _e("First caches","pwa4wp"); ?>&nbsp;&nbsp;
-                </span>
-            </label>
-            <button type="button" id="add-initial-caches"><?php _e("Add list","pwa4wp"); ?></button><br>
-            <span class="pwa4wp_field">
-                <br>
-            <ul id="initial-cache-list">
-
-                <?php
-                if(!empty( $cacheSettings['initial-caches'])):
-                    foreach ( $cacheSettings['initial-caches'] as $item ):
-                ?>
-                    <li class="pwa4wp_list pwa4wp_innerlist"><input name="initial-caches[]" class="pwa4wp_longtext" value="<?php esc_html_e( $item ); ?>"></li>
-                <?php
-                    endforeach;
-                else:
-                ?>
-                    <li class="pwa4wp_list pwa4wp_innerlist"><input name="initial-caches[]" class="pwa4wp_longtext" value=""></li>
-                <?php
-                endif;
-                ?>
-            </ul>
-                <br>
-	            <?php _e("Contents of these URLs are cached with installation.","pwa4wp"); ?><br>
-	            <?php _e("Start URL in manifest and offline page will added automatically, so you don't need to define them in here.","pwa4wp"); ?><br>
-                <br>
-            </span>
-        </div>
-            <hr>
-        </li>
-
-<!-------in progress--------->
 
         <li class="pwa4wp_list">
             <div>
@@ -227,13 +191,13 @@ $swVersion = $data['swVersion'];
             <ul id="forcecache-list">
                 <?php
                 if(!empty($cacheSettings['forcecache'])):
-                    foreach ( $cacheSettings['forcecache'] as $item ):
-                        ?>
+	                foreach ( $cacheSettings['forcecache'] as $item ):
+		                ?>
                         <li class="pwa4wp_innerlist"><input name="forcecache[]" class="pwa4wp_longtext" value="<?php esc_html_e( stripslashes($item) ); ?>"></li>
-                    <?php
-                    endforeach;
+	                <?php
+	                endforeach;
                 else:
-                    ?>
+	                ?>
                     <li class="pwa4wp_innerlist"><input name="forcecache[]" class="pwa4wp_longtext" value=""></li>
                 <?php
                 endif;
@@ -243,7 +207,7 @@ $swVersion = $data['swVersion'];
 	            <?php _e("These parameters works in online-first mode.","pwa4wp"); ?><br>
 	            <?php _e("Specify here URLs to cache forcely in online-first mode.","pwa4wp"); ?><br>
 	            <?php _e("Example","pwa4wp"); ?>&nbsp;:&nbsp; ^.*/\.jpg.*&nbsp;<br>
-	            <?php _e("This means that all \"/jpg/\" file will be cached.","pwa4wp"); ?><br>
+	            <?php _e("This means that all \".jpg\" file will be cached.","pwa4wp"); ?><br>
                 <br>
                 </span>
             </div>
@@ -269,8 +233,6 @@ $swVersion = $data['swVersion'];
             </div>
             <hr>
         </li>
-<!-------in progress--------->
-<!-------in progress--------->
 
         <li class="pwa4wp_list">
             <div>
@@ -285,13 +247,13 @@ $swVersion = $data['swVersion'];
             <ul id="forceonline-list">
                 <?php
                 if(!empty($cacheSettings['forceonline'])):
-                    foreach ( $cacheSettings['forceonline'] as $item ):
-                        ?>
+	                foreach ( $cacheSettings['forceonline'] as $item ):
+		                ?>
                         <li class="pwa4wp_innerlist"><input name="forceonline[]" class="pwa4wp_longtext" value="<?php esc_html_e( stripslashes($item) ); ?>"></li>
-                    <?php
-                    endforeach;
+	                <?php
+	                endforeach;
                 else:
-                    ?>
+	                ?>
                     <li class="pwa4wp_innerlist"><input name="forceonline[]" class="pwa4wp_longtext" value=""></li>
                 <?php
                 endif;
@@ -327,7 +289,41 @@ $swVersion = $data['swVersion'];
             </div>
             <hr>
         </li>
-<!-------in progress--------->
+
+        <li class="pwa4wp_list">
+        <div>
+            <label>
+                <span class="pwa4wp_itemname">
+                    <?php _e("First caches","pwa4wp"); ?>&nbsp;&nbsp;
+                </span>
+            </label>
+            <button type="button" id="add-initial-caches"><?php _e("Add list","pwa4wp"); ?></button><br>
+            <span class="pwa4wp_field">
+                <br>
+            <ul id="initial-cache-list">
+
+                <?php
+                if(!empty( $cacheSettings['initial-caches'])):
+                    foreach ( $cacheSettings['initial-caches'] as $item ):
+                ?>
+                    <li class="pwa4wp_list pwa4wp_innerlist"><input name="initial-caches[]" class="pwa4wp_longtext" value="<?php esc_html_e( $item ); ?>"></li>
+                <?php
+                    endforeach;
+                else:
+                ?>
+                    <li class="pwa4wp_list pwa4wp_innerlist"><input name="initial-caches[]" class="pwa4wp_longtext" value=""></li>
+                <?php
+                endif;
+                ?>
+            </ul>
+                <br>
+	            <?php _e("Contents of these URLs are cached with installation.","pwa4wp"); ?><br>
+	            <?php _e("Start URL in manifest and offline page will added automatically, so you don't need to define them in here.","pwa4wp"); ?><br>
+                <br>
+            </span>
+        </div>
+            <hr>
+        </li>
 
         <li class="pwa4wp_list">
                 <span class="pwa4wp_itemname">
