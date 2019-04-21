@@ -161,7 +161,7 @@ $swVersion = $data['swVersion'];
             </span>
             <br>
             <div id="regextestform" class="pwa4wp_regextestform">
-                <div class="pwa4wp_regexttestinner">
+                <div class="pwa4wp_regexttestinner" id="pwa4wp_regexttestinner">
                 <span class="pwa4wp_field">
                     <?php _e("Input URL for test and press Test button.","pwa4wp"); ?><br>
                     <input id="regextTestURL" name="regextTestURL" class="pwa4wp_longtext" value="">

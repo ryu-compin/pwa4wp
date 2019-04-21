@@ -360,25 +360,44 @@ class pwa4wp_Admin {
     }
 
 	private function makeManifest( $data, $icons ) {
-
-		return [
-			'name'             => $data['name'],
-			'short_name'       => $data['short_name'],
-			'icons'            => array_map( function ( $icon ) {
-				return [
-					'src'   => $icon['filename'],
-					'type'  => $icon['type'],
-					'sizes' => $icon['sizes'],
-				];
-			}, $icons ),
-			'start_url'        => $data['start_url'],
-            'scope'        => $data['scope'],
-			'display'          => $data['display'],
-			'background_color' => $data['background_color'],
-			'description'      => $data['description'],
-			'theme_color'      => $data['theme_color'],
-			'orientation'      => $data['orientation'],
-		];
+	    if($data['orientation'] == "notset"){
+            return [
+                'name'             => $data['name'],
+                'short_name'       => $data['short_name'],
+                'icons'            => array_map( function ( $icon ) {
+                    return [
+                        'src'   => $icon['filename'],
+                        'type'  => $icon['type'],
+                        'sizes' => $icon['sizes'],
+                    ];
+                }, $icons ),
+                'start_url'        => $data['start_url'],
+                'scope'        => $data['scope'],
+                'display'          => $data['display'],
+                'background_color' => $data['background_color'],
+                'description'      => $data['description'],
+                'theme_color'      => $data['theme_color'],
+                ];
+        }else{
+            return [
+                'name'             => $data['name'],
+                'short_name'       => $data['short_name'],
+                'icons'            => array_map( function ( $icon ) {
+                    return [
+                        'src'   => $icon['filename'],
+                        'type'  => $icon['type'],
+                        'sizes' => $icon['sizes'],
+                    ];
+                }, $icons ),
+                'start_url'        => $data['start_url'],
+                'scope'        => $data['scope'],
+                'display'          => $data['display'],
+                'background_color' => $data['background_color'],
+                'description'      => $data['description'],
+                'theme_color'      => $data['theme_color'],
+                'orientation'      => $data['orientation'],
+                ];
+        }
 	}
 
 	private function generateServiceWorker( $data ) {

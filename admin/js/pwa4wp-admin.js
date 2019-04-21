@@ -95,11 +95,15 @@
                         height:"0",
                         opacity:0
                     },
-                    400
+                    400,
+                    function(){
+                        $('#pwa4wp_regexttestinner').css('display','none');
+                    }
                 );
                 $('#regexp_toggle').text(btn_open_text);
             }else{
                 // Close now, Open test alea.
+                $('#pwa4wp_regexttestinner').css('display','block');
                 $('#regextestform').animate(
                     {
                         height:"4em",

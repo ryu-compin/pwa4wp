@@ -293,6 +293,9 @@ if(function_exists('mb_substr')){
                         <option value="portrait-secondary" <?php if($manifestSettings['orientation'] == "portrait-secondary") echo "selected"?> >
                             portrait-secondary
                         </option>
+                        <option value="notset" <?php if($manifestSettings['orientation'] == "notset") echo "selected"?> >
+                            not set (use browser default)
+                        </option>
                     </select>
                     <br><br>
 	                <?php _e("Choose PWA screen orientation.","pwa4wp"); ?><br>
