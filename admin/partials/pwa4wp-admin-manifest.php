@@ -308,7 +308,7 @@ if(function_exists('mb_substr')){
 		<?php wp_nonce_field( 'my-nonce-key', 'my-submenu' ); ?>
     </ul>
     <span class="pwa4wp_submit_button_area">
-        <button type="submit" class="submit_button">Save Manifest configurations</button>
+        <button type="submit" class="submit_button"><?php _e("Save Manifest configurations","pwa4wp");?></button>
     </span>
     <hr>
     </form>

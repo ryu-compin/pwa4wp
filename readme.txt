@@ -45,10 +45,10 @@ Setup ServiceWorker file from ServiceWorker Configuration page.
 == Installation ==
 
 1. Upload the plugin files to the `/wp-content/plugins/pwa4wp` directory, or install the plugin through the WordPress plugins screen directly.
-1. Activate the plugin through the 'Plugins' screen in WordPress
-1. Use the `PWA for WordPress` screen to configure the plugin
-1. If "Current PWA Status" in main panel is not working, press "START" button.
-1. done!
+2. Activate the plugin through the 'Plugins' screen in WordPress
+3. Use the `PWA for WordPress` screen to configure the plugin
+4. If "Current PWA Status" in main panel is not working, press "START" button.
+5. done!
 
 
 == Frequently Asked Questions ==
@@ -72,19 +72,20 @@ There is information about updates and issues.
 
 == Upgrade Notice ==
 = 1.2.0 =
-Fixed issue:
-Install popup displayed even though "Defer PWA install" mode.
-
-= 1.1.4 =
 Update:
-Added preview page to default exclude URL.
-Fixed issue:
-Preview pages were not excluded from cache.
-Left margin of pwa4wp-admin.css in several admin pages.
-In admin console, some words were not translated.
+Added "not set" for "orientation" parameter.
+Added feature "Force Online-First" and "Force Cache-First".
 
 == Changelog ==
 = 1.2.0 =
+Update:
+Added "not set" for "orientation" parameter.
+Added feature "Force Online-First" and "Force Cache-First".
+
+Fixed issue:
+"add" button of First caches does not work.
+
+= 1.1.5 =
 Fixed issue:
 Install popup displayed even though "Defer PWA install" mode.
 

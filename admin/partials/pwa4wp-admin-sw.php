@@ -182,7 +182,7 @@ $swVersion = $data['swVersion'];
             <div>
                 <label>
                 <span class="pwa4wp_itemname">
-                    <?php _e("Force cache list","pwa4wp"); ?>&nbsp;&nbsp;
+                    <?php _e("Force cache-first URL list","pwa4wp"); ?>&nbsp;&nbsp;
                 </span>
                 </label>
                 <button type="button" id="add-forcecache"><?php _e("Add list","pwa4wp"); ?></button><br>
@@ -238,7 +238,7 @@ $swVersion = $data['swVersion'];
             <div>
                 <label>
                 <span class="pwa4wp_itemname">
-                    <?php _e("Force online list","pwa4wp"); ?>&nbsp;&nbsp;
+                    <?php _e("Force online-first URL list","pwa4wp"); ?>&nbsp;&nbsp;
                 </span>
                 </label>
                 <button type="button" id="add-forceonline"><?php _e("Add list","pwa4wp"); ?></button><br>
@@ -344,7 +344,7 @@ $swVersion = $data['swVersion'];
         </li>
     </ul>
     <span class="pwa4wp_submit_button_area">
-        <button type="submit" class="submit_button">Save Cache configurations</button>
+        <button type="submit" class="submit_button"><?php _e("Save Cache configurations","pwa4wp");?></button>
     </span>
 </form>
     <hr>

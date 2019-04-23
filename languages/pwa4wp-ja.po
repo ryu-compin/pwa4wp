@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pwa4wp\n"
-"POT-Creation-Date: 2019-04-22 01:14+0900\n"
-"PO-Revision-Date: 2019-04-22 01:22+0900\n"
+"POT-Creation-Date: 2019-04-23 23:53+0900\n"
+"PO-Revision-Date: 2019-04-23 23:54+0900\n"
 "Last-Translator: Ryunosuke Shindo <ryu@compin.jp>\n"
 "Language-Team: pwa4wp <ryu@compin.jp>\n"
 "Language: ja\n"
@@ -322,6 +322,10 @@ msgstr "PWA の画面表示モードを指定します。"
 msgid "Choose PWA screen orientation."
 msgstr "PWA の画面の方向を指定します。"
 
+#: admin/partials/pwa4wp-admin-manifest.php:311
+msgid "Save Manifest configurations"
+msgstr "マニフェスト設定を保存する"
+
 #: admin/partials/pwa4wp-admin-sw.php:23
 msgid "ServiceWorker Cache Configurations"
 msgstr "ServiceWorker キャッシュ設定"
@@ -455,8 +459,8 @@ msgid "Test"
 msgstr "テスト"
 
 #: admin/partials/pwa4wp-admin-sw.php:185
-msgid "Force cache list"
-msgstr "強制キャッシュ"
+msgid "Force cache-first URL list"
+msgstr "強制キャッシュ優先URL"
 
 #: admin/partials/pwa4wp-admin-sw.php:207
 msgid "These parameters works in online-first mode."
@@ -473,8 +477,8 @@ msgstr ""
 "す。"
 
 #: admin/partials/pwa4wp-admin-sw.php:241
-msgid "Force online list"
-msgstr "強制オンラインモード"
+msgid "Force online-first URL list"
+msgstr "強制オンライン優先URL"
 
 #: admin/partials/pwa4wp-admin-sw.php:263
 msgid "These parameters works in cache-first mode."
@@ -521,6 +525,10 @@ msgid ""
 msgstr ""
 "ONにすると ServiceWorker の JavaScript からブラウザのコンソールに詳細なメッ"
 "セージが出力されます。"
+
+#: admin/partials/pwa4wp-admin-sw.php:347
+msgid "Save Cache configurations"
+msgstr "キャッシュ設定を保存する"
 
 #: admin/partials/pwa4wp-admin-sw.php:352
 msgid "This URL will be excluded from cache."
