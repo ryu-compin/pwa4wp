@@ -17,6 +17,16 @@ class pwa4wp_CacheManager {
         if(this.settings.debug_msg =="ON"){
             this.debug = true;
         }
+        this.isCachReflesh = true;
+        if(this.settings.CachReflesh =="OFF"){
+            this.isCachReflesh = false;
+        }
+        this.isForceCache = this.settings.forcecache.some((pattern) => {
+            return (new RegExp(pattern)).test(event.request.url);
+        });
+        this.isForceOnline = this.settings.forceonline.some((pattern) => {
+            return (new RegExp(pattern)).test(event.request.url);
+        });
     }
 
     // イベント登録処理
@@ -72,12 +82,7 @@ class pwa4wp_CacheManager {
         let isExcluded = this.settings.exclusions.some((pattern) => {
             return (new RegExp(pattern)).test(event.request.url);
         });
-        let isForceCache = this.settings.forcecache.some((pattern) => {
-            return (new RegExp(pattern)).test(event.request.url);
-        });
-        let isForceOnline = this.settings.forceonline.some((pattern) => {
-            return (new RegExp(pattern)).test(event.request.url);
-        });
+
 
         let cacheable = isGetRequest && !isExcluded;
 
@@ -95,7 +100,7 @@ class pwa4wp_CacheManager {
             if(this.debug){
                 console.log("online-first mode : " + event.request.url);
             }
-            if(isForceCache){
+            if(this.isForceCache){
                 // force-cache
                 if(this.debug){
                     console.log("force-cache mode : " + event.request.url);
@@ -114,7 +119,7 @@ class pwa4wp_CacheManager {
             if(this.debug){
                 console.log("cache-first mode : " + event.request.url);
             }
-            if(isForceOnline){
+            if(this.isForceOnline){
                 if(this.debug){
                     console.log("force-online mode : " + event.request.url);
                 }
@@ -161,8 +166,13 @@ class pwa4wp_CacheManager {
                     if(this.debug){
                         console.log("return cached data");
                     }
-                    if (response) {
-                        return response;
+                    let res = response.clone();
+                    if (res) {
+                        // refresh cache if needed
+                        if(!this.isForceCache && this.isCachReflesh){
+                            refleshCache(request,res);
+                        }
+                        return res;
                     }
                     if(this.debug){
                         console.log('call fetch&cache', request.url);
@@ -214,6 +224,34 @@ class pwa4wp_CacheManager {
                 ttl: this.settings.ttl
             });
             return response;
+        });
+    }
+    refleshCache(request,orgResponse){
+        // refresh cache data if needed
+        return fetch(request).then((response) => {
+            if (response.status !== 200) {
+                return response;
+            }
+            let res = response.clone();
+            if(res == orgResponse){
+                this.caches.open(this.settings.cacheName).then((cache) => {
+                    cache.add(request.url, res).then((result) => {
+                        if(this.debug){
+                            console.log("added cache :" + request.url + " : " + result);
+                        }
+                    }, (err) => {
+                        if(this.debug){
+                            console.log("add cache error : " + request.url + " : " + err);
+                        }
+                    });
+                });
+                this.db.caches.put({
+                    url: request.url,
+                    cached_at: Date.now(),
+                    ttl: this.settings.ttl
+                });
+            }
+            return res;
         });
     }
 }

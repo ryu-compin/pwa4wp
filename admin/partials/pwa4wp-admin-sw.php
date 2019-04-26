@@ -62,6 +62,14 @@ $swVersion = $data['swVersion'];
 	                <?php _e("Online first plan will show online data before cache data.","pwa4wp"); ?><br>
 	                <?php _e("When the browser failed to get online page, for example offline or server down, cached data will be shown.","pwa4wp"); ?><br>
                     <br>
+                    <br>
+                    <label>
+                        <input type="checkbox" name="noCachReflesh" value="noCachReflesh" <?php if($cacheSettings['noCachReflesh'] == "noCachReflesh"){echo "checked=\"checked\"";} ?>><?php _e("Do not reflesh cache data.","pwa4wp"); ?>
+                    </label><br><br>
+                    <?php _e("When this parameter checked, PWA will not reflesh cache until Expire time set below.","pwa4wp"); ?><br>
+                    <?php _e("We recommend not to check here to keep contnts flesh.","pwa4wp"); ?><br>
+                    <?php _e("If you want some URLs to keep cache data without reflesh, use the parameter Force cache-first URL list.","pwa4wp"); ?><br>
+                    <br>
                 </span>
             <hr>
         </li>

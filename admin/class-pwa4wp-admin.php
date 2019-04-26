@@ -248,6 +248,7 @@ class pwa4wp_Admin {
 				'ttl'            => $_POST['ttl'],
 				'offline_url'    => $_POST['offline_url'],
                 'debug_msg'     => $_POST['debug_msg'],
+			    'noCachReflesh'    => $_POST['noCachReflesh'],
 			];
             if($this->check_sw($data)){
                 $this->generateServiceWorker( $data );
@@ -476,7 +477,6 @@ class pwa4wp_Admin {
         if( $data['orientation'] == "" ){
             $returnValue = false;
             $this->errorMsg[] = __("Manifest : Orientation is not set.","pwa4wp");
-
         }
         return $returnValue;
     }
