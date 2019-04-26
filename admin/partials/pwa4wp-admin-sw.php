@@ -161,7 +161,7 @@ $swVersion = $data['swVersion'];
             </span>
             <br>
             <div id="regextestform" class="pwa4wp_regextestform">
-                <div class="pwa4wp_regexttestinner">
+                <div class="pwa4wp_regexttestinner" id="pwa4wp_regexttestinner">
                 <span class="pwa4wp_field">
                     <?php _e("Input URL for test and press Test button.","pwa4wp"); ?><br>
                     <input id="regextTestURL" name="regextTestURL" class="pwa4wp_longtext" value="">
@@ -177,6 +177,119 @@ $swVersion = $data['swVersion'];
         </div>
             <hr>
         </li>
+
+        <li class="pwa4wp_list">
+            <div>
+                <label>
+                <span class="pwa4wp_itemname">
+                    <?php _e("Force cache list","pwa4wp"); ?>&nbsp;&nbsp;
+                </span>
+                </label>
+                <button type="button" id="add-forcecache"><?php _e("Add list","pwa4wp"); ?></button><br>
+                <span class="pwa4wp_field">
+                <br>
+            <ul id="forcecache-list">
+                <?php
+                if(!empty($cacheSettings['forcecache'])):
+	                foreach ( $cacheSettings['forcecache'] as $item ):
+		                ?>
+                        <li class="pwa4wp_innerlist"><input name="forcecache[]" class="pwa4wp_longtext" value="<?php esc_html_e( stripslashes($item) ); ?>"></li>
+	                <?php
+	                endforeach;
+                else:
+	                ?>
+                    <li class="pwa4wp_innerlist"><input name="forcecache[]" class="pwa4wp_longtext" value=""></li>
+                <?php
+                endif;
+                ?>
+            </ul>
+                <br>
+	            <?php _e("These parameters works in online-first mode.","pwa4wp"); ?><br>
+	            <?php _e("Specify here URLs to cache forcely in online-first mode.","pwa4wp"); ?><br>
+	            <?php _e("Example","pwa4wp"); ?>&nbsp;:&nbsp; ^.*/\.jpg.*&nbsp;<br>
+	            <?php _e("This means that all \".jpg\" file will be cached.","pwa4wp"); ?><br>
+                <br>
+                </span>
+            </div>
+            <div>
+            <span class="pwa4wp_field">
+                <?php _e("Test for Reguler Expressions.","pwa4wp"); ?>
+                <button type="button" id="regexp_toggle_forcecache"><?php _e("Open Regexp Test","pwa4wp"); ?></button><br>
+            </span>
+                <br>
+                <div id="regextestform_forcecache" class="pwa4wp_regextestform">
+                    <div class="pwa4wp_regexttestinner" id="pwa4wp_regexttestinner_forcecache">
+                <span class="pwa4wp_field">
+                    <?php _e("Input URL for test and press Test button.","pwa4wp"); ?><br>
+                    <input id="regextTestURL_forcecache" name="regextTestURL" class="pwa4wp_longtext" value="">
+                    <button type="button" id="regexp_dotest_forcecache"><?php _e("Test","pwa4wp"); ?></button><br>
+                </span>
+                        <br>
+                        <span class="pwa4wp_field" id="regexp_result_forcecache">
+                </span>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <hr>
+        </li>
+
+        <li class="pwa4wp_list">
+            <div>
+                <label>
+                <span class="pwa4wp_itemname">
+                    <?php _e("Force online list","pwa4wp"); ?>&nbsp;&nbsp;
+                </span>
+                </label>
+                <button type="button" id="add-forceonline"><?php _e("Add list","pwa4wp"); ?></button><br>
+                <span class="pwa4wp_field">
+                <br>
+            <ul id="forceonline-list">
+                <?php
+                if(!empty($cacheSettings['forceonline'])):
+	                foreach ( $cacheSettings['forceonline'] as $item ):
+		                ?>
+                        <li class="pwa4wp_innerlist"><input name="forceonline[]" class="pwa4wp_longtext" value="<?php esc_html_e( stripslashes($item) ); ?>"></li>
+	                <?php
+	                endforeach;
+                else:
+	                ?>
+                    <li class="pwa4wp_innerlist"><input name="forceonline[]" class="pwa4wp_longtext" value=""></li>
+                <?php
+                endif;
+                ?>
+            </ul>
+                <br>
+	            <?php _e("These parameters works in cache-first mode.","pwa4wp"); ?><br>
+	            <?php _e("Specify here URLs to cache forcely in cache-first mode.","pwa4wp"); ?><br>
+	            <?php _e("Example","pwa4wp"); ?>&nbsp;:&nbsp; ^.*/myplugin/.*&nbsp;<br>
+	            <?php _e("This means that all \"/myplugin/\" file will be online-first.","pwa4wp"); ?><br>
+                <br>
+                </span>
+            </div>
+            <div>
+            <span class="pwa4wp_field">
+                <?php _e("Test for Reguler Expressions.","pwa4wp"); ?>
+                <button type="button" id="regexp_toggle_forceonline"><?php _e("Open Regexp Test","pwa4wp"); ?></button><br>
+            </span>
+                <br>
+                <div id="regextestform_forceonline" class="pwa4wp_regextestform">
+                    <div class="pwa4wp_regexttestinner" id="pwa4wp_regexttestinner_forceonline">
+                <span class="pwa4wp_field">
+                    <?php _e("Input URL for test and press Test button.","pwa4wp"); ?><br>
+                    <input id="regextTestURL_forceonline" name="regextTestURL" class="pwa4wp_longtext" value="">
+                    <button type="button" id="regexp_dotest_forceonline"><?php _e("Test","pwa4wp"); ?></button><br>
+                </span>
+                        <br>
+                        <span class="pwa4wp_field" id="regexp_result_forceonline">
+                </span>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <hr>
+        </li>
+
         <li class="pwa4wp_list">
         <div>
             <label>
@@ -211,6 +324,7 @@ $swVersion = $data['swVersion'];
         </div>
             <hr>
         </li>
+
         <li class="pwa4wp_list">
                 <span class="pwa4wp_itemname">
                     <?php _e("Debug mode","pwa4wp"); ?>

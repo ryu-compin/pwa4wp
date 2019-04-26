@@ -82,7 +82,27 @@ class pwa4wp_Public {
         }
         if($sw_switch){
         	if($a2hs_switch == 0){
-		        echo "<script>if ('serviceWorker' in navigator) {import('" . plugin_dir_url( __FILE__ ) . 'js/pwa4wp-a2hs-controler.js?' . $this->version .".". $sw_version . "');}</script>";
+		        // echo "<script>if ('serviceWorker' in navigator) {import('" . plugin_dir_url( __FILE__ ) . 'js/pwa4wp-a2hs-controler.js?' . $this->version .".". $sw_version . "');}</script>";
+                $a2hs_scripttxt = <<<_EOD_
+                var pwa4wp_installevent;
+                console.log("a2hs controller loaded");
+                window.addEventListener('beforeinstallprompt', function (event) {
+                    console.log("install event occured");
+                    event.preventDefault();
+                    window.pwa4wp_installevent = event;
+                    if(typeof pwa4wp_open_install == 'function'){
+                        pwa4wp_open_install();
+                        console.log("call function - pwa4wp_open_install");
+                    }else{
+                        console.log("funtion pwa4wp_open_install does not exist, do nothing.");
+                    }
+                    return false;
+                });
+                console.log("a2hs controller exit");
+_EOD_;
+                echo "<script>if ('serviceWorker' in navigator) {\n" . $a2hs_scripttxt . "\n}</script>";
+                
+                
 	        }
 		    if($sw_scope != ""){
                 echo "<script>if ('serviceWorker' in navigator) {navigator.serviceWorker.register('/" . PWA4WP_SERVICEWORKER_FILE . "', {scope:'" . $sw_scope . "'});}</script>";

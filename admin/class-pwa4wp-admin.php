@@ -198,6 +198,12 @@ class pwa4wp_Admin {
                         'exclusions' =>array_filter(get_option( 'pwa4wp_cache_settings' )['exclusions'], function($pattern) {
                             return !empty($pattern);
                         }),
+                        'forcecache' =>array_filter(get_option( 'pwa4wp_cache_settings' )['forcecache'], function($pattern) {
+                            return !empty($pattern);
+                        }),
+                        'forceonline' =>array_filter(get_option( 'pwa4wp_cache_settings' )['forceonline'], function($pattern) {
+                            return !empty($pattern);
+                        }),
                         'initial-caches' => array_filter(get_option( 'pwa4wp_cache_settings' )['initial-caches'], function($url) {
                             return !empty($url);
                         }),
@@ -228,9 +234,15 @@ class pwa4wp_Admin {
 			    'sw_version' => $swVersion ,
                 'cache_plan' => $_POST['cache_plan'],
 				'exclusions'     => array_filter($_POST['exclusions'], function($pattern) {
-					return !empty($pattern);
+					return !empty(stripslashes($pattern));
 				}),
-				'initial-caches' => array_filter($_POST['initial-caches'], function($url) {
+                'forcecache'     => array_filter($_POST['forcecache'], function($pattern) {
+                    return !empty(stripslashes($pattern));
+                }),
+                'forceonline'     => array_filter($_POST['forceonline'], function($pattern) {
+                    return !empty(stripslashes($pattern));
+                }),
+                'initial-caches' => array_filter($_POST['initial-caches'], function($url) {
 					return !empty($url);
 				}),
 				'ttl'            => $_POST['ttl'],
@@ -360,25 +372,44 @@ class pwa4wp_Admin {
     }
 
 	private function makeManifest( $data, $icons ) {
-
-		return [
-			'name'             => $data['name'],
-			'short_name'       => $data['short_name'],
-			'icons'            => array_map( function ( $icon ) {
-				return [
-					'src'   => $icon['filename'],
-					'type'  => $icon['type'],
-					'sizes' => $icon['sizes'],
-				];
-			}, $icons ),
-			'start_url'        => $data['start_url'],
-            'scope'        => $data['scope'],
-			'display'          => $data['display'],
-			'background_color' => $data['background_color'],
-			'description'      => $data['description'],
-			'theme_color'      => $data['theme_color'],
-			'orientation'      => $data['orientation'],
-		];
+	    if($data['orientation'] == "notset"){
+            return [
+                'name'             => $data['name'],
+                'short_name'       => $data['short_name'],
+                'icons'            => array_map( function ( $icon ) {
+                    return [
+                        'src'   => $icon['filename'],
+                        'type'  => $icon['type'],
+                        'sizes' => $icon['sizes'],
+                    ];
+                }, $icons ),
+                'start_url'        => $data['start_url'],
+                'scope'        => $data['scope'],
+                'display'          => $data['display'],
+                'background_color' => $data['background_color'],
+                'description'      => $data['description'],
+                'theme_color'      => $data['theme_color'],
+                ];
+        }else{
+            return [
+                'name'             => $data['name'],
+                'short_name'       => $data['short_name'],
+                'icons'            => array_map( function ( $icon ) {
+                    return [
+                        'src'   => $icon['filename'],
+                        'type'  => $icon['type'],
+                        'sizes' => $icon['sizes'],
+                    ];
+                }, $icons ),
+                'start_url'        => $data['start_url'],
+                'scope'        => $data['scope'],
+                'display'          => $data['display'],
+                'background_color' => $data['background_color'],
+                'description'      => $data['description'],
+                'theme_color'      => $data['theme_color'],
+                'orientation'      => $data['orientation'],
+                ];
+        }
 	}
 
 	private function generateServiceWorker( $data ) {

@@ -118,5 +118,6 @@
     opacity: 0;
 }
 .pwa4wp_regexttestinner{
+    display:none;
     height: auto;
 }
